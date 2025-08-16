@@ -1,0 +1,334 @@
+// Variables for colors and fonts
+$beige-color: #FDFBEE;
+$noir-eben: #1E1E1E;
+$rouge: #C92E26;
+$blanc: #FFFFFF;
+$work-sans: 'Work Sans', sans-serif;
+$bardon: 'Bardon', sans-serif;
+$gris: #7A7A7A;
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+
+    .hero-content {
+        background-color: $beige-color;
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 1440px;
+        margin: 0 auto;
+
+        .hero-decorations {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        }
+
+        .decoration {
+        position: absolute;
+        z-index: 1;
+
+        &.decoration-top-left {
+            top: 5%;
+            left: 15%;
+            width: 60px;
+            height: 39px;
+            transform: rotate(-24.46deg);
+        }
+
+        &.decoration-top-right {
+            top: 5%;
+            right: 15%;
+            width: 50px;
+            height: 50px;
+            transform: rotate(55.97deg);
+        }
+
+        &.decoration-bottom-left {
+            bottom: 5%;
+            left: 10%;
+            width: 121px;
+            height: 109px;
+        }
+
+        &.decoration-bottom-right {
+            bottom: 5%;
+            right: 10%;
+            width: 71px;
+            height: 79px;
+            transform: matrix(-1, -0.05, -0.05, 1, 0, 0);
+        }
+        }
+
+        .text-and-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+        position: relative;
+        padding: 50px 0;
+
+        .hero-title {
+            font-family: $bardon;
+            font-weight: 400;
+            font-size: clamp(24px, 4vw, 32px);
+            line-height: 1.2;
+            color: $noir-eben;
+            margin-bottom: 10px;
+        }
+
+        .hero-description {
+            font-family: $work-sans;
+            font-weight: 400;
+            font-size: clamp(16px, 2.5vw, 18px);
+            line-height: 1.5;
+            color: $noir-eben;
+            max-width: 520px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background: $rouge;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: $work-sans;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            color: $blanc;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+            background-color: darken($rouge, 10%);
+            }
+        }
+        }
+    }
+
+    .hero-footer {
+        max-width: 874px;
+        margin: 28px auto 0 auto;
+
+        span {
+        img {
+            margin-right: 10px;
+        }
+        }
+    }
+}
+
+.sound-ideas-block {
+    
+    .block-title {
+        font-family: 'Bardon', sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 45px;
+        color: #1E1E1E;
+    }
+    .gap{
+        column-gap: 40px;
+    }
+
+    .sound-button-group {
+        .sound-button {
+            width: 116px;
+            height: 116px;
+            object-fit: cover;
+        }
+
+        .button-label {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            color: #000;
+            margin-top: 8px;
+            &.button-label-2{
+                display: none;
+            }
+        }
+
+        .use-it-button {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            color: #fff;
+            background: #C92E26;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        &:hover{
+            .button-label {
+                display: none;
+                &.button-label-2{
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .check-link{
+        margin-top: 34px;
+        a{
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            color: #1E1E1E;
+            text-decoration: underline;
+        }
+    }
+}
+
+
+
+
+.products-section {
+    background-color: $beige-color;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        max-width: 800px;
+        margin-bottom: 50px;
+
+        .logo {
+            width: 132.21px;
+            height: auto;
+        }
+
+        .description {
+            font-family: $work-sans;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.5;
+            color: $noir-eben;
+            margin-top: 20px;
+            max-width: 603px;
+        }
+
+        .decoration {
+            position: absolute;
+            top: 50%;
+            left: -15%;
+            transform: translateY(-50%);
+            width: 95px;
+            height: 95px;
+        }
+    }
+
+    .product-grid {
+        margin-bottom: 40px;
+        .product-card {
+            background: $blanc;
+            border: 2px solid $noir-eben;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .image-container {
+                width: 100%;
+                height: 180px;
+                position: relative;
+                background-color: #F8F8F8;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+
+                .product-image {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                }
+            }
+
+            .product-details {
+                width: 100%;
+                padding-top: 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .product-title {
+                    font-family: $work-sans;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 1.2;
+                    color: $noir-eben;
+                    margin: 0;
+                    text-align: left;
+                }
+
+                .prices {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .current-price {
+                        font-family: $work-sans;
+                        font-weight: 700;
+                        font-size: 28px;
+                        line-height: 1.2;
+                        color: $noir-eben;
+                    }
+
+                    .old-price {
+                        font-family: $work-sans;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 1.2;
+                        color: $gris;
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }
+    }
+
+    .see-all-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 10px;
+        background: $rouge;
+        border-radius: 5px;
+        text-decoration: none;
+        font-family: $work-sans;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.2;
+        color: $blanc;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+        background-color: darken($rouge, 10%);
+        }
+    }
+}

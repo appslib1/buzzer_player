@@ -1,0 +1,283 @@
+.hero-section {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-section .hero-content {
+  background-color: #FDFBEE;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.hero-section .hero-content .hero-decorations {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.hero-section .hero-content .decoration {
+  position: absolute;
+  z-index: 1;
+}
+.hero-section .hero-content .decoration.decoration-top-left {
+  top: 5%;
+  left: 15%;
+  width: 60px;
+  height: 39px;
+  transform: rotate(-24.46deg);
+}
+.hero-section .hero-content .decoration.decoration-top-right {
+  top: 5%;
+  right: 15%;
+  width: 50px;
+  height: 50px;
+  transform: rotate(55.97deg);
+}
+.hero-section .hero-content .decoration.decoration-bottom-left {
+  bottom: 5%;
+  left: 10%;
+  width: 121px;
+  height: 109px;
+}
+.hero-section .hero-content .decoration.decoration-bottom-right {
+  bottom: 5%;
+  right: 10%;
+  width: 71px;
+  height: 79px;
+  transform: matrix(-1, -0.05, -0.05, 1, 0, 0);
+}
+.hero-section .hero-content .text-and-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  padding: 50px 0;
+}
+.hero-section .hero-content .text-and-button .hero-title {
+  font-family: "Bardon", sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.2;
+  color: #1E1E1E;
+  margin-bottom: 10px;
+}
+.hero-section .hero-content .text-and-button .hero-description {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 2.5vw, 18px);
+  line-height: 1.5;
+  color: #1E1E1E;
+  max-width: 520px;
+  margin-bottom: 20px;
+}
+.hero-section .hero-content .text-and-button .button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background: #C92E26;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  transition: background-color 0.3s ease;
+}
+.hero-section .hero-content .text-and-button .button:hover {
+  background-color: rgb(158.1087866109, 36.1841004184, 29.8912133891);
+}
+.hero-section .hero-footer {
+  max-width: 874px;
+  margin: 28px auto 0 auto;
+}
+.hero-section .hero-footer span img {
+  margin-right: 10px;
+}
+
+.sound-ideas-block .block-title {
+  font-family: "Bardon", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 45px;
+  color: #1E1E1E;
+}
+.sound-ideas-block .gap {
+  column-gap: 40px;
+}
+.sound-ideas-block .sound-button-group .sound-button {
+  width: 116px;
+  height: 116px;
+  object-fit: cover;
+}
+.sound-ideas-block .sound-button-group .button-label {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000;
+  margin-top: 8px;
+}
+.sound-ideas-block .sound-button-group .button-label.button-label-2 {
+  display: none;
+}
+.sound-ideas-block .sound-button-group .use-it-button {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fff;
+  background: #C92E26;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.sound-ideas-block .sound-button-group:hover .button-label {
+  display: none;
+}
+.sound-ideas-block .sound-button-group:hover .button-label.button-label-2 {
+  display: block;
+}
+.sound-ideas-block .check-link {
+  margin-top: 34px;
+}
+.sound-ideas-block .check-link a {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1E1E1E;
+  text-decoration: underline;
+}
+
+.products-section {
+  background-color: #FDFBEE;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.products-section .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+.products-section .header .logo {
+  width: 132.21px;
+  height: auto;
+}
+.products-section .header .description {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1E1E1E;
+  margin-top: 20px;
+  max-width: 603px;
+}
+.products-section .header .decoration {
+  position: absolute;
+  top: 50%;
+  left: -15%;
+  transform: translateY(-50%);
+  width: 95px;
+  height: 95px;
+}
+.products-section .product-grid {
+  margin-bottom: 40px;
+}
+.products-section .product-grid .product-card {
+  background: #FFFFFF;
+  border: 2px solid #1E1E1E;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.products-section .product-grid .product-card .image-container {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  background-color: #F8F8F8;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.products-section .product-grid .product-card .image-container .product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.products-section .product-grid .product-card .product-details {
+  width: 100%;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.products-section .product-grid .product-card .product-details .product-title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #1E1E1E;
+  margin: 0;
+  text-align: left;
+}
+.products-section .product-grid .product-card .product-details .prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.products-section .product-grid .product-card .product-details .prices .current-price {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #1E1E1E;
+}
+.products-section .product-grid .product-card .product-details .prices .old-price {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #7A7A7A;
+  text-decoration: line-through;
+}
+.products-section .see-all-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  background: #C92E26;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #FFFFFF;
+  transition: background-color 0.3s ease;
+}
+.products-section .see-all-button:hover {
+  background-color: rgb(158.1087866109, 36.1841004184, 29.8912133891);
+}
+
+/*# sourceMappingURL=style.css.map */
