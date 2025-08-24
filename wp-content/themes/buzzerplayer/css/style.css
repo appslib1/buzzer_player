@@ -147,6 +147,7 @@ a {
   }
 }
 
+.wpcf7-submit,
 .buzzer-default-btn {
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
@@ -163,8 +164,14 @@ a {
   transition: 0.3s all;
   display: inline-block;
 }
+.wpcf7-submit:hover,
 .buzzer-default-btn:hover {
   background-color: #1E1E1E;
+}
+
+.wpcf7-submit {
+  border: none;
+  text-transform: none;
 }
 
 .check-link a {
@@ -187,6 +194,20 @@ a {
 .check-link a:hover {
   background-color: #1E1E1E;
   color: white;
+}
+
+.page-title {
+  font-family: "Bardon", sans-serif;
+  font-size: 24px;
+  margin-bottom: 26px;
+}
+
+textarea,
+input {
+  padding: 10.25px 22px;
+  border: 2px solid #1E1E1E;
+  font-size: 17px;
+  border-radius: 5px;
 }
 
 /**************** Block Hero ****************/
@@ -708,6 +729,115 @@ a {
   bottom: 1px;
   right: 0;
   left: 0;
+}
+
+/*********************** Contact page ******************************/
+.contact-page {
+  padding: 57px 0;
+  max-width: 857px;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 27px 0 28px;
+  }
+}
+.contact-page .contact-info {
+  height: 100%;
+}
+.contact-page .contact-info .content {
+  position: relative;
+}
+.contact-page .contact-info .content:after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 50px);
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-image: url("../assets/icons/pink_smile.svg");
+  width: 71px;
+  height: 79px;
+}
+@media (max-width: 768px) {
+  .contact-page .contact-info .content:after {
+    display: none;
+  }
+}
+.contact-page .contact-info .content a {
+  color: #1E1E1E;
+  text-decoration-color: #C92E26;
+  text-decoration-thickness: 2px;
+}
+.contact-page .contact-info .contact-email {
+  margin-bottom: 47px;
+}
+.contact-page .contact-info .contact-email a {
+  position: relative;
+  padding-left: 36px;
+  text-decoration: none;
+  color: #1E1E1E;
+}
+.contact-page .contact-info .contact-email a:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  content: "";
+  background-image: url("../assets/icons/mail.svg");
+  width: 24px;
+  height: 24px;
+}
+.contact-page .contact-form {
+  background-color: #FDFBEE;
+  padding: 29px 40px 81px;
+  margin-top: -54.8px;
+  min-height: 583px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .contact-page .contact-form {
+    margin-bottom: 41px;
+    padding-bottom: 21px;
+    margin-top: 0;
+    min-height: 300px;
+  }
+}
+.contact-page .contact-form form input,
+.contact-page .contact-form form textarea {
+  width: 100%;
+}
+.contact-page .contact-form form.sent {
+  height: 100%;
+}
+.contact-page .contact-form form.sent p {
+  display: none;
+}
+.contact-page .contact-form form.sent .wpcf7-response-output {
+  border: none;
+  height: 167.13px;
+  margin: auto;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.contact-page .contact-form form.sent .wpcf7-response-output:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 90px;
+  height: 71px;
+  background-image: url("../assets/icons/smile-2.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /*# sourceMappingURL=style.css.map */

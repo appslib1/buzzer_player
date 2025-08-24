@@ -21,6 +21,7 @@ a{
     }
 }
 
+.wpcf7-submit,
 .buzzer-default-btn{    
     font-family: variables.$work-sans;
     font-weight: 700;
@@ -40,7 +41,10 @@ a{
         background-color: variables.$noir-eben;
     }
 }
-
+.wpcf7-submit{
+    border: none;
+    text-transform: none;
+}
 .check-link{
     a{
         font-size: 18px;
@@ -63,4 +67,18 @@ a{
             color: white;
         }
     }
+}
+
+.page-title{
+    font-family: variables.$bardon;
+    font-size: 24px;
+    margin-bottom: 26px;
+}
+
+textarea,
+input{
+    padding: 10.25px 22px;
+    border: 2px solid variables.$noir-eben;
+    font-size: 17px;
+    border-radius: 5px;
 }
