@@ -1,0 +1,66 @@
+@use "variables";
+
+body{
+    font-family: variables.$work-sans !important;
+    font-size: 18px !important;
+    transition: .3s all;
+    color: variables.$noir-eben !important;
+
+}
+a{
+    transition: .3s all;
+}
+.section-title{
+    font-family: variables.$bardon;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: normal;
+    @media (max-width: 768px){
+        font-size: 16px;
+    }
+}
+
+.buzzer-default-btn{    
+    font-family: variables.$work-sans;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 13px 20px;
+    background-color: variables.$rouge;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: .3s all;
+    display: inline-block;
+    &:hover{
+        background-color: variables.$noir-eben;
+    }
+}
+
+.check-link{
+    a{
+        font-size: 18px;
+        line-height: 21px;
+        color: #1E1E1E;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        &:after{
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: variables.$rouge;
+            left: 0;
+        }
+        &:hover{
+            background-color: variables.$noir-eben;
+            color: white;
+        }
+    }
+}

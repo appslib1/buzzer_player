@@ -1,0 +1,26 @@
+// Variables for colors and fonts
+$beige-color: #FDFBEE;
+$noir-eben: #1E1E1E;
+$rouge: #C92E26;
+$blanc: #FFFFFF;
+$work-sans: 'Work Sans', sans-serif;
+$bardon: 'Bardon', sans-serif;
+$gris: #7A7A7A;
+$light-yellow: #fff8cc;
+$dark-text: #1e1e1e;
+$dark-yellow: #FFC80A;
+
+
+@font-face {
+    font-family: 'Bardon';
+    src: url('../fonts/Bardon-Demo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');

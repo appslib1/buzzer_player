@@ -1,140 +1,133 @@
-// Variables for colors and fonts
-$beige-color: #FDFBEE;
-$noir-eben: #1E1E1E;
-$rouge: #C92E26;
-$blanc: #FFFFFF;
-$work-sans: 'Work Sans', sans-serif;
-$bardon: 'Bardon', sans-serif;
-$gris: #7A7A7A;
+@use "variables";
 
+/**************** Block Hero ****************/
 .hero-section {
     position: relative;
     text-align: center;
     overflow: hidden;
 
     .hero-content {
-        background-color: $beige-color;
-        padding: 80px 20px;
-        display: flex;
-        flex-direction: column;
+        background-color: variables.$beige-color;
+        padding: 86px 20px 118px;
         align-items: center;
         justify-content: center;
         position: relative;
         max-width: 1440px;
         margin: 0 auto;
+        @media (max-width: 768px){
+            padding-bottom: 80px;
+        }
+        h1{
+            font-family: variables.$bardon;
+            font-size: 32px;
+            text-align: center;
+            vertical-align: middle;
+            margin-bottom: 15px;
+            @media (max-width: 768px){
+                font-size: 22px;
+            }
+        }
 
         .hero-decorations {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
         }
 
         .decoration {
-        position: absolute;
-        z-index: 1;
+            position: absolute;
+            z-index: 1;
 
-        &.decoration-top-left {
-            top: 5%;
-            left: 15%;
-            width: 60px;
-            height: 39px;
-            transform: rotate(-24.46deg);
-        }
+            &.decoration-top-left {
+                top: 5%;
+                left: 15%;
+                width: 60px;
+                height: 39px;
+                transform: rotate(-24.46deg);
+                @media (max-width: 768px){
+                    display: none;
+                }
+            }
 
-        &.decoration-top-right {
-            top: 5%;
-            right: 15%;
-            width: 50px;
-            height: 50px;
-            transform: rotate(55.97deg);
-        }
+            &.decoration-top-right {
+                top: 5%;
+                right: 15%;
+                width: 50px;
+                height: 50px;
+                transform: rotate(55.97deg);
+                @media (max-width: 768px){
+                    max-width: 29.42px;
+                    right: 18px;
+                    top: 18px;
+                }
+            }
 
-        &.decoration-bottom-left {
-            bottom: 5%;
-            left: 10%;
-            width: 121px;
-            height: 109px;
-        }
+            &.decoration-bottom-left {
+                bottom: 5%;
+                left: 10%;
+                width: 121px;
+                height: 109px;
+                @media (max-width: 768px){
+                    max-width: 56.61px;
+                    left: 13px;
+                    bottom: 19px;
+                }
+            }
 
-        &.decoration-bottom-right {
-            bottom: 5%;
-            right: 10%;
-            width: 71px;
-            height: 79px;
-            transform: matrix(-1, -0.05, -0.05, 1, 0, 0);
-        }
-        }
-
-        .text-and-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 2;
-        position: relative;
-        padding: 50px 0;
-
-        .hero-title {
-            font-family: $bardon;
-            font-weight: 400;
-            font-size: clamp(24px, 4vw, 32px);
-            line-height: 1.2;
-            color: $noir-eben;
-            margin-bottom: 10px;
+            &.decoration-bottom-right {
+                bottom: 5%;
+                right: 10%;
+                width: 71px;
+                height: 79px;
+                transform: matrix(-1, -0.05, -0.05, 1, 0, 0);
+                @media (max-width: 768px){
+                    right: 10.61px;
+                    bottom: 55.32px;
+                    max-width: 40.19px;
+                }
+            }
         }
 
         .hero-description {
-            font-family: $work-sans;
+            font-family: variables.$work-sans;
             font-weight: 400;
-            font-size: clamp(16px, 2.5vw, 18px);
-            line-height: 1.5;
-            color: $noir-eben;
-            max-width: 520px;
-            margin-bottom: 20px;
-        }
-
-        .button {
-            display: inline-flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
-            background: $rouge;
-            border-radius: 5px;
-            text-decoration: none;
-            font-family: $work-sans;
-            font-weight: 700;
             font-size: 18px;
-            line-height: 21px;
-            color: $blanc;
-            transition: background-color 0.3s ease;
+            line-height: 1.5;
+            color: variables.$noir-eben;
+            max-width: 520px;
+            margin-bottom: 25px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-            &:hover {
-            background-color: darken($rouge, 10%);
-            }
-        }
-        }
     }
 
     .hero-footer {
-        max-width: 874px;
-        margin: 28px auto 0 auto;
-
-        span {
-        img {
-            margin-right: 10px;
-        }
+        margin-top: 29px;
+        ul{
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+            img{
+                margin-right: 8px;
+            }
         }
     }
 }
 
+/**************** Block Sound ideas ****************/
 .sound-ideas-block {
     
     .block-title {
         font-family: 'Bardon', sans-serif;
-        font-weight: 400;
         font-size: 24px;
         line-height: 45px;
         color: #1E1E1E;
@@ -144,6 +137,12 @@ $gris: #7A7A7A;
     }
 
     .sound-button-group {
+        @media (max-width: 768px){
+            flex: 0 0 40%;
+            &:nth-child(n+5){
+                display: none;
+            }
+        }
         .sound-button {
             width: 116px;
             height: 116px;
@@ -157,8 +156,14 @@ $gris: #7A7A7A;
             line-height: 21px;
             color: #000;
             margin-top: 8px;
+            min-height: 43px;
             &.button-label-2{
-                display: none;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
             }
         }
 
@@ -174,45 +179,31 @@ $gris: #7A7A7A;
         }
         &:hover{
             .button-label {
-                display: none;
+                opacity: 0;
                 &.button-label-2{
-                    display: block;
+                    opacity: 1;
                 }
             }
         }
     }
-
-    .check-link{
-        margin-top: 34px;
-        a{
-            font-family: 'Work Sans', sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 21px;
-            color: #1E1E1E;
-            text-decoration: underline;
-        }
-    }
 }
 
-
-
-
+/**************** Block featured products ****************/
 .products-section {
-    background-color: $beige-color;
+    background-color: variables.$beige-color;
     padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    @media (max-width: 768px){
+        padding: 38px 20px 59px;
+    }
 
     .header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         position: relative;
-        max-width: 800px;
+        //max-width: 800px;
         margin-bottom: 50px;
+        text-align: center;
+        @media (max-width: 768px){
+            margin-bottom: 12px;
+        }
 
         .logo {
             width: 132.21px;
@@ -220,35 +211,37 @@ $gris: #7A7A7A;
         }
 
         .description {
-            font-family: $work-sans;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 1.5;
-            color: $noir-eben;
             margin-top: 20px;
             max-width: 603px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .decoration {
             position: absolute;
-            top: 50%;
-            left: -15%;
-            transform: translateY(-50%);
+            bottom: calc(100% - 24px);
+            right: calc(100% + -28px);
             width: 95px;
             height: 95px;
+            @media (max-width: 991px){
+                display: none;
+            }
+
         }
     }
 
     .product-grid {
-        margin-bottom: 40px;
         .product-card {
-            background: $blanc;
-            border: 2px solid $noir-eben;
+            background: #ffffff;
+            border: 2px solid variables.$noir-eben;
             border-radius: 10px;
             padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            @media (max-width: 768px){
+                margin-bottom: 30px;
+            }
 
             .image-container {
                 width: 100%;
@@ -262,9 +255,9 @@ $gris: #7A7A7A;
                 overflow: hidden;
 
                 .product-image {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
                 }
             }
 
@@ -276,11 +269,11 @@ $gris: #7A7A7A;
                 gap: 8px;
 
                 .product-title {
-                    font-family: $work-sans;
+                    font-family: variables.$work-sans;
                     font-weight: 700;
                     font-size: 18px;
                     line-height: 1.2;
-                    color: $noir-eben;
+                    color: variables.$noir-eben;
                     margin: 0;
                     text-align: left;
                 }
@@ -291,44 +284,259 @@ $gris: #7A7A7A;
                     gap: 10px;
 
                     .current-price {
-                        font-family: $work-sans;
+                        font-family: variables.$work-sans;
                         font-weight: 700;
                         font-size: 28px;
                         line-height: 1.2;
-                        color: $noir-eben;
+                        color: variables.$noir-eben;
                     }
 
                     .old-price {
-                        font-family: $work-sans;
+                        font-family: variables.$work-sans;
                         font-weight: 500;
                         font-size: 18px;
                         line-height: 1.2;
-                        color: $gris;
+                        color: variables.$gris;
                         text-decoration: line-through;
                     }
                 }
             }
         }
     }
+}
 
-    .see-all-button {
-        display: inline-flex;
+
+/**************** Block features ****************/
+.features-section {
+    .row{
+        .col-lg-8{
+            .row{
+                &:first-child{
+                    margin-bottom: 80px;
+                }
+                .feature-image{
+                    img{
+                        max-width: 100%;
+                    }
+                }
+                .feature-title{
+                    font-family: Bardon;
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                    @media (max-width: 768px){
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**************** Block explore more ideas ****************/
+.explore-ideas{
+    overflow-x: hidden;
+    .section-title{
+        font-family: variables.$bardon;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 40px;
+        line-height: normal;
+    }
+    .swiper-slide{
+        @media (max-width: 768px){
+            width: 80%;
+        }
+        .idea-card{
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            img{
+                height: 155px;
+                object-fit: cover;
+                width: 100%;
+                transition: .3s all;
+            }
+            .idea-body{
+                padding-top: 20px;
+                padding-right: 10px;
+                padding-bottom: 20px;
+                padding-left: 10px;
+                background: variables.$light-yellow;
+                text-align: left;
+                transition: .3s all;
+                .idea-title{
+                    color: variables.$rouge;
+                    font-family: variables.$bardon;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                }
+                .idea-text{
+                    font-size: 18px;
+                    color: variables.$rouge;
+                }
+            }
+            &:hover{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    .arrows{
+        height: 40px;
+        margin-top: 21px;
         justify-content: center;
-        align-items: center;
-        padding: 10px 20px;
-        gap: 10px;
-        background: $rouge;
-        border-radius: 5px;
-        text-decoration: none;
-        font-family: $work-sans;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 1.2;
-        color: $blanc;
-        transition: background-color 0.3s ease;
+        gap: 14px;
+        display: none;
+        @media (max-width: 768px){
+            display: flex;
+        }
+        .swiper-button-prev,
+        .swiper-button-next{
+            position: relative;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            background: variables.$rouge;
+            color: #fff;
+            left: unset;
+            right: unset;
+            &::after{
+                font-size: 22px;
+            } 
+            &.swiper-button-disabled{
+                opacity: 1 !important;
+                background: #D9D9D9;
+            }
+        }
+    }
+}
 
-        &:hover {
-        background-color: darken($rouge, 10%);
+/**************** Block spread smiles ****************/
+.spread-smiles{
+    .smile-card{
+        background: variables.$dark-yellow;
+        padding: 20px;
+        max-width: 580px;
+        border-radius: 10px;
+        margin: auto;
+        @media (max-width: 768px){
+            padding-bottom: 46px;
+            padding-top: 39px;
+        }
+        .smile-text{
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            @media (max-width: 768px){
+                margin-top: 51.21px;
+            }
+        }
+        .smile-image{
+            max-width: 242px;
+            margin-left: auto;
+            margin-right: auto;
+            .card-img{
+                object-fit: cover;
+                height: 257px;
+                object-position: left top;
+                max-width: 242px;
+                border-radius: 10px;
+            }
+            .bip-badge{
+                top: calc(100% - 49px);
+                z-index: 99999;
+                left: calc(100% - 100px);
+                max-width: 121px;
+                @media (max-width: 768px){
+                    left: calc(100% - 142px);
+                }
+            }
+        }
+    }
+}
+
+/**************** Block FAQ ****************/
+.faq-section{
+    .faq-card{
+        max-width: 780px;
+        margin: auto;
+        position: relative;
+        &::before{
+            position: absolute;
+            left: 0;
+            bottom: calc(100% - 50px);
+            content: "";
+            background-image: url("../assets/icons/smily-red-face.svg");
+            width: 84px;
+            height: 66px;
+            background-size: cover;
+            @media (max-width: 768px){
+                bottom: calc(100% + 22px);
+            }
+        }
+    }
+    .accordion{
+        margin-bottom: 31px;
+        max-width: 613px;
+        margin-left: auto;
+        margin-right: auto;
+        .faq-item{
+            border: none;
+            &:first-child{
+                button{
+                    padding-top: 0 !important;
+                }
+            }
+            button{
+                padding: 20px 0 !important;
+                border-bottom: 2px solid #EEEEEE;
+                font-weight: 700;
+                padding: 0;
+                background: unset;
+                &::after{
+                    background-image: url("../assets/icons/arrow_drop_down.svg");
+                    background-size: 10px;
+                    background-position: center;
+                }
+            }
+            .accordion-body{
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+
+/**************** Block Explanation ****************/
+.explanation-section{
+    background-color: variables.$beige-color;
+    padding-top: 38px;
+    padding-bottom: 40px;
+    text-align: center;
+    .explanation-content{
+        max-width: 621px;
+        margin: auto;
+        img{
+            margin-bottom: 21px;
+        }
+        a{
+            text-decoration: none;
+            position: relative;
+            color: variables.$noir-eben;
+            &::after{
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: variables.$noir-eben;
+                position: absolute;
+                bottom: 1px;
+                right: 0;
+                left: 0;
+            }
         }
     }
 }

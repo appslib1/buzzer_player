@@ -23,7 +23,10 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
+
+	<?php /*
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'buzzerplayer' ); ?></a>
+
 
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
@@ -56,4 +59,47 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	</header>
+	*/
+	?>
+
+	<header id="masthead" class="site-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-md-12 m-auto">
+
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<a class="navbar-brand" href="#">
+                			<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/header-logo.svg" alt="Buzzer Player Symbole" class="logo">
+						</a>
+						<button class="navbar-toggler" id="customToggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+							<ul class="navbar-nav ms-auto">
+								<li class="nav-item active">
+									<a class="nav-link" href="#">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Sounds effects</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Push button</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">FAQ</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Contact</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+		
+
+	</header>
+

@@ -10,22 +10,77 @@
  */
 
 ?>
+	<footer class="footer">
+		<div class="footer-container container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="footer-logo">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/footer-logo.png" alt="Buzzer Player Symbole" class="logo">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="links-column">
+						<h4 class="column-title">Pages</h4>
+						<ul>
+							<li><a href="#">Buzzer Player</a></li>
+							<li><a href="#">Sounds effects</a></li>
+							<li><a href="#">Products</a></li>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Basket</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="links-column">
+						<h4 class="column-title">Follow us</h4>
+						<ul>
+							<li><a href="#">Instagram</a></li>
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">TikTok</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+				<div class="col-md-3">
+					<div class="footer-contact">
+						<h4 class="contact-title">Need help ?</h4>
+						<p class="contact-text">Send us a message through the contact page</p>
+						<button class="chat-button">Chat with us</button>
+					</div>
+				</div>
+			
+			</div>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'buzzerplayer' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'buzzerplayer' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'buzzerplayer' ), 'buzzerplayer', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+			<div class="row footer-bottom">
+				<div class="col-md-8">
+					<div class="legal-links">
+						<span class="language">
+							English
+						</span>
+						<ul>
+							<li>
+								<a href="#">Term and conditions</a>
+							</li>
+							<li>
+								<a href="#">Privacy Policy</a>
+							</li>
+							<li>
+								<a href="#">General Conditions of Purchase</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="payment-methods">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/payment-gateways.svg" alt="Buzzer Player Symbole" class="logo">
+					</div>
+					<p class="copyright">Copyright © Buzzer Player</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
