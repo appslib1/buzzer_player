@@ -1,9 +1,75 @@
 @use "variables";
+
+/*********************** Archive product page ******************************/
+.page-template-template-product{
+    main{
+        padding: 69px 0 0;
+        .description,
+        h1{
+            text-align: left;
+            margin-bottom: 19px;
+        }
+        .description{
+            max-width: 604px;
+            font-size: 16px;
+            margin-bottom: 45px;
+        }
+        .product-grid{
+            .product-card{
+                margin-bottom: 60px;
+            }
+        }
+    }
+}
+
+/*********************** Single product page ******************************/
+.single-product{
+    h1{
+        text-align: left;
+        margin-bottom: 17px;
+    }
+    .ratings{
+        display: flex;
+        gap: 6px;
+        margin-bottom: 30px;
+        padding-bottom: 26px;
+        width: 100%;
+        border-bottom: 1px solid #E6E6E6;
+        align-items: center;
+        .stars{
+            
+        }
+        .nb-ratings{
+            color: variables.$rouge;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: right;
+            text-decoration: underline;
+            text-decoration-style: solid;
+            text-decoration-thickness: 12%;
+            text-decoration-skip-ink: auto;
+        }
+    }
+    .text-price{
+        color: variables.$noir-eben;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .product-description{
+        margin-top: 26px;
+        font-weight: 400;
+        font-size: 16px;
+    }
+}
+
 /*********************** Contact page ******************************/
 .contact-page{
     padding: 57px 0;
     max-width: 857px;
     margin: auto;
+    h1{
+        text-align: left;
+    }
     @media (max-width: 768px){
         padding: 27px 0 28px;
     }

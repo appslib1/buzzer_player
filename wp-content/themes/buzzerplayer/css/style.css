@@ -134,6 +134,7 @@ a {
   transition: 0.3s all;
 }
 
+h1,
 .section-title {
   font-family: "Bardon", sans-serif;
   font-size: 24px;
@@ -142,6 +143,7 @@ a {
   line-height: normal;
 }
 @media (max-width: 768px) {
+  h1,
   .section-title {
     font-size: 16px;
   }
@@ -208,6 +210,86 @@ input {
   border: 2px solid #1E1E1E;
   font-size: 17px;
   border-radius: 5px;
+}
+
+.product-card {
+  background: #ffffff;
+  border: 2px solid #1E1E1E;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .product-card {
+    margin-bottom: 30px;
+  }
+}
+.product-card:hover .image-container .product-image {
+  transform: scale(1.1);
+}
+.product-card:hover .product-details .product-title {
+  text-decoration: underline;
+}
+.product-card .image-container {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  background-color: #F8F8F8;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.product-card .image-container .product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: 0.3s all;
+}
+.product-card .product-details {
+  width: 100%;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-card .product-details .product-title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #1E1E1E;
+  margin: 0;
+  text-align: left;
+}
+.product-card .product-details .text-price {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+.product-card .product-details .text-price del {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #7A7A7A;
+  text-decoration: line-through;
+}
+.product-card .product-details .text-price ins {
+  text-decoration: none;
+  margin-right: 10px;
+}
+.product-card .product-details .text-price ins .woocommerce-Price-amount bdi {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #1E1E1E;
+  text-decoration: none;
 }
 
 /**************** Block Hero ****************/
@@ -731,11 +813,67 @@ input {
   left: 0;
 }
 
+/*********************** Archive product page ******************************/
+.page-template-template-product main {
+  padding: 69px 0 0;
+}
+.page-template-template-product main .description,
+.page-template-template-product main h1 {
+  text-align: left;
+  margin-bottom: 19px;
+}
+.page-template-template-product main .description {
+  max-width: 604px;
+  font-size: 16px;
+  margin-bottom: 45px;
+}
+.page-template-template-product main .product-grid .product-card {
+  margin-bottom: 60px;
+}
+
+/*********************** Single product page ******************************/
+.single-product h1 {
+  text-align: left;
+  margin-bottom: 17px;
+}
+.single-product .ratings {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  width: 100%;
+  border-bottom: 1px solid #E6E6E6;
+  align-items: center;
+}
+.single-product .ratings .nb-ratings {
+  color: #C92E26;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 12%;
+  text-decoration-skip-ink: auto;
+}
+.single-product .text-price {
+  color: #1E1E1E;
+  font-size: 24px;
+  font-weight: 700;
+}
+.single-product .product-description {
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
 /*********************** Contact page ******************************/
 .contact-page {
   padding: 57px 0;
   max-width: 857px;
   margin: auto;
+}
+.contact-page h1 {
+  text-align: left;
 }
 @media (max-width: 768px) {
   .contact-page {

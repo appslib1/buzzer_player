@@ -9,6 +9,25 @@
  * @package BuzzerPlayer
  */
 
+ $locations = get_nav_menu_locations(); // Get all menu locations
+
+$header_items = "";
+if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
+    $menu_id   = $locations['header_menu'];
+	
+    $menu_items = wp_get_nav_menu_items( $menu_id );
+
+    if ( $menu_items ) {
+        foreach ( $menu_items as $item ) {
+			$header_items .= '
+				<li class="nav-item">
+					<a class="nav-link" href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
+				</li>
+			';
+        }
+    }
+}
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -77,21 +96,7 @@
 						</button>
 						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 							<ul class="navbar-nav ms-auto">
-								<li class="nav-item active">
-									<a class="nav-link" href="#">Home</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Sounds effects</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Push button</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">FAQ</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Contact</a>
-								</li>
+								<?= $header_items ?>
 							</ul>
 						</div>
 					</nav>
