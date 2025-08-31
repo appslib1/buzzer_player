@@ -97,6 +97,11 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 							<ul class="navbar-nav ms-auto">
 								<?= $header_items ?>
+								<li class="nav-item">
+									<a href="<?= home_url('cart') ?>" class="nav-link">
+										<img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/cart.svg') ?>" alt="cart">
+									</a>
+								</li>
 							</ul>
 						</div>
 					</nav>

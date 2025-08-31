@@ -149,6 +149,7 @@ h1,
   }
 }
 
+.add_to_cart_button,
 .wpcf7-submit,
 .buzzer-default-btn {
   font-family: "Work Sans", sans-serif;
@@ -166,6 +167,7 @@ h1,
   transition: 0.3s all;
   display: inline-block;
 }
+.add_to_cart_button:hover,
 .wpcf7-submit:hover,
 .buzzer-default-btn:hover {
   background-color: #1E1E1E;
@@ -836,6 +838,44 @@ input {
   text-align: left;
   margin-bottom: 17px;
 }
+.single-product .productSwiper img {
+  width: 513px;
+  height: 430px;
+  object-fit: contain;
+}
+.single-product .productThumbsContainer {
+  padding: 0 41px;
+  position: relative;
+}
+.single-product .productThumbsContainer .productThumbs .swiper-wrapper .swiper-slide {
+  opacity: 0.58;
+}
+.single-product .productThumbsContainer .productThumbs .swiper-wrapper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+.single-product .productThumbsContainer .productThumbs .swiper-wrapper .swiper-slide img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+.single-product .productThumbsContainer .swiper-button-prev,
+.single-product .productThumbsContainer .swiper-button-next {
+  width: 30px;
+  height: 50px;
+  background: #C92E26;
+  border-radius: 10px;
+}
+.single-product .productThumbsContainer .swiper-button-prev::after,
+.single-product .productThumbsContainer .swiper-button-next::after {
+  font-size: 24px;
+  color: #fff;
+}
+.single-product .productThumbsContainer .swiper-button-prev {
+  left: 0;
+}
+.single-product .productThumbsContainer .swiper-button-next {
+  right: 0;
+}
 .single-product .ratings {
   display: flex;
   gap: 6px;
@@ -859,11 +899,46 @@ input {
   color: #1E1E1E;
   font-size: 24px;
   font-weight: 700;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.single-product .text-price ins {
+  text-decoration: none;
+  font-size: 24px;
+}
+.single-product .text-price del {
+  text-decoration: line-through;
+  font-size: 16px;
+  color: #6F6F6F;
+  font-weight: 400;
 }
 .single-product .product-description {
   margin-top: 26px;
   font-weight: 400;
   font-size: 16px;
+}
+.single-product .features-bar {
+  padding: 30px 0;
+  background-color: #FDFBEE;
+}
+.single-product .features-bar .feature-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.single-product .features-bar .feature-items .feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.single-product .features-bar .feature-items .feature-item p {
+  margin: 0;
+  height: fit-content;
+}
+.single-product .add_to_cart_button {
+  width: 100%;
+  border: none;
 }
 
 /*********************** Contact page ******************************/

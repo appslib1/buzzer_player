@@ -30,6 +30,29 @@
                 },
             });
         }
+
+        if ($('.productThumbs').length && ('.productSwiper').length) {
+
+            var productThumbs = new Swiper(".productThumbs", {
+                spaceBetween: 10,
+                slidesPerView: 4,
+                freeMode: true,
+                watchSlidesProgress: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            var productSwiper = new Swiper(".productSwiper", {
+                spaceBetween: 10,
+                thumbs: {
+                    swiper: productThumbs,
+                },
+            });
+        }
+
+
     });
 })(jQuery);
 
