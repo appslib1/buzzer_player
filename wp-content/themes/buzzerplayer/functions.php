@@ -120,7 +120,7 @@ add_action( 'after_setup_theme', 'buzzerplayer_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function buzzerplayer_widgets_init() {
-	register_sidebar(
+	/*register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'buzzerplayer' ),
 			'id'            => 'sidebar-1',
@@ -130,9 +130,42 @@ function buzzerplayer_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		)
-	);
+	);*/
 }
 add_action( 'widgets_init', 'buzzerplayer_widgets_init' );
+
+// Register FAQ de la page produit widget area
+function buzzerplayer_faq_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'FAQ de la page produit', 'buzzerplayer' ),
+            'id'            => 'faq-produit', // Unique ID
+            'description'   => esc_html__( 'Ajoutez des widgets FAQ sur les pages produits.', 'buzzerplayer' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+}
+add_action( 'widgets_init', 'buzzerplayer_faq_widgets_init' );
+
+
+function buzzerplayer_sm_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Block spead smiles de la page produit', 'buzzerplayer' ),
+            'id'            => 'spread-smiles', // Unique ID
+            'description'   => esc_html__( 'Configuration du block sur les pages produits.', 'buzzerplayer' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+}
+add_action( 'widgets_init', 'buzzerplayer_sm_widgets_init' );
+
 
 /**
  * Enqueue scripts and styles.
@@ -206,3 +239,4 @@ function mytheme_register_menus() {
     ) );
 }
 add_action( 'init', 'mytheme_register_menus' );
+
