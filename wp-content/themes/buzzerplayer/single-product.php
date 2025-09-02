@@ -77,15 +77,16 @@ $attachment_ids = $product->get_gallery_image_ids();
           <!-- Title -->
           <h1><?= the_title() ?></h1>
 
+          <div class="price-reviews">
+              <!-- Ratings -->
+              <div class="ratings">
+                <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                <small class="nb-ratings">120 reviews</small>
+              </div>
 
-          <!-- Ratings -->
-          <div class="ratings">
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            <small class="nb-ratings">120 reviews</small>
+              <!-- Price -->
+              <h4 class="text-price"><?= $product->get_price_html(); ?></h4>
           </div>
-
-          <!-- Price -->
-          <h4 class="text-price"><?= $product->get_price_html(); ?></h4>
 
           <!-- Description -->
           <div class="product-description">
@@ -110,6 +111,8 @@ $attachment_ids = $product->get_gallery_image_ids();
       </div>
     </div>
 </section>
+
+
 <div class="features-bar">
     <div class="features-bar-content">
         <div class="container">

@@ -4,6 +4,19 @@
 (function($) {
     $(document).ready(function() {
 
+        jQuery(document).ready(function($) {
+            if ($(window).width() < 768) { // Only on mobile
+                var $title = $('.product-top-section h1');
+                var $images = $('.product-top-section .col-md-5');
+
+                if ($title.length && $images.length) {
+                $images.insertAfter($title); // Move images right after the title
+                }
+            }
+        });
+
+
+
         const toggler = document.getElementById('customToggler');
         const collapseEl = document.getElementById('navbarNavAltMarkup');
 

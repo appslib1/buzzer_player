@@ -836,6 +836,12 @@ input {
   text-align: left;
   margin-bottom: 17px;
 }
+@media (max-width: 768px) {
+  .single-product .product-top-section h1 {
+    margin-bottom: 20px;
+    margin-top: 14px;
+  }
+}
 .single-product .product-top-section .productSwiper img {
   width: 513px;
   height: 430px;
@@ -874,7 +880,7 @@ input {
 .single-product .product-top-section .productThumbsContainer .swiper-button-next {
   right: 0;
 }
-.single-product .product-top-section .ratings {
+.single-product .product-top-section .price-reviews .ratings {
   display: flex;
   gap: 6px;
   margin-bottom: 30px;
@@ -883,7 +889,7 @@ input {
   border-bottom: 1px solid #E6E6E6;
   align-items: center;
 }
-.single-product .product-top-section .ratings .nb-ratings {
+.single-product .product-top-section .price-reviews .ratings .nb-ratings {
   color: #C92E26;
   line-height: 100%;
   letter-spacing: 0%;
@@ -893,22 +899,39 @@ input {
   text-decoration-thickness: 12%;
   text-decoration-skip-ink: auto;
 }
-.single-product .product-top-section .text-price {
+.single-product .product-top-section .price-reviews .text-price {
   color: #1E1E1E;
   font-size: 24px;
   font-weight: 700;
   display: flex;
   flex-direction: column-reverse;
 }
-.single-product .product-top-section .text-price ins {
+.single-product .product-top-section .price-reviews .text-price ins {
   text-decoration: none;
   font-size: 24px;
 }
-.single-product .product-top-section .text-price del {
+.single-product .product-top-section .price-reviews .text-price del {
   text-decoration: line-through;
   font-size: 16px;
   color: #6F6F6F;
   font-weight: 400;
+}
+@media (max-width: 768px) {
+  .single-product .product-top-section .price-reviews {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+  }
+  .single-product .product-top-section .price-reviews .ratings {
+    margin: 0;
+    padding: 0;
+    border: unset;
+    justify-content: end;
+    align-items: start;
+  }
+  .single-product .product-top-section .price-reviews .nb-ratings {
+    padding-top: 4px;
+  }
 }
 .single-product .product-top-section .product-description {
   margin-top: 26px;
