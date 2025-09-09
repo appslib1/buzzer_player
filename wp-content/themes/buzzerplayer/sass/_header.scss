@@ -35,6 +35,10 @@ header{
                             background-color: variables.$rouge;
                             position: absolute;
                             height: 2px;
+                            @media (max-width: 991px) {
+                                display: none;
+
+                            }
                         }
                     }
                     &.cart{
@@ -70,14 +74,14 @@ header{
             }
         }
         .top-right-menu-mobile{
-            @media (max-width: 991px){
-                display: flex;
-            }
             display: none;
             justify-content: center;
             align-items: center;
             gap: 32px;
             a{
+                display: flex;
+            }
+            @media (max-width: 991px){
                 display: flex;
             }
         }

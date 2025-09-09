@@ -231,7 +231,7 @@
     max-width: 857px;
     margin: auto;
     h1{
-        text-align: left;
+        text-align: left !important;
     }
     @media (max-width: 768px){
         padding: 27px 0 28px;
@@ -611,6 +611,76 @@
                     padding-top: 0;
                     margin-top: 0;
                     border-top: none;
+                }
+            }
+        }
+    }
+}
+
+/*********************** FAQ page ******************************/
+.page-template-template-faq{
+    main{
+        padding-top: 69px;
+        .page-title{
+            position: relative;
+            max-width: 889px;
+            margin-left: auto;
+            margin-right: auto;
+            &::after{
+                position: absolute;
+                right: 0;
+                content: "";
+                background-image: url("../assets/icons/smile-emoji.svg");
+                width: 97.55px;
+                height: 76.67px;
+                bottom: 0;
+                background-size: contain;
+                @media (max-width: 768px) {
+                    width: 50px;
+                    height: 39.3px;
+                }
+            }
+        }
+        .col-md-12{
+            &>p{
+                max-width: 784px;
+                font-size: 16px;
+                margin: auto;
+                text-align: center;
+            }
+            .faq-section{
+                .faq-card{
+                    &:before{
+                        background-image: url("../assets/icons/pink-smile.svg");
+                        width: 121px;
+                        height: 109px;
+                        right: calc(100% + 83px);
+                        left: unset;
+                        display: none;
+                    }
+                    .accordion{
+                        position: relative;
+                        &:before{
+                            background-image: url("../assets/icons/pink-smile.svg");
+                            width: 121px;
+                            height: 109px;
+                            right: calc(100% + 83px);
+                            position: absolute;
+                            content: "";
+                            top: 109px;
+                            background-size: contain;
+                        }
+                        @media (max-width: 768px) {
+                            padding-top: calc(47px + 55px);
+                            &:before{
+                                top: 0;
+                                left: 0;
+                                right: unset;
+                                width: 60px;
+                                height: 54px;
+                            }
+                        }
+                    }
                 }
             }
         }

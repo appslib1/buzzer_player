@@ -46,6 +46,11 @@ header .navbar ul li a.current:after {
   position: absolute;
   height: 2px;
 }
+@media (max-width: 991px) {
+  header .navbar ul li a.current:after {
+    display: none;
+  }
+}
 header .navbar ul li a.cart {
   position: relative;
   padding: 5px;
@@ -85,13 +90,13 @@ header .navbar .top-right-menu-mobile {
   align-items: center;
   gap: 32px;
 }
+header .navbar .top-right-menu-mobile a {
+  display: flex;
+}
 @media (max-width: 991px) {
   header .navbar .top-right-menu-mobile {
     display: flex;
   }
-}
-header .navbar .top-right-menu-mobile a {
-  display: flex;
 }
 header .navbar .navbar-toggler {
   border: none;
@@ -324,6 +329,9 @@ body:not(.wp-admin) .section-title {
   font-family: "Bardon", sans-serif;
   font-size: 24px;
   margin-bottom: 26px;
+}
+.body:not(.wp-admin) .page-title.left {
+  text-align: left;
 }
 
 textarea,
@@ -949,6 +957,10 @@ input {
     height: var(--mobile-height);
   }
 }
+.contact-btn-section {
+  text-align: center;
+}
+
 /*********************** Archive product page ******************************/
 .page-template-template-product main {
   padding: 69px 0 0;
@@ -1161,7 +1173,7 @@ input {
   margin: auto;
 }
 .contact-page h1 {
-  text-align: left;
+  text-align: left !important;
 }
 @media (max-width: 768px) {
   .contact-page {
@@ -1563,6 +1575,72 @@ input {
   padding-top: 0;
   margin-top: 0;
   border-top: none;
+}
+
+/*********************** FAQ page ******************************/
+.page-template-template-faq main {
+  padding-top: 69px;
+}
+.page-template-template-faq main .page-title {
+  position: relative;
+  max-width: 889px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-template-template-faq main .page-title::after {
+  position: absolute;
+  right: 0;
+  content: "";
+  background-image: url("../assets/icons/smile-emoji.svg");
+  width: 97.55px;
+  height: 76.67px;
+  bottom: 0;
+  background-size: contain;
+}
+@media (max-width: 768px) {
+  .page-template-template-faq main .page-title::after {
+    width: 50px;
+    height: 39.3px;
+  }
+}
+.page-template-template-faq main .col-md-12 > p {
+  max-width: 784px;
+  font-size: 16px;
+  margin: auto;
+  text-align: center;
+}
+.page-template-template-faq main .col-md-12 .faq-section .faq-card:before {
+  background-image: url("../assets/icons/pink-smile.svg");
+  width: 121px;
+  height: 109px;
+  right: calc(100% + 83px);
+  left: unset;
+  display: none;
+}
+.page-template-template-faq main .col-md-12 .faq-section .faq-card .accordion {
+  position: relative;
+}
+.page-template-template-faq main .col-md-12 .faq-section .faq-card .accordion:before {
+  background-image: url("../assets/icons/pink-smile.svg");
+  width: 121px;
+  height: 109px;
+  right: calc(100% + 83px);
+  position: absolute;
+  content: "";
+  top: 109px;
+  background-size: contain;
+}
+@media (max-width: 768px) {
+  .page-template-template-faq main .col-md-12 .faq-section .faq-card .accordion {
+    padding-top: 102px;
+  }
+  .page-template-template-faq main .col-md-12 .faq-section .faq-card .accordion:before {
+    top: 0;
+    left: 0;
+    right: unset;
+    width: 60px;
+    height: 54px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

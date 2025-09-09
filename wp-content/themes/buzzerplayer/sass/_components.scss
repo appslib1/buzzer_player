@@ -77,6 +77,9 @@ body:not(.wp-admin){
         font-family: variables.$bardon;
         font-size: 24px;
         margin-bottom: 26px;
+        &.left{
+            text-align: left;
+        }
     }
 }
 
