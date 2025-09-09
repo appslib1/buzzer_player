@@ -151,6 +151,22 @@ function buzzerplayer_faq_widgets_init() {
 add_action( 'widgets_init', 'buzzerplayer_faq_widgets_init' );
 
 
+function buzzerplayer_footer_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer widget', 'buzzerplayer' ),
+            'id'            => 'footer-widget', // Unique ID
+            'description'   => esc_html__( 'Footer right widget', 'buzzerplayer' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+}
+add_action( 'widgets_init', 'buzzerplayer_footer_widgets_init' );
+
+
 function buzzerplayer_sm_widgets_init() {
     register_sidebar(
         array(
@@ -229,14 +245,58 @@ function buzzer_enqueue_styles() {
 add_action('wp_enqueue_scripts', 'buzzer_enqueue_styles');
 
 
+// Enable support for editor styles
+add_theme_support('editor-styles');
+
+// Load your custom editor styles
+add_editor_style('css/style.css');
+add_editor_style('css/admin.css');
+
+// Still enqueue admin styles for dashboard UI
+function buzzer_enqueue_admin_styles() {
+    wp_enqueue_style(
+        'theme-style-admin',
+        get_template_directory_uri() . '/css/style.css',
+        array(),
+        filemtime(get_template_directory() . '/css/style.css')
+    );
+
+	wp_enqueue_style(
+        'theme-style-admin-2',
+        get_template_directory_uri() . '/css/admin.css',
+        array(),
+        filemtime(get_template_directory() . '/css/admin.css')
+    );
+}
+add_action('admin_enqueue_scripts', 'buzzer_enqueue_admin_styles');
+
+
 
 
 // Register a custom menu location
 function mytheme_register_menus() {
     register_nav_menus( array(
         'header_menu' => __( 'Header Menu', 'buzzerplayer' ),
-        'footer_menu' => __( 'Footer Menu', 'buzzerplayer' ),
+        'footer_menu_1' => __( 'Footer Menu 1', 'buzzerplayer' ),
+        'footer_menu_2' => __( 'Footer Menu 2', 'buzzerplayer' ),
+        'footer_menu_bottom' => __( 'Footer Bottom Menu', 'buzzerplayer' ),
     ) );
 }
 add_action( 'init', 'mytheme_register_menus' );
 
+
+// Remove the checkout payment from order review
+function custom_remove_checkout_payment() {
+    remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+}
+add_action( 'wp', 'custom_remove_checkout_payment' );
+
+// Move WooCommerce payment section after customer details
+function custom_move_checkout_payment() {
+    // Remove payment from order review
+    remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+    // Add payment after customer details
+    add_action( 'woocommerce_checkout_after_customer_details', 'woocommerce_checkout_payment', 20 );
+}
+add_action( 'wp', 'custom_move_checkout_payment' );

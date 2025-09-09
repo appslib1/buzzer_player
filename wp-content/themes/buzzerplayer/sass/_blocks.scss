@@ -311,9 +311,6 @@
     .row{
         .col-lg-8{
             .row{
-                &:first-child{
-                    margin-bottom: 80px;
-                }
                 .feature-image{
                     img{
                         max-width: 100%;
@@ -429,6 +426,9 @@
             display: flex;
             width: 100%;
             justify-content: space-between;
+            @media (max-width: 768px){
+                flex-direction: column-reverse;
+            }
         }
         .smile-text{
             text-align: left;
@@ -457,6 +457,10 @@
 
 /**************** Block FAQ ****************/
 .faq-section{
+    @media (max-width: 991px){
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     .faq-card{
         max-width: 780px;
         margin: auto;
@@ -535,4 +539,17 @@
             }
         }
     }
+}
+
+/********************** Bloc espacement *************************/
+.responsive-spacer {
+  display: block;
+  width: 100%;
+  height: var(--desktop-height);
+}
+
+@media (max-width: 768px) {
+  .responsive-spacer {
+    height: var(--mobile-height);
+  }
 }

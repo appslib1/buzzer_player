@@ -19,9 +19,10 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 
     if ( $menu_items ) {
         foreach ( $menu_items as $item ) {
+			$current_class = ( esc_url( $item->url ) == home_url( add_query_arg( [], $GLOBALS['wp']->request ) ).'/' ) ? ' current' : '';
 			$header_items .= '
 				<li class="nav-item">
-					<a class="nav-link" href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
+					<a class="nav-link '.$current_class.'" href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
 				</li>
 			';
         }
@@ -88,18 +89,34 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 				<div class="col-lg-10 col-md-12 m-auto">
 
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
-						<a class="navbar-brand" href="#">
+						<a class="navbar-brand" href="<?= home_url('/') ?>">
                 			<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/header-logo.svg" alt="Buzzer Player Symbole" class="logo">
 						</a>
-						<button class="navbar-toggler" id="customToggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
+						<div class="top-right-menu-mobile">
+							<a href="<?= home_url('cart') ?>" class="nav-link cart">
+								<img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/cart.svg') ?>" alt="cart">
+								<?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
+								<?php if ( $cart_count > 0 ) : ?>
+									<span class="cart-count"><?= $cart_count; ?></span>
+								<?php endif; ?>
+							</a>
+							<button class="navbar-toggler" id="customToggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
+						</div>
 						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 							<ul class="navbar-nav ms-auto">
 								<?= $header_items ?>
 								<li class="nav-item">
-									<a href="<?= home_url('cart') ?>" class="nav-link">
+									<a href="<?= home_url('cart') ?>" class="nav-link cart">
 										<img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/cart.svg') ?>" alt="cart">
+										<?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
+										<?php if ( $cart_count > 0 ) : ?>
+											<span class="cart-count"><?= $cart_count; ?></span>
+										<?php endif; ?>
+										<label for="">Basket</label>
 									</a>
 								</li>
 							</ul>

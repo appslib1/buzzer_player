@@ -4,6 +4,31 @@
 (function($) {
     $(document).ready(function() {
 
+
+        // Increase quantity
+        $(document).on('click', '.btn-increase', function() {
+            var input = parseInt($(this).parent().find('.quantity input.qty').val());
+            $(this).parent().find('.quantity input.qty').val(input + 1).trigger('change');
+        });
+
+        // Decrease quantity
+        $(document).on('click', '.btn-decrease', function() {
+            var input = parseInt($(this).parent().find('.quantity input.qty').val());
+            $(this).parent().find('.quantity input.qty').val(input - 1).trigger('change');
+        });
+
+        $(document).on('change', 'input.qty', function() {
+            $('button[name="update_cart"]').prop('disabled', false).trigger('click');
+        });
+        
+
+
+
+
+
+
+
+
         jQuery(document).ready(function($) {
             if ($(window).width() < 768) { // Only on mobile
                 var $title = $('.product-top-section h1');
@@ -17,12 +42,25 @@
 
 
 
-        const toggler = document.getElementById('customToggler');
+        /*const toggler = document.getElementById('customToggler');
         const collapseEl = document.getElementById('navbarNavAltMarkup');
 
         toggler.addEventListener('click', () => {
             collapseEl.classList.toggle('show');
+        });*/
+        $(document).on('click', '#customToggler', function() {
+            if(!$(this).hasClass('open')){
+                $(this).addClass('open');
+                $('#navbarNavAltMarkup').addClass('show');
+                $('header').addClass('f-height');
+            }
+            else{
+                $(this).removeClass('open');
+                $('#navbarNavAltMarkup').removeClass('show');
+                $('header').removeClass('f-height');
+            }
         });
+
 
         if ($('.ideas-slider').length) {
             const swiper = new Swiper('.ideas-slider', {

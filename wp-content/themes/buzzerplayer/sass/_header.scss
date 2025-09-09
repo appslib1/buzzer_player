@@ -6,6 +6,13 @@ header{
     top: 0;
     z-index: 999999;
     box-shadow: 0px 2px 4px 0px #00000040;
+    &.f-height{
+        height: 100vh;
+        background-color: variables.$beige-color !important;
+        .navbar{
+            background-color: variables.$beige-color !important;
+        }
+    }
     .navbar{
         background-color: #fff !important;
         ul{
@@ -16,7 +23,111 @@ header{
                     font-size: 18px;
                     padding-left: 16px !important;
                     padding-right: 16px !important;
+                    &.current{
+                        position: relative;
+                        &:after{
+                            content: "";
+                            bottom: 10px;
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                            width: calc(100% - 16px - 16px);
+                            background-color: variables.$rouge;
+                            position: absolute;
+                            height: 2px;
+                        }
+                    }
+                    &.cart{
+                        position: relative;
+                        padding: 5px;
+                        span{
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                            background: variables.$rouge;
+                            width: 17px;
+                            height: 17px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            color: #fff;
+                            font-size: 12px;
+                        }
+                        label{
+                            display: none;
+                            @media (max-width: 991px){
+                                display: block;
+                            }
+                        }
+                        @media (max-width: 991px){
+                            display: flex;
+                            justify-content: center;
+                            gap: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .top-right-menu-mobile{
+            @media (max-width: 991px){
+                display: flex;
+            }
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            a{
+                display: flex;
+            }
+        }
+        .navbar-toggler{
+            border: none;
+            height: 17.5px;
+            padding: 0;
+            display: none;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            box-shadow: none;
+            span{
+                height: 2.5px;
+                width: 22.5px;
+                display: block;
+                background: variables.$noir-eben;
+                transition: all 0.3s ease;
+            }
+            &.open {
+                span:nth-child(1) {
+                    transform: rotate(45deg) translate(-5px, -5px);
+                }
 
+                span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                span:nth-child(3) {
+                    transform: rotate(-45deg) translate(-6px, 5px);
+                }
+            }
+            @media (max-width: 991px){
+                display: flex;
+            }
+        }
+        .navbar-collapse{
+            @media (max-width: 991px){
+                padding-top: 38px;
+                .nav-item{
+                    .nav-link {
+                        text-align: center;
+                        font-family: variables.$bardon;
+                        margin-bottom: 40px;
+                        font-size: 20px;
+                        color: variables.$noir-eben;
+                        img{
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
                 }
             }
         }

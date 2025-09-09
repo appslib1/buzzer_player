@@ -9,6 +9,54 @@
  * @package BuzzerPlayer
  */
 
+
+$locations = get_nav_menu_locations(); // Get all menu locations
+$pages = "";
+if ( isset( $locations['footer_menu_1'] ) ) {  // Replace with your location slug
+    $menu_id   = $locations['footer_menu_1'];
+    $menu_items = wp_get_nav_menu_items( $menu_id );
+	if ( $menu_items ) {
+        foreach ( $menu_items as $item ) {
+			$pages .= '
+				<li>
+					<a href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
+				</li>
+			';
+        }
+    }
+
+}
+
+$follow_us = "";
+if ( isset( $locations['footer_menu_2'] ) ) {  // Replace with your location slug
+    $menu_id   = $locations['footer_menu_2'];
+    $menu_items = wp_get_nav_menu_items( $menu_id );
+	if ( $menu_items ) {
+        foreach ( $menu_items as $item ) {
+			$follow_us .= '
+				<li>
+					<a href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
+				</li>
+			';
+        }
+    }
+}
+
+$copyrights_menu = "";
+if ( isset( $locations['footer_menu_bottom'] ) ) {  // Replace with your location slug
+    $menu_id   = $locations['footer_menu_bottom'];
+    $menu_items = wp_get_nav_menu_items( $menu_id );
+	if ( $menu_items ) {
+        foreach ( $menu_items as $item ) {
+			$copyrights_menu .= '
+				<li>
+					<a href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>
+				</li>
+			';
+        }
+    }
+}
+
 ?>
 	<footer class="footer">
 		<div class="footer-container container">
@@ -22,11 +70,7 @@
 					<div class="links-column">
 						<h4 class="column-title">Pages</h4>
 						<ul>
-							<li><a href="#">Buzzer Player</a></li>
-							<li><a href="#">Sounds effects</a></li>
-							<li><a href="#">Products</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Basket</a></li>
+							<?= $pages ?>
 						</ul>
 					</div>
 				</div>
@@ -34,19 +78,17 @@
 					<div class="links-column">
 						<h4 class="column-title">Follow us</h4>
 						<ul>
-							<li><a href="#">Instagram</a></li>
-							<li><a href="#">Facebook</a></li>
-							<li><a href="#">TikTok</a></li>
+							<?= $follow_us ?>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3"></div>
 				<div class="col-md-3">
+					<?php if ( is_active_sidebar( 'footer-widget' ) ) : ?>
 					<div class="footer-contact">
-						<h4 class="contact-title">Need help ?</h4>
-						<p class="contact-text">Send us a message through the contact page</p>
-						<button class="chat-button">Chat with us</button>
+						<?php dynamic_sidebar( 'footer-widget' ); ?>
 					</div>
+					<?php endif; ?>
 				</div>
 			
 			</div>
@@ -58,15 +100,7 @@
 							English
 						</span>
 						<ul>
-							<li>
-								<a href="#">Term and conditions</a>
-							</li>
-							<li>
-								<a href="#">Privacy Policy</a>
-							</li>
-							<li>
-								<a href="#">General Conditions of Purchase</a>
-							</li>
+							<?= $copyrights_menu ?>
 						</ul>
 					</div>
 				</div>

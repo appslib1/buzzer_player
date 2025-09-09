@@ -1,25 +1,25 @@
 @use "variables";
 
-body{
+body:not(.wp-admin){
     font-family: variables.$work-sans !important;
     font-size: 18px !important;
     transition: .3s all;
     color: variables.$noir-eben !important;
-
-}
-a{
-    transition: .3s all;
-}
-h1,
-.section-title{
-    font-family: variables.$bardon;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 40px;
-    line-height: normal;
-    @media (max-width: 768px){
-        font-size: 16px;
+    a{
+        transition: .3s all;
     }
+    h1,
+    .section-title{
+        font-family: variables.$bardon;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 40px;
+        line-height: normal;
+        @media (max-width: 768px){
+            font-size: 16px;
+        }
+    }
+
 }
 
 .add_to_cart_button,
@@ -40,7 +40,7 @@ h1,
     transition: .3s all;
     display: inline-block;
     &:hover{
-        background-color: variables.$noir-eben;
+        background-color: #8c1e14;
     }
 }
 .wpcf7-submit{
@@ -71,10 +71,13 @@ h1,
     }
 }
 
-.page-title{
-    font-family: variables.$bardon;
-    font-size: 24px;
-    margin-bottom: 26px;
+
+.body:not(.wp-admin){
+    .page-title{
+        font-family: variables.$bardon;
+        font-size: 24px;
+        margin-bottom: 26px;
+    }
 }
 
 textarea,
