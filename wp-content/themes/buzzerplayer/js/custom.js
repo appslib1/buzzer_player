@@ -22,13 +22,6 @@
         });
         
 
-
-
-
-
-
-
-
         jQuery(document).ready(function($) {
             if ($(window).width() < 768) { // Only on mobile
                 var $title = $('.product-top-section h1');
@@ -40,14 +33,40 @@
             }
         });
 
+        let currentAudio = null;
+
+        $(document).on('click', '.audios .sound-button-group img', function(e) {
+            e.preventDefault();
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            var currentImg = $(this);
+            const homeUrl = window.location.origin;
+            $('.audios .sound-button-group img').attr('src',homeUrl+'/wp-content/themes/buzzerplayer/assets/icons/buzzBtn.png');
+            //alert(homeUrl);
+            currentImg.attr('src',homeUrl+'/wp-content/themes/buzzerplayer/assets/icons/buzzBtnClick.png');
+            setTimeout(() => {
+                currentImg.attr('src',homeUrl+'/wp-content/themes/buzzerplayer/assets/icons/buzzBtn.png');
+            // put your code here
+            }, 200); 
+            var audioUrl = $(this).attr('data-audio');
+            // Play audio from a URL
+
+            currentAudio = new Audio(audioUrl);
+
+            // Play
+            currentAudio.play();
+
+            // Handle finish
+            currentAudio.addEventListener("ended", function() {
+                //console.log('audio finished...');
+                //currentImg.attr('src',homeUrl+'/wp-content/themes/buzzerplayer/assets/icons/buzzBtn.png');
+            });
+
+        });
 
 
-        /*const toggler = document.getElementById('customToggler');
-        const collapseEl = document.getElementById('navbarNavAltMarkup');
-
-        toggler.addEventListener('click', () => {
-            collapseEl.classList.toggle('show');
-        });*/
         $(document).on('click', '#customToggler', function() {
             if(!$(this).hasClass('open')){
                 $(this).addClass('open');

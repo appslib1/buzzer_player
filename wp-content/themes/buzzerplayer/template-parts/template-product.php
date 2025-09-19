@@ -4,49 +4,150 @@
  * Description: A custom page template with a special layout.
  */
 
-get_header(); // Include header
+get_header();
+
+$pageTitle   = get_the_title();
+$pageContent = get_the_content();
 ?>
 
 <main>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12 m-auto">
-                <h1><?= the_title() ?></h1>
-                <div class="description">
-                    <?= the_content() ?>
+                <div class="header">
+                    <h1><?php echo esc_html($pageTitle); ?></h1>
+                    <div class="description">
+                        <?php the_excerpt(); ?>
+                    </div>
                 </div>
-                <div class="product-grid row position-relative">
+                <div class="filters">
                     <?php 
+                        $post_type   = 'audio';
+                        $taxonomies  = get_object_taxonomies($post_type, 'objects'); // fixed: 'objects' not 'category'
+
+                        foreach ($taxonomies as $taxonomy) {
+                            $terms = get_terms([
+                                'taxonomy'   => $taxonomy->name,
+                                'hide_empty' => false,
+                            ]);
+
+                            if (!empty($terms) && !is_wp_error($terms)) {
+                                echo '<ul>';
+                                foreach ($terms as $term) {
+                                    if ($term->count > 0) {
+                                        echo '<li><a href="#" data-slug="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a></li>';
+                                    }
+                                }
+                                echo '</ul>';
+                            }
+                        }
+                    ?>
+                </div>
+
+                <div class="audios-wrapper">
+                    <div id="audio-list" class="audios">
+                        <?php
                         $args = array(
-                            'post_type'      => 'product',
-                            'posts_per_page' => -1, // -1 = all products
+                            'post_type'      => 'audio',
+                            'posts_per_page' => 15,
+                            'paged'          => 1,
                         );
-                        $loop = new WP_Query( $args );    
-                        while ( $loop->have_posts() ) : $loop->the_post();
-                        global $product;
-                        $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    ?>
-                        <div class="col-md-3 col-sm-6 col-6">
-                            <a class="product-card" href="<?php the_permalink(); ?>">
-                                <div class="image-container">
-                                    <img src="<?= $thumb_url ?>" alt="<?= the_title() ?>" class="product-image">
+                        $loop = new WP_Query($args);    
+
+                        while ($loop->have_posts()) : $loop->the_post();
+                            $bruitage_id = get_the_ID();
+                            if (!$bruitage_id) continue;
+
+                            $title = get_the_title($bruitage_id);
+                            $icon  = get_the_post_thumbnail_url($bruitage_id, 'thumbnail') ?: get_template_directory_uri() . '/assets/icons/buzzBtn.png';
+                        ?>
+                        <div class="sound-button-group position-relative text-center">
+                            <img data-audio="<?php echo esc_url(get_field('upload_mp3', $bruitage_id)['url']); ?>"
+                                 src="<?php echo esc_url($icon); ?>" 
+                                 alt="<?php echo esc_attr($title); ?>" 
+                                 class="sound-button">
+                            <div class="position-relative">
+                                <div class="button-label"><?php echo esc_html($title); ?></div>
+                                <div class="button-label button-label-2 text-center">
+                                    <a href="#" class="use-it-button btn btn-danger">USE IT</a>
                                 </div>
-                                <div class="product-details">
-                                    <h3 class="product-title"><?= the_title() ?></h3>
-                                    <h4 class="text-price"><?= $product->get_price_html(); ?></h4>
-                                </div>
-                            </a>
+                            </div>
                         </div>
-                    <?php 
-                        endwhile;
-                        wp_reset_postdata(); 
-                    ?>
+                        <?php endwhile; wp_reset_postdata(); ?>
+                    </div>
+
+                    <div class="paginate text-center">
+                        <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <?php echo $pageContent; ?>
                 </div>
             </div>
         </div>
     </div>
 </main>
 
+<script>
+jQuery(document).ready(function($){
+
+    // 🔹 Filter AJAX
+    $(document).on('click', '.page-template-template-product .filters ul a', function(e) {
+        e.preventDefault();
+
+        $('.page-template-template-product .filters ul a').removeClass('active');
+        $(this).addClass('active');
+
+        let category = $(this).attr('data-slug');
+
+        $.ajax({
+            url: '<?php echo admin_url("admin-ajax.php"); ?>',
+            method: 'POST',
+            data: {
+                action: 'filter_audio',
+                category: category,
+            },
+            success: function(response) {
+                if(response.success){
+                    $('.audios').html(response.data); 
+                } else {
+                    $('.audios').html('<p>No audios found.</p>');
+                }
+            }
+        });
+    });
+
+    // 🔹 Load More AJAX
+    $(document).on('click', '.paginate .show-more', function(e) {
+        e.preventDefault();
+
+        let button = $(this);
+        let page   = parseInt(button.attr('data-page')) + 1;
+
+        $.ajax({
+            url: '<?php echo admin_url("admin-ajax.php"); ?>',
+            type: 'POST',
+            data: {
+                action: 'load_more_audios',
+                page: page
+            },
+            beforeSend: function() {
+                button.text('Loading...');
+            },
+            success: function(response) {
+                if (response.trim() !== '') {
+                    $('#audio-list').append(response);
+                    button.attr('data-page', page).text('Display more sounds');
+                } else {
+                    button.remove(); // no more posts
+                }
+            }
+        });
+    });
+
+});
+</script>
 
 <?php
-get_footer(); // Include footer
+get_footer();

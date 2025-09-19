@@ -135,57 +135,6 @@
     .gap{
         column-gap: 40px;
     }
-
-    .sound-button-group {
-        @media (max-width: 768px){
-            flex: 0 0 40%;
-            &:nth-child(n+5){
-                display: none;
-            }
-        }
-        .sound-button {
-            width: 116px;
-            height: 116px;
-            object-fit: cover;
-        }
-
-        .button-label {
-            font-family: 'Work Sans', sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 21px;
-            color: #000;
-            margin-top: 8px;
-            min-height: 43px;
-            &.button-label-2{
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
-                margin: auto;
-            }
-        }
-
-        .use-it-button {
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 21px;
-            color: #fff;
-            background: #C92E26;
-            border-radius: 5px;
-            padding: 10px 20px;
-            text-decoration: none;
-        }
-        &:hover{
-            .button-label {
-                opacity: 0;
-                &.button-label-2{
-                    opacity: 1;
-                }
-            }
-        }
-    }
 }
 
 /**************** Block featured products ****************/

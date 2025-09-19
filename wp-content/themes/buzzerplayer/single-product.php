@@ -94,18 +94,39 @@ $attachment_ids = $product->get_gallery_image_ids();
             </div>
 
           <!-- Add to Cart Button -->
-          <?php 
-            if ( $product ) {
-                $add_to_cart_url = $product->add_to_cart_url();
-                $add_to_cart_text = "Add to cart"
-                ?>
-                <a href="<?php echo esc_url( $add_to_cart_url ); ?>" 
-                class="btn btn-primary btn-lg mt-3 add_to_cart_button ajax_add_to_cart "
-                data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
-                rel="nofollow">
-                <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
-                </a>
-            <?php } ?>
+		      <!-- Proper WooCommerce Add-to-Cart Form -->
+<form class="cart" method="post" enctype="multipart/form-data">
+
+    <!-- Choose Audio Option -->
+    <div>
+        <label>
+            <input type="radio" name="audio_option" value="upload" checked> Upload MP3
+        </label>
+        <label>
+            <input type="radio" name="audio_option" value="record"> Record Audio
+        </label>
+    </div>
+
+    <!-- File upload -->
+    <div id="upload-section">
+        <input type="file" name="mp3_upload[]" id="mp3_upload" accept=".mp3" multiple>
+    </div>
+
+    <!-- Record audio controls -->
+    <div id="record-section" style="display:none;">
+        <button type="button" id="start-record">Start Recording</button>
+        <button type="button" id="stop-record" disabled>Stop Recording</button>
+        <audio id="audio-preview" controls style="display:none;"></audio>
+    </div>
+
+    <!-- WooCommerce add-to-cart hidden input -->
+    <input type="hidden" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>">
+
+    <button type="submit">Add to Cart</button>
+</form>
+
+
+
 
         </div>
       </div>
@@ -192,6 +213,74 @@ $attachment_ids = $product->get_gallery_image_ids();
   </div>
 </div>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const audioOptionInputs = document.querySelectorAll('input[name="audio_option"]');
+    const uploadSection = document.getElementById('upload-section');
+    const recordSection = document.getElementById('record-section');
+    const fileInput = document.getElementById('mp3_upload');
+    const startBtn = document.getElementById('start-record');
+    const stopBtn = document.getElementById('stop-record');
+    const audioPreview = document.getElementById('audio-preview');
+
+    let mediaRecorder;
+    let audioChunks = [];
+
+    // Toggle sections
+    audioOptionInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.value === 'upload') {
+                uploadSection.style.display = 'block';
+                recordSection.style.display = 'none';
+            } else {
+                uploadSection.style.display = 'none';
+                recordSection.style.display = 'block';
+            }
+        });
+    });
+
+    // Start recording
+    startBtn.addEventListener('click', async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+        mediaRecorder.start();
+
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+
+        mediaRecorder.addEventListener('dataavailable', e => audioChunks.push(e.data));
+    });
+
+    // Stop recording
+    stopBtn.addEventListener('click', async () => {
+        mediaRecorder.stop();
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+
+        mediaRecorder.addEventListener('stop', async () => {
+            const blob = new Blob(audioChunks, { type: 'audio/mp3' });
+            const file = new File([blob], `recording-${Date.now()}.mp3`, { type: 'audio/mp3' });
+
+            // Append recorded file to existing file input
+            const dataTransfer = new DataTransfer();
+
+            // Include existing uploaded files
+            Array.from(fileInput.files).forEach(f => dataTransfer.items.add(f));
+
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
+
+            // Preview
+            audioPreview.src = URL.createObjectURL(blob);
+            audioPreview.style.display = 'block';
+        });
+    });
+});
+
+</script>
 
 
 <?php
