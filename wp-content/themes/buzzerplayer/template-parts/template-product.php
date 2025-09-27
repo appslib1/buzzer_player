@@ -67,7 +67,7 @@ $pageContent = get_the_content();
                                  alt="<?php echo esc_attr($title); ?>" 
                                  class="sound-button">
                             <div class="position-relative">
-                                <div class="button-label"><?php echo esc_html($title); ?></div>
+                                <div class="button-label title"><?php echo esc_html($title); ?></div>
                                 <div class="button-label button-label-2 text-center">
                                     <a href="#" class="use-it-button btn btn-danger">USE IT</a>
                                 </div>
@@ -142,6 +142,28 @@ jQuery(document).ready(function($){
                 } else {
                     button.remove(); // no more posts
                 }
+            }
+        });
+    });
+    //use-it-button
+    $(document).on('click', '.use-it-button', function(e) {   
+        e.preventDefault();
+        var audioElements = [];
+        var title = $(this).parents('.sound-button-group').find('.button-label.title').text();
+        var url = $(this).parents('.sound-button-group').find('img').attr('data-audio');
+        audioElements.push({ name: title, url: url });
+        
+       
+
+        $.ajax({
+            url: '<?php echo admin_url("admin-ajax.php"); ?>', // WordPress provides this in admin, or use localized script for frontend
+            type: 'POST',
+            data: {
+                action: 'save_audios_session', // PHP hook
+                audios: audioElements
+            },
+            success: function(response) {
+                window.location.replace("<?= home_url('/product/buzzer-with-customized-sound/') ?>");
             }
         });
     });

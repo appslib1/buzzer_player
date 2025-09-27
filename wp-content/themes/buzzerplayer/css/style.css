@@ -1208,9 +1208,107 @@ input {
   font-weight: 400;
   font-size: 16px;
 }
+.single-product .product-top-section .select-audio-files {
+  width: 100%;
+}
+.single-product .product-top-section .select-audio-files > div {
+  border: 2px solid #1E1E1E;
+  width: 100%;
+  padding: 13px 0;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.single-product .product-top-section .select-audio-files > div:hover {
+  background-color: #FDFBEE;
+}
+.single-product .product-top-section .select-audio-files > div .cancel {
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: calc(100% - 15px);
+  content: "";
+  background-image: url("../assets/icons/close.svg");
+  width: 24.5px;
+  height: 24.5px;
+  border-radius: unset;
+  outline: none;
+  background-color: #fff;
+  background-position: center;
+  border: none;
+}
+.single-product .product-top-section .select-audio-files > div .cancel:hover {
+  background-image: url("../assets/icons/close-red.svg");
+}
+.single-product .product-top-section .select-audio-files > div img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.single-product .product-top-section .select-audio-files > div .play-recorded-audio {
+  width: 32px;
+  height: 32px;
+  background-image: url("../assets/icons/arrow_back.svg");
+  margin-left: 27px;
+  margin-right: 23px;
+  background-color: #C92E26;
+  background-repeat: no-repeat;
+  background-position: 13px;
+  border: none;
+  border-radius: 50%;
+}
+.single-product .product-top-section .select-audio-files > div .play-recorded-audio.pause {
+  background-image: url("../assets/icons/pause-white.svg");
+  background-position: center;
+  background-size: 9px;
+}
+.single-product .product-top-section .select-audio-files .add-another-audio {
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: unset;
+  position: relative;
+  display: inline-block;
+  padding-left: 44px;
+  margin-bottom: 60px;
+}
+.single-product .product-top-section .select-audio-files .add-another-audio:before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/add-white.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.single-product .product-top-section label {
+  margin-bottom: 15px;
+  font-size: 14px;
+  display: flex;
+  gap: 7px;
+  align-items: start;
+}
+.single-product .product-top-section label input {
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+.single-product .product-top-section .add-song,
 .single-product .product-top-section .add_to_cart_button {
   width: 100%;
   border: none;
+}
+.single-product .product-top-section .add-song {
+  margin-top: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
 }
 .single-product .features-bar {
   padding: 30px 0;
@@ -1282,6 +1380,367 @@ input {
   .single-product .spread-smiles {
     margin-bottom: 50px;
   }
+}
+.single-product .recordModal,
+.single-product .listAudiosModal,
+.single-product .addSongModal {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+  display: none;
+  max-height: 699px;
+}
+.single-product .recordModal.show,
+.single-product .listAudiosModal.show,
+.single-product .addSongModal.show {
+  display: flex;
+}
+.single-product .recordModal > div,
+.single-product .listAudiosModal > div,
+.single-product .addSongModal > div {
+  background: #fff;
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 8px;
+  width: 375px;
+  text-align: center;
+  position: relative;
+  margin: auto;
+}
+.single-product .recordModal > div h2,
+.single-product .listAudiosModal > div h2,
+.single-product .addSongModal > div h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 154px;
+  padding-top: 3px;
+}
+.single-product .recordModal > div .btns button,
+.single-product .listAudiosModal > div .btns button,
+.single-product .addSongModal > div .btns button {
+  margin-bottom: 20px;
+  height: 92px;
+  background: #fff;
+  border: 2px solid #1E1E1E;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+}
+.single-product .recordModal > div .btns button::after,
+.single-product .listAudiosModal > div .btns button::after,
+.single-product .addSongModal > div .btns button::after {
+  content: "";
+  right: 29px;
+  bottom: 0;
+  top: 0;
+  background-image: url("../assets/icons/arrow_right.svg");
+  position: absolute;
+  width: 8.33px;
+  height: 16.67px;
+  margin: auto;
+  background-repeat: no-repeat;
+}
+.single-product .recordModal > div .btns button::before,
+.single-product .listAudiosModal > div .btns button::before,
+.single-product .addSongModal > div .btns button::before {
+  content: "";
+  left: 20px;
+  bottom: 0;
+  top: 0;
+  background-image: url("../assets/icons/upload_file.svg");
+  position: absolute;
+  width: 26.47px;
+  height: 33.09px;
+  margin: auto;
+}
+.single-product .recordModal > div .btns button:nth-child(2)::before,
+.single-product .listAudiosModal > div .btns button:nth-child(2)::before,
+.single-product .addSongModal > div .btns button:nth-child(2)::before {
+  background-image: url("../assets/icons/music_note.svg");
+  width: 24px;
+  height: 30px;
+}
+.single-product .recordModal > div .btns button:nth-child(2)::before,
+.single-product .listAudiosModal > div .btns button:nth-child(2)::before,
+.single-product .addSongModal > div .btns button:nth-child(2)::before {
+  background-image: url("../assets/icons/mic.svg");
+  width: 23.16px;
+  height: 31.43px;
+}
+.single-product .recordModal > div .btns button:hover,
+.single-product .listAudiosModal > div .btns button:hover,
+.single-product .addSongModal > div .btns button:hover {
+  background: #FDFBEE;
+}
+.single-product .recordModal > div input,
+.single-product .listAudiosModal > div input,
+.single-product .addSongModal > div input {
+  font-size: 16px;
+  border-radius: 2px solid #1E1E1E;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 21px;
+}
+.single-product .recordModal > div .confirm-wrapper,
+.single-product .listAudiosModal > div .confirm-wrapper,
+.single-product .addSongModal > div .confirm-wrapper {
+  border-top: 1px solid #C6C6C6;
+  padding-top: 20px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.single-product .recordModal > div .confirm-wrapper a,
+.single-product .listAudiosModal > div .confirm-wrapper a,
+.single-product .addSongModal > div .confirm-wrapper a {
+  width: 100%;
+}
+.single-product .recordModal .closeModal,
+.single-product .listAudiosModal .closeModal,
+.single-product .addSongModal .closeModal {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  background: #707070;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+.single-product .listAudiosModal > div {
+  padding-left: 0;
+  padding-right: 0;
+}
+.single-product .listAudiosModal > div .input-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 3px 10px 0px rgba(199, 199, 199, 0.2509803922);
+}
+.single-product .listAudiosModal > div h2 {
+  margin-bottom: 44px;
+}
+.single-product .listAudiosModal > div .confirm-wrapper {
+  border-top: 1px solid #C6C6C6;
+  padding-top: 20px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.single-product .listAudiosModal > div .confirm-wrapper a {
+  width: 100%;
+}
+.single-product .listAudiosModal > div ul {
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  height: 400px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.single-product .listAudiosModal > div ul button {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  background: #fff;
+  gap: 13px;
+  transition: 0.3s all;
+}
+.single-product .listAudiosModal > div ul button.active {
+  background: #FDFBEE;
+  border: 2px solid #1E1E1E;
+  border-radius: 10px;
+}
+.single-product .listAudiosModal > div ul button:hover {
+  background: #FDFBEE;
+}
+.single-product .listAudiosModal > div ul button a {
+  width: 60px;
+  height: 60px;
+  display: block;
+  position: relative;
+  box-shadow: 0px 0px 20px 0px rgba(41, 41, 41, 0.2);
+  border-radius: 50%;
+}
+.single-product .listAudiosModal > div ul button a::after {
+  position: absolute;
+  background-image: url("../assets/icons/play.svg");
+  inset: 0;
+  margin: auto;
+  content: "";
+  background-repeat: no-repeat;
+  width: 13.75px;
+  height: 17.5px;
+}
+.single-product .listAudiosModal > div ul button a.pause::after {
+  background-image: url("../assets/icons/pause.svg");
+  width: 12px;
+  height: 14px;
+}
+.single-product .listAudiosModal > div ul button div {
+  text-align: left;
+}
+.single-product .listAudiosModal > div ul button div span {
+  display: block;
+}
+.single-product .listAudiosModal > div ul button div span.title {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.single-product .listAudiosModal > div ul button div span.timer {
+  font-size: 16px;
+  color: #5F5F5F;
+}
+.single-product .recordModal > div {
+  padding-left: 0;
+  padding-right: 0;
+}
+.single-product .recordModal > div h2 {
+  margin-bottom: 33px;
+}
+.single-product .recordModal > div > span {
+  font-size: 14px;
+  color: #3B82F6;
+  display: block;
+  text-align: left;
+  background: #E8F3FF;
+  padding: 13px;
+  margin: 0 11px;
+  border-radius: 10px;
+}
+.single-product .recordModal > div div.record-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 28px;
+  padding: 100px 0 150px;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result {
+  padding-left: 11px;
+  padding-right: 11px;
+  width: 100%;
+  display: none;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div {
+  border: 2px solid #1E1E1E;
+  width: 100%;
+  padding: 13px 0;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div .cancel {
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: calc(100% - 15px);
+  content: "";
+  background-image: url("../assets/icons/close.svg");
+  width: 24.5px;
+  height: 24.5px;
+  border-radius: unset;
+  outline: none;
+  background-color: #fff;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div .cancel:hover {
+  background-image: url("../assets/icons/close-red.svg");
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div .play-recorded-audio {
+  width: 32px;
+  height: 32px;
+  background-image: url("../assets/icons/arrow_back.svg");
+  margin-left: 27px;
+  margin-right: 23px;
+}
+.single-product .recordModal > div div.record-section span.label {
+  font-size: 18px;
+}
+.single-product .recordModal > div div.record-section span.timer {
+  color: #C92E26;
+  font-size: 24px;
+  font-weight: 700;
+  display: none;
+}
+.single-product .recordModal > div div.record-section span.allow {
+  display: none;
+  line-height: normal;
+}
+.single-product .recordModal > div div.record-section span.result {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.recording span.label {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.recording span.timer {
+  display: block;
+}
+.single-product .recordModal > div div.record-section.recording span.allow {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.recording span.result {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.recording button {
+  background-image: url(../assets/icons/pause-white.svg);
+  background-size: 25px;
+}
+.single-product .recordModal > div div.record-section.permission-denied span.label {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.permission-denied span.timer {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.permission-denied span.allow {
+  display: block;
+}
+.single-product .recordModal > div div.record-section.permission-denied span.result {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.permission-denied button {
+  background: #7A7A7A;
+  background-image: url(../assets/icons/mic_alert.svg);
+}
+.single-product .recordModal > div div.record-section.recording-finished .recorded-audio-result {
+  display: flex;
+}
+.single-product .recordModal > div div.record-section.recording-finished .record-audio {
+  display: none;
+}
+.single-product .recordModal > div div.record-section.recording-finished > span {
+  display: none;
+}
+.single-product .recordModal > div div.record-section button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #C92E26;
+  position: relative;
+  border: none;
+  background-image: url(../assets/icons/mic-white.svg);
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.single-product .recordModal > div div.record-section button.play {
+  background-image: url(../assets/icons/pause-white.svg) !important;
+  background-size: 9px;
 }
 
 /*********************** Contact page ******************************/

@@ -41,6 +41,25 @@ do_action( 'woocommerce_before_cart' ); ?>
                 $max_quantity = $_product->get_max_purchase_quantity();
             }
         ?>
+
+        <?php if ( ! empty( $cart_item['selected_audios'] ) ) : ?>
+            <div class="cart-audios" style="margin-top:10px;">
+                <?php foreach ( $cart_item['selected_audios'] as $audio ) : 
+                    $audio_name = esc_html( $audio['name'] );
+                    $audio_url  = esc_url( $audio['url'] );
+                ?>
+                    <div class="cart-audio-item" style="margin-bottom:5px;">
+                        <span><?= $audio_name ?></span>
+                        <audio controls style="width:200px;">
+                            <source src="<?= $audio_url ?>" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+
         <div class="cart-card">
             <div class="cart-head">
                 <div class="thumbnail-price">
