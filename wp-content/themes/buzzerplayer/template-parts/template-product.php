@@ -34,7 +34,7 @@ $pageContent = get_the_content();
                             if (!empty($terms) && !is_wp_error($terms)) {
                                 echo '<ul>';
                                 foreach ($terms as $term) {
-                                    if ($term->count > 0) {
+                                    if ($term->count > 0 && $term->slug != "non-classe") {
                                         echo '<li><a href="#" data-slug="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a></li>';
                                     }
                                 }
@@ -52,7 +52,7 @@ $pageContent = get_the_content();
                             'posts_per_page' => 15,
                             'paged'          => 1,
                         );
-                        $loop = new WP_Query($args);    
+                        $loop = new WP_Query($args); 
 
                         while ($loop->have_posts()) : $loop->the_post();
                             $bruitage_id = get_the_ID();
@@ -76,9 +76,11 @@ $pageContent = get_the_content();
                         <?php endwhile; wp_reset_postdata(); ?>
                     </div>
 
+                    <?php if($loop->found_posts) { ?>
                     <div class="paginate text-center">
                         <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
                     </div>
+                    <?php } ?>
                 </div>
 
                 <div class="content">
