@@ -76,7 +76,7 @@ $pageContent = get_the_content();
                         <?php endwhile; wp_reset_postdata(); ?>
                     </div>
 
-                    <?php if($loop->found_posts) { ?>
+                    <?php if($loop->found_posts > 15) { ?>
                     <div class="paginate text-center">
                         <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
                     </div>
