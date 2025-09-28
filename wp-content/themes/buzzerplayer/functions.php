@@ -421,7 +421,7 @@ function filter_audio_callback() {
             <div class="sound-button-group position-relative text-center">
                 <img data-audio="<?= esc_url($audio_url) ?>" src="<?= esc_url($icon) ?>" alt="<?= esc_attr($title) ?>" class="sound-button">
                 <div class="position-relative">
-                    <div class="button-label"><?= esc_html($title) ?></div>
+                    <div class="button-label title"><?= esc_html($title) ?></div>
                     <div class="button-label button-label-2 text-center">
                         <a href="#" class="use-it-button btn btn-danger">USE IT</a>
                     </div>

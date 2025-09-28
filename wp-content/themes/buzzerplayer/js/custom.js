@@ -4,6 +4,16 @@
 (function($) {
     $(document).ready(function() {
 
+        $(window).on('scroll', function() {
+            let scroll = $(window).scrollTop();
+            if (scroll > 50) { // adjust value as needed
+                $('header').addClass('shadow');
+            } else {
+                $('header').removeClass('shadow');
+            }
+        });
+
+
 
         // Increase quantity
         $(document).on('click', '.btn-increase', function() {

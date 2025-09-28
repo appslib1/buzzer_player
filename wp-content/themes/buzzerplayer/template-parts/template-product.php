@@ -148,7 +148,8 @@ jQuery(document).ready(function($){
         });
     });
     //use-it-button
-    $(document).on('click', '.use-it-button', function(e) {   
+    $(document).on('click', '.use-it-button', function(e) {  
+        $(this).parents('.sound-button-group').addClass('loading');
         e.preventDefault();
         var audioElements = [];
         var title = $(this).parents('.sound-button-group').find('.button-label.title').text();

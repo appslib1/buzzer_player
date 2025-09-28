@@ -129,7 +129,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
           ?>
 
           <?php if ( ! empty( $saved_audios ) ) { ?>
-              <label>
+              <label class="agree-checkbox-wrapper">
                   <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
                   <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
               </label>
@@ -357,7 +357,7 @@ jQuery(document).ready(function($){
     $('#add-to-cart-btn').on('click', function(e) {
         if (!$('#agree-checkbox').is(':checked')) {
             e.preventDefault(); // Stop the default add to cart
-            alert('Please confirm that you have the rights to this audio and accept the Terms.');
+            $('.agree-checkbox-wrapper').addClass('error');
             return false;
         }
     });

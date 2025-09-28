@@ -5,7 +5,9 @@ header{
     position: sticky;
     top: 0;
     z-index: 999999;
-    box-shadow: 0px 2px 4px 0px #00000040;
+    &.shadow{
+        box-shadow: 0px 2px 4px 0px #00000040;
+    }
     &.f-height{
         height: 100vh;
         background-color: variables.$beige-color !important;

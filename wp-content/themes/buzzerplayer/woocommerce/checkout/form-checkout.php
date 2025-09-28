@@ -138,56 +138,59 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <script>
     jQuery(document).ready(function($){
+	$(document).on("click", ".page-template-template-checkout .cart_totals .checkout-button,.mobile-order-infos a", function(e) {
+		e.preventDefault(); // prevent default checkout action
 
-		$(document).on("click", ".page-template-template-checkout .cart_totals .checkout-button,.mobile-order-infos a", function(e) {
-			e.preventDefault(); // prevent default checkout action
+		let allFilled = true; // flag to track if all required fields are filled
+		let firstEmptyField = null;
 
-			let allFilled = true; // flag to track if all required fields are filled
-			let firstEmptyField = null;
-
-			// Loop through all inputs/selects with aria-required="true"
-			$('.woocommerce-billing-fields input[aria-required="true"]').each(function() {
-				let value = $(this).val();
-				if (!value || value.trim() === "") {
-					allFilled = false;
-					firstEmptyField = firstEmptyField || this; // store the first empty field
-					$(this).addClass('error'); // optional: add class to highlight empty field
-				} else {
-					$(this).removeClass('error'); // remove error class if filled
-				}
-			});
-
-			if (!allFilled) {
-				alert("Please fill all required fields before proceeding."); 
-				if (firstEmptyField) $(firstEmptyField).focus(); // focus first empty field
-				return false;
+		// Check all required input fields
+		$('.woocommerce-billing-fields input[aria-required="true"]').each(function() {
+			let value = $(this).val();
+			if (!value || value.trim() === "") {
+				allFilled = false;
+				firstEmptyField = firstEmptyField || this; // store the first empty field
+				$(this).addClass('error'); // highlight empty field
+			} else {
+				$(this).removeClass('error'); // remove error if filled
 			}
-
-			// If all fields are filled, submit the form
-			if($('.paying-form').hasClass('d-none')){
-				$('.cart_totals a').text('Confirm and pay');
-				$('.cart_totals a').addClass('pay');
-
-				$('.mobile-order-infos a').text('Confirm and pay');
-				$('.mobile-order-infos a').addClass('pay');
-
-				$('.accept-check').removeClass('d-none');
-
-				$('.paying-form').removeClass('d-none');
-				$('.shipping-form').addClass('d-none');
-				$("html, body").animate({ scrollTop: 0 }, "slow");
-			}
-			else{
-				if (!$('.accept-check input').is(':checked')) {
-					$('.accept-check').addClass('error');
-				}
-				else{
-					$('.accept-check').removeClass('error');
-					$('#place_order').trigger('click');
-				}
-			}
-			//$('form.checkout').submit();
 		});
+
+		// Check all required select fields
+		$('.woocommerce-billing-fields select[aria-required="true"]').each(function() {
+			let value = $(this).val();
+			if (!value || value === "") { // select may have empty value
+				allFilled = false;
+				firstEmptyField = firstEmptyField || this;
+				$(this).addClass('error');
+			} else {
+				$(this).removeClass('error');
+			}
+		});
+
+		if (!allFilled) {
+			alert("Please fill all required fields before proceeding."); 
+			if (firstEmptyField) $(firstEmptyField).focus();
+			return false;
+		}
+
+		// Proceed with checkout if all fields are filled
+		if ($('.paying-form').hasClass('d-none')) {
+			$('.cart_totals a, .mobile-order-infos a').text('Confirm and pay').addClass('pay');
+			$('.accept-check').removeClass('d-none');
+			$('.paying-form').removeClass('d-none');
+			$('.shipping-form').addClass('d-none');
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		} else {
+			if (!$('.accept-check input').is(':checked')) {
+				$('.accept-check').addClass('error');
+			} else {
+				$('.accept-check').removeClass('error');
+				$('#place_order').trigger('click');
+			}
+		}
+	});
+
 
 		$(document).on("click", ".mobile-order-infos button", function(e) {
             e.preventDefault();
