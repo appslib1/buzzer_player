@@ -1899,6 +1899,7 @@ input {
 }
 .page-template-template-checkout main .cart-cards .cart-card,
 .page-template-template-cart main .cart-cards .cart-card {
+  overflow: hidden;
   background-color: #FDFBEE;
   padding-left: 22px;
   padding-top: 20px;
@@ -2137,6 +2138,36 @@ input {
   font-size: 20px;
   font-weight: 700;
 }
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check {
+  font-size: 14px;
+  display: flex;
+  gap: 7px;
+  align-items: start;
+  color: #000;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check.error,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error {
+  color: #C92E26;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check.error input, .page-template-template-checkout main .cart-collaterals .cart_totals .accept-check.error label, .page-template-template-checkout main .cart-collaterals .cart_totals .accept-check.error a,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error input,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error label,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error a {
+  color: #C92E26;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check input,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check input {
+  margin-top: 5px;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check label,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check label {
+  color: #000;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check label a,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check label a {
+  color: #000;
+}
 .page-template-template-checkout main .cart-collaterals .cart_totals .wc-proceed-to-checkout,
 .page-template-template-cart main .cart-collaterals .cart_totals .wc-proceed-to-checkout {
   margin-top: 9px;
@@ -2151,6 +2182,15 @@ input {
   text-align: left;
   border-radius: 5px;
   position: relative;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .wc-proceed-to-checkout a.pay,
+.page-template-template-cart main .cart-collaterals .cart_totals .wc-proceed-to-checkout a.pay {
+  text-align: center;
+  text-transform: uppercase;
+}
+.page-template-template-checkout main .cart-collaterals .cart_totals .wc-proceed-to-checkout a.pay:after,
+.page-template-template-cart main .cart-collaterals .cart_totals .wc-proceed-to-checkout a.pay:after {
+  display: none;
 }
 .page-template-template-checkout main .cart-collaterals .cart_totals .wc-proceed-to-checkout a:hover,
 .page-template-template-cart main .cart-collaterals .cart_totals .wc-proceed-to-checkout a:hover {
@@ -2182,6 +2222,8 @@ input {
 .page-template-template-cart main .cart-collaterals .coupon input {
   border: none;
   padding-left: 13px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .page-template-template-checkout main .cart-collaterals .coupon button,
 .page-template-template-cart main .cart-collaterals .coupon button {
@@ -2208,7 +2250,7 @@ input {
   background: #fff;
   width: 100%;
   padding: 20px 12px;
-  z-index: 9999;
+  z-index: 999999999;
   display: none;
 }
 @media (max-width: 768px) {
@@ -2217,8 +2259,39 @@ input {
     display: block;
   }
 }
-.page-template-template-checkout main .mobile-order-infos a,
-.page-template-template-cart main .mobile-order-infos a {
+.page-template-template-checkout main .mobile-order-infos .accept-check,
+.page-template-template-cart main .mobile-order-infos .accept-check {
+  font-size: 14px;
+  display: flex;
+  gap: 7px;
+  align-items: start;
+  color: #000;
+  margin-bottom: 20px;
+}
+.page-template-template-checkout main .mobile-order-infos .accept-check.error,
+.page-template-template-cart main .mobile-order-infos .accept-check.error {
+  color: #C92E26;
+}
+.page-template-template-checkout main .mobile-order-infos .accept-check.error input, .page-template-template-checkout main .mobile-order-infos .accept-check.error label, .page-template-template-checkout main .mobile-order-infos .accept-check.error a,
+.page-template-template-cart main .mobile-order-infos .accept-check.error input,
+.page-template-template-cart main .mobile-order-infos .accept-check.error label,
+.page-template-template-cart main .mobile-order-infos .accept-check.error a {
+  color: #C92E26;
+}
+.page-template-template-checkout main .mobile-order-infos .accept-check input,
+.page-template-template-cart main .mobile-order-infos .accept-check input {
+  margin-top: 5px;
+}
+.page-template-template-checkout main .mobile-order-infos .accept-check label,
+.page-template-template-cart main .mobile-order-infos .accept-check label {
+  color: #000;
+}
+.page-template-template-checkout main .mobile-order-infos .accept-check label a,
+.page-template-template-cart main .mobile-order-infos .accept-check label a {
+  color: #000;
+}
+.page-template-template-checkout main .mobile-order-infos > a,
+.page-template-template-cart main .mobile-order-infos > a {
   font-weight: 700;
   padding: 14.5px 0 14.5px 20px;
   font-size: 18px;
@@ -2230,12 +2303,21 @@ input {
   text-decoration: none;
   display: block;
 }
-.page-template-template-checkout main .mobile-order-infos a:hover,
-.page-template-template-cart main .mobile-order-infos a:hover {
+.page-template-template-checkout main .mobile-order-infos > a.pay,
+.page-template-template-cart main .mobile-order-infos > a.pay {
+  text-transform: uppercase;
+  text-align: center;
+}
+.page-template-template-checkout main .mobile-order-infos > a.pay::after,
+.page-template-template-cart main .mobile-order-infos > a.pay::after {
+  display: none;
+}
+.page-template-template-checkout main .mobile-order-infos > a:hover,
+.page-template-template-cart main .mobile-order-infos > a:hover {
   background-color: #8c1e14;
 }
-.page-template-template-checkout main .mobile-order-infos a:after,
-.page-template-template-cart main .mobile-order-infos a:after {
+.page-template-template-checkout main .mobile-order-infos > a:after,
+.page-template-template-cart main .mobile-order-infos > a:after {
   content: "";
   position: absolute;
   top: 0;
@@ -2262,16 +2344,16 @@ input {
 .page-template-template-cart main .mobile-order-infos button.open span:first-child:after {
   transform: rotate(180deg);
 }
-.page-template-template-checkout main .mobile-order-infos button span,
-.page-template-template-cart main .mobile-order-infos button span {
+.page-template-template-checkout main .mobile-order-infos button > span,
+.page-template-template-cart main .mobile-order-infos button > span {
   position: relative;
 }
-.page-template-template-checkout main .mobile-order-infos button span:first-child,
-.page-template-template-cart main .mobile-order-infos button span:first-child {
+.page-template-template-checkout main .mobile-order-infos button > span:first-child,
+.page-template-template-cart main .mobile-order-infos button > span:first-child {
   padding-right: 20px;
 }
-.page-template-template-checkout main .mobile-order-infos button span:first-child:after,
-.page-template-template-cart main .mobile-order-infos button span:first-child:after {
+.page-template-template-checkout main .mobile-order-infos button > span:first-child:after,
+.page-template-template-cart main .mobile-order-infos button > span:first-child:after {
   transition: 0.3s all;
   margin: auto;
   width: 10px;
@@ -2380,10 +2462,42 @@ input {
 .page-template-template-checkout #order_review table thead {
   display: none;
 }
+.page-template-template-checkout #order_review table tbody {
+  display: none;
+}
 .page-template-template-checkout #order_review table tbody tr {
   padding-top: 0;
   margin-top: 0;
   border-top: none;
+}
+
+.page-template-template-checkout h1 {
+  margin-bottom: 12px !important;
+}
+.page-template-template-checkout form #wc-stripe-express-checkout-element {
+  margin-top: 0 !important;
+}
+.page-template-template-checkout form h3 {
+  display: none;
+}
+.page-template-template-checkout .woocommerce-additional-fields {
+  display: none;
+}
+.page-template-template-checkout .paying-form ul.wc_payment_methods.payment_methods.methods {
+  padding: 0 !important;
+  background-color: #fff;
+}
+.page-template-template-checkout .paying-form ul.wc_payment_methods.payment_methods.methods .payment_box.payment_method_stripe {
+  background-color: #fff !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.page-template-template-checkout .paying-form ul.wc_payment_methods.payment_methods.methods .payment_box.payment_method_stripe:before {
+  display: none !important;
+}
+.page-template-template-checkout .paying-form .place-order {
+  display: none;
 }
 
 /*********************** FAQ page ******************************/

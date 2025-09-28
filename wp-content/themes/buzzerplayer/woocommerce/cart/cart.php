@@ -135,7 +135,7 @@ do_action( 'woocommerce_before_cart' ); ?>
     <div class="mobile-order-infos">
         <button>
             <span>Order Summary</span>
-            <span>£15.00</span>
+            <span><?php echo WC()->cart->get_total(); ?></span>
         </button>
         <div class="order-totals">
             <ul>
