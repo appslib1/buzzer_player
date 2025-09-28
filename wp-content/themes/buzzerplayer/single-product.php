@@ -19,67 +19,73 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
     <div class="container">
       <div class="row align-items-center">
         <!-- Left: Product Image -->
-        <div class="col-md-5 text-center">
-            <?php
+        <div class="col-lg-7 col-md-6 text-center">
 
-            // Get main image
-            $thumb_id  = $product->get_image_id();
-            $thumb_url = wp_get_attachment_image_url( $thumb_id, 'large' );
+            <div class="product-imgs-wrapper">
+                <h2 class="section-title"><?= the_title() ?></h2>
+                <?php
 
-            // Get gallery images
-            $gallery_ids = $product->get_gallery_image_ids();
-            ?>
-            
-            <!-- Main Swiper -->
-            <div class="swiper productSwiper mb-3">
-              <div class="swiper-wrapper">
-                <?php if ( $thumb_url ) : ?>
-                  <div class="swiper-slide">
-                    <img src="<?= esc_url( $thumb_url ); ?>" alt="<?php the_title_attribute(); ?>" class="img-fluid rounded">
-                  </div>
+                // Get main image
+                $thumb_id  = $product->get_image_id();
+                $thumb_url = wp_get_attachment_image_url( $thumb_id, 'large' );
+
+                // Get gallery images
+                $gallery_ids = $product->get_gallery_image_ids();
+                ?>
+                
+                <!-- Main Swiper -->
+                <div class="swiper productSwiper mb-3">
+                <div class="swiper-wrapper">
+                    <?php if ( $thumb_url ) : ?>
+                    <div class="swiper-slide">
+                        <img src="<?= esc_url( $thumb_url ); ?>" alt="<?php the_title_attribute(); ?>" class="img-fluid rounded">
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if ( $gallery_ids ) : 
+                    foreach ( $gallery_ids as $img_id ) :
+                        $img_url = wp_get_attachment_image_url( $img_id, 'large' ); ?>
+                        <div class="swiper-slide">
+                        <img src="<?= esc_url( $img_url ); ?>" alt="<?php the_title_attribute(); ?>" class="img-fluid rounded">
+                        </div>
+                    <?php endforeach;
+                    endif; ?>
+                </div>
+                </div>
+
+                <!-- Thumbnail Swiper -->
+                <?php if ( $thumb_url || $gallery_ids ) : ?>
+                <div class="productThumbsContainer">
+                    <div class="swiper productThumbs">
+                        <div class="swiper-wrapper">
+                        <?php if ( $thumb_url ) : ?>
+                            <div class="swiper-slide">
+                            <img src="<?= esc_url( $thumb_url ); ?>" class="img-fluid rounded shadow-sm" alt="">
+                            </div>
+                        <?php endif; ?>
+
+                        <?php foreach ( $gallery_ids as $img_id ) :
+                            $img_url = wp_get_attachment_image_url( $img_id, 'thumbnail' ); ?>
+                            <div class="swiper-slide">
+                            <img src="<?= esc_url( $img_url ); ?>" class="img-fluid rounded shadow-sm" alt="">
+                            </div>
+                        <?php endforeach; ?>
+                        </div>
+
+                    </div>
+                    <!-- Add arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
                 <?php endif; ?>
 
-                <?php if ( $gallery_ids ) : 
-                  foreach ( $gallery_ids as $img_id ) :
-                    $img_url = wp_get_attachment_image_url( $img_id, 'large' ); ?>
-                    <div class="swiper-slide">
-                      <img src="<?= esc_url( $img_url ); ?>" alt="<?php the_title_attribute(); ?>" class="img-fluid rounded">
-                    </div>
-                  <?php endforeach;
-                endif; ?>
-              </div>
             </div>
 
-            <!-- Thumbnail Swiper -->
-            <?php if ( $thumb_url || $gallery_ids ) : ?>
-              <div class="productThumbsContainer">
-                  <div class="swiper productThumbs">
-                    <div class="swiper-wrapper">
-                      <?php if ( $thumb_url ) : ?>
-                        <div class="swiper-slide">
-                          <img src="<?= esc_url( $thumb_url ); ?>" class="img-fluid rounded shadow-sm" alt="">
-                        </div>
-                      <?php endif; ?>
-
-                      <?php foreach ( $gallery_ids as $img_id ) :
-                        $img_url = wp_get_attachment_image_url( $img_id, 'thumbnail' ); ?>
-                        <div class="swiper-slide">
-                          <img src="<?= esc_url( $img_url ); ?>" class="img-fluid rounded shadow-sm" alt="">
-                        </div>
-                      <?php endforeach; ?>
-                    </div>
-
-                  </div>
-                  <!-- Add arrows -->
-                  <div class="swiper-button-next"></div>
-                  <div class="swiper-button-prev"></div>
-              </div>
-            <?php endif; ?>
           </div>
 
 
         <!-- Right: Product Details -->
-        <div class="col-md-7">
+        <div class="col-lg-5 col-md-6">
           <!-- Title -->
           <h1><?= the_title() ?></h1>
 
@@ -338,6 +344,15 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 jQuery(document).ready(function($){
     let currentAudio = null;
     let currentRecordedAudio = null;
+
+    $(document).on("click", function(e) {
+        console.log('doc click');
+        // if the click is NOT inside #myDiv
+        if ( !$(e.target).closest(".modal>div").length && !$(e.target).closest("#openModal").length) {
+            $('.modal').removeClass('show');
+        // your code here
+        }
+    });
 
     $('#add-to-cart-btn').on('click', function(e) {
         if (!$('#agree-checkbox').is(':checked')) {

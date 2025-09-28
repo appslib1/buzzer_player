@@ -135,12 +135,28 @@
     .product-top-section{
         max-width: 1072px;
         margin: auto;
+        padding: 70px 0;
+        @media (max-width: 768px){
+            padding: 14px 0;
+        }
         h1{
             text-align: left;
             margin-bottom: 17px;
             @media (max-width: 768px){
                 margin-bottom: 20px;
                 margin-top: 14px;
+                display: none;
+            }
+        }
+        .product-imgs-wrapper{
+            max-width: 517px;
+            h2{
+                display: none;
+                font-size: 18px;
+                @media (max-width: 768px){
+                    display: block;
+                    margin-bottom: 20px;
+                }
             }
         }
         .productSwiper{
@@ -218,6 +234,9 @@
                 font-weight: 700;
                 display: flex;
                 flex-direction: column-reverse;
+                @media (max-width: 768px){
+                    margin-bottom: 0;
+                }
                 ins{
                     text-decoration: none;
                     font-size: 24px;
@@ -250,6 +269,9 @@
             margin-top: 26px;
             font-weight: 400;
             font-size: 16px;
+            @media (max-width: 768px){
+                margin-top: 20px;
+            }
         }
         .select-audio-files{
             width: 100%;
@@ -361,8 +383,8 @@
         margin-top: 135px;
         margin-bottom: 100px;
         @media (max-width: 768px){
-            margin-top: 50px;
-            margin-bottom: 100px;
+            margin-top: 0px;
+            margin-bottom: 50px;
         }
         .features-bar-content{
             max-width: 1072px;
