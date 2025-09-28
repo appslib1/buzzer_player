@@ -17,7 +17,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 
 <section class="product-top-section">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row">
         <!-- Left: Product Image -->
         <div class="col-lg-7 col-md-6 text-center">
 

@@ -28,7 +28,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 
 ?>
-
+jawad
 <div class="row">
 	<div class="col-md-7">
 		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
@@ -71,6 +71,14 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 			</div>
+			<?php if ( wc_coupons_enabled() ) { ?>
+                <div class="coupon">
+                    <label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> 
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> 
+                    <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                </div>
+            <?php } ?>
 		</div>
 	</div>
 </div>
