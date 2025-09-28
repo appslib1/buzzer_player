@@ -567,6 +567,7 @@
             align-items: center;
             justify-content: center;
             font-size: 23px;
+            margin-right: 0;
         }
     }
     .listAudiosModal{
@@ -972,6 +973,40 @@
 
                         }
                     }
+                    .audios-list{
+                        .audio{
+                            display: flex;
+                            gap: 7px;
+                            align-items: center;
+                            span{
+                                font-size: 14px;
+                            }
+                            button{
+                                width: 22px;
+                                height: 22px;
+                                background-color: #fff;
+                                border-radius: 50%;
+                                border: none;
+                                position: relative;
+                                box-shadow: 0px 0px 20px 0px #29292933;
+                                &:after{
+                                    position: absolute;
+                                    content: "";
+                                    background-image: url("../assets/icons/play.svg");
+                                    width: 5.04px;
+                                    height: 6.42px;
+                                    inset: 0;
+                                    margin: auto;
+                                    background-size: contain;
+                                }
+                                &.pause{
+                                    &:after{
+                                        background-image: url("../assets/icons/pause-red.svg");
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 .quantity-group{
                     max-width: 150px;
@@ -995,6 +1030,19 @@
                             padding-top: 0;
                             border: 1px solid;
                             border-color: variables.$noir-eben;
+                            position: relative;
+                            width: 37px;
+                            &.delete{
+                                &:after{
+                                    position: absolute;
+                                    content: "";
+                                    inset: 0;
+                                    margin: auto;
+                                    background-image: url(../assets/icons/delete.svg);
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                }
+                            }
                         }
                         input[type=number]::-webkit-outer-spin-button,
                         input[type=number]::-webkit-inner-spin-button {
@@ -1048,6 +1096,9 @@
         .cart-collaterals{
             max-width: 335px;
             float: right;
+            @media (max-width: 768px){
+                display: none;
+            }
             .cart_totals {
                 float: unset;
                 width: 100%;
@@ -1144,6 +1195,139 @@
                     font-size: 18px;
                     padding: 6px 8px;
                     border-radius: 5px;
+                }
+            }
+        }
+        form{
+            @media (max-width: 768px){
+                padding-bottom: 200px;
+            }
+        }
+        .mobile-order-infos{
+            position: fixed;
+            border: 2px solid;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: 0;
+            left: 0;
+            bottom: 0;
+            background: #fff;
+            width: 100%;
+            padding: 20px 12px;
+            z-index: 9999;
+            display: none;
+            @media (max-width: 768px){
+                display: block;
+            }
+            a{
+                font-weight: 700;
+                padding: 14.5px 0 14.5px 20px;
+                font-size: 18px;
+                background-color: variables.$rouge;
+                text-align: left;
+                border-radius: 5px;
+                position: relative;
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                &:hover{
+                    background-color: #8c1e14;
+                }
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 20px;
+                    margin: auto;
+                    background-image: url("../assets/icons/arrow_forward.svg");
+                    width: 17.17px;
+                    height: 17.17px;
+                }
+            }
+            button{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                font-weight: 700;
+                font-size: 18px;
+                border: none;
+                padding: 0;
+                background-color: #fff;
+                margin-bottom: 20px;
+                &.open{
+                    span{
+                        &:first-child{
+                            &:after{
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                }
+                span{
+                    position: relative;
+                    &:first-child{
+                        padding-right: 20px;
+                        &:after{
+                            transition: .3s all;
+                            margin: auto;
+                            width: 10px;
+                            height: 5px;
+                            content: "";
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            background-image: url("../assets/icons/arrow_drop_down.svg");
+                        }
+                    }
+                }
+            }
+            .order-totals{
+                display: none;
+                overflow: hidden;
+                ul{
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 16px;
+                    }
+                    &.total{
+                        font-weight: 700;
+                        font-size: 20px;
+                        padding-top: 20px;
+                        border-top: 1px solid #B4B4B4;
+                    }
+                }
+                .coupon{
+                    position: relative;
+                    border: 2px solid variables.$noir-eben;
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+                    border-radius: 5px;
+                    input{
+                        border: none;
+                        font-size: 16px;
+                        padding-left: 20px;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                    button{
+                        position: absolute;
+                        right: 7px;
+                        bottom: 0;
+                        top: 0;
+                        margin: auto;
+                        height: fit-content;
+                        border-radius: 5px;
+                        background: #EFEFEF;
+                        width: fit-content;
+                        padding: 6px 8.43px;
+                        font-size: 16px;
+                        font-weight: normal;
+                    }
                 }
             }
         }

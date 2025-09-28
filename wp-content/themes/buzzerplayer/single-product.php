@@ -534,7 +534,7 @@ jQuery(document).ready(function($){
               },
               success: function (response) {
                   if (response.success) {
-                      console.log("Audio saved in session:", response.data);
+                        location.reload();
                   } else {
                       alert("Failed to save audio: " + response.data);
                   }

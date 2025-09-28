@@ -14,7 +14,8 @@
         // Decrease quantity
         $(document).on('click', '.btn-decrease', function() {
             var input = parseInt($(this).parent().find('.quantity input.qty').val());
-            $(this).parent().find('.quantity input.qty').val(input - 1).trigger('change');
+            var newVal = input - 1;
+            $(this).parent().find('.quantity input.qty').val(newVal).trigger('change');
         });
 
         $(document).on('change', 'input.qty', function() {

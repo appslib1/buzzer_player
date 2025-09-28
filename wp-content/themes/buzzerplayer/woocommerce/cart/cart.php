@@ -42,24 +42,6 @@ do_action( 'woocommerce_before_cart' ); ?>
             }
         ?>
 
-        <?php if ( ! empty( $cart_item['selected_audios'] ) ) : ?>
-            <div class="cart-audios" style="margin-top:10px;">
-                <?php foreach ( $cart_item['selected_audios'] as $audio ) : 
-                    $audio_name = esc_html( $audio['name'] );
-                    $audio_url  = esc_url( $audio['url'] );
-                ?>
-                    <div class="cart-audio-item" style="margin-bottom:5px;">
-                        <span><?= $audio_name ?></span>
-                        <audio controls style="width:200px;">
-                            <source src="<?= $audio_url ?>" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-
-
         <div class="cart-card">
             <div class="cart-head">
                 <div class="thumbnail-price">
@@ -75,13 +57,30 @@ do_action( 'woocommerce_before_cart' ); ?>
                         <?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); ?>
                     </div>
                 </div>
-                <h3><a href="<?= $product_permalink ?>"><?= $product_name ?></a></h3>
+                <div>
+                    <h3><a href="<?= $product_permalink ?>"><?= $product_name ?></a></h3>
+                    <div class="audios-list">
+                        <?php if ( ! empty( $cart_item['selected_audios'] ) ) : ?>
+                            <?php foreach ( $cart_item['selected_audios'] as $audio ) : 
+                                $audio_name = esc_html( $audio['name'] );
+                                $audio_url  = esc_url( $audio['url'] );
+                            ?>
+                                <div class="audio">
+                                    <button data-audio="<?= $audio_url ?>"></button>
+                                    <span><?= $audio_name ?></span>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
 
             <div class="quantity-group">
                 <label for="">QUANTITY</label>
                 <div class="input-group qte-group" style="max-width:150px;">
-                    <button type="button" class="btn btn-outline-secondary btn-decrease">-</button>
+                    <button type="button" class="btn btn-outline-secondary btn-decrease <?= $cart_item['quantity']=='1' ? 'delete' : '' ?> ">
+                        <?= $cart_item['quantity']=="1" ? "" : "-" ?>
+                    </button>
                     
                     <?php
                     if ( $_product->is_sold_individually() ) {
@@ -127,10 +126,52 @@ do_action( 'woocommerce_before_cart' ); ?>
 
     <div class="cart-products">
         <div class="add-more-products">
-            <a href="<?= home_url('product') ?>" class="add-prodcuts">
+            <a href="<?= home_url('shop') ?>" class="add-prodcuts">
                 Add another buzzer
             </a>
         </div>
+    </div>
+
+    <div class="mobile-order-infos">
+        <button>
+            <span>Order Summary</span>
+            <span>£15.00</span>
+        </button>
+        <div class="order-totals">
+            <ul>
+                <li>
+                    <span>Subtotal</span>
+                    <span><?php echo wc_price( WC()->cart->get_subtotal() ); ?></span>
+                </li>
+                <li>
+                    <span>Shipping</span>
+                    <span>
+                        <?php 
+                        $shipping_total = WC()->cart->get_shipping_total();
+                        echo $shipping_total > 0 ? wc_price( $shipping_total ) : 'Free';
+                        ?>
+                    </span>
+                </li>
+            </ul>
+            <!-- Coupon Form -->
+            <?php if ( wc_coupons_enabled() ) { ?>
+                <div class="coupon">
+                    <label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> 
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> 
+                    <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                </div>
+            <?php } ?>
+            <ul class="total">
+                <li>
+                    <span>Total</span>
+                    <span><?php echo wc_price( WC()->cart->get_total('edit') ); ?></span>
+                </li>
+            </ul>
+
+
+        </div>
+        <a href="<?= home_url('checkout') ?>">Proceed to checkout</a>
     </div>
 
     <?php do_action( 'woocommerce_after_cart_table' ); ?>
@@ -183,3 +224,55 @@ do_action( 'woocommerce_before_cart' ); ?>
     </div>
 </div>
 <?php do_action( 'woocommerce_after_cart' ); ?>
+
+<script>
+    jQuery(document).ready(function($){
+        var currentBtn = null;
+        var currentAudio = null;
+        $(document).on("click",".page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .audio button",function(e) {
+            e.preventDefault();
+            var audioUrl = $(this).attr('data-audio');
+
+            if (!currentAudio || currentAudio.src !== audioUrl) {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    $(currentBtn).removeClass('pause');
+                }
+                currentAudio = new Audio(audioUrl);
+                currentBtn = this;
+                currentAudio.play();
+                $(this).addClass('pause');
+            }
+            else {
+                if (currentAudio.paused) {
+                    currentAudio.play();
+                    $(this).addClass('pause');
+                } else {
+                    currentAudio.pause();
+                    $(this).removeClass('pause');
+                }
+            }
+
+            currentAudio.onended = function() {
+                $(currentBtn).removeClass('pause');
+            };
+            
+        });
+        //mobile-order-infos
+        $(document).on("click", ".mobile-order-infos button", function(e) {
+            e.preventDefault();
+            var $btn = $(this);
+            var $totals = $('.mobile-order-infos .order-totals');
+
+            if (!$btn.hasClass('open')) {
+                $btn.addClass('open');
+                $totals.stop(true, true).slideDown(300); // smooth slide down
+            } else {
+                $btn.removeClass('open');
+                $totals.stop(true, true).slideUp(300); // smooth slide up
+            }
+        });
+
+    });
+</script>
