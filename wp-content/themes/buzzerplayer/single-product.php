@@ -345,14 +345,14 @@ jQuery(document).ready(function($){
     let currentAudio = null;
     let currentRecordedAudio = null;
 
-    $(document).on("click", function(e) {
+    /*$(document).on("click", function(e) {
         console.log('doc click');
         // if the click is NOT inside #myDiv
         if ( !$(e.target).closest(".modal>div").length && !$(e.target).closest("#openModal").length) {
             $('.modal').removeClass('show');
         // your code here
         }
-    });
+    });*/
 
     $('#add-to-cart-btn').on('click', function(e) {
         if (!$('#agree-checkbox').is(':checked')) {
