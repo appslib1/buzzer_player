@@ -113,7 +113,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                   ?>
                       <div>
                           <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
-                          <img src="http://localhost:8080/wp-content/themes/buzzerplayer/assets/icons/song-file.svg" alt="Song file">
+                          <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
                           <span><?= $audio['name'] ?></span>
                           <button class="cancel remove-audio-session"></button>
                       </div>
