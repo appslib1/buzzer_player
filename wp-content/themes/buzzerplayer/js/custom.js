@@ -4,14 +4,18 @@
 (function($) {
     $(document).ready(function() {
 
-        $(window).on('scroll', function() {
-            let scroll = $(window).scrollTop();
-            if (scroll > 50) { // adjust value as needed
-                $('header').addClass('shadow');
-            } else {
-                $('header').removeClass('shadow');
-            }
-        });
+        // Apply only on homepage
+        if ($('body').hasClass('home')) {
+            $(window).on('scroll', function() {
+                let scroll = $(window).scrollTop();
+                if (scroll > 50) { // adjust value as needed
+                    $('header').addClass('shadow');
+                } else {
+                    $('header').removeClass('shadow');
+                }
+            });
+        }
+
 
 
 

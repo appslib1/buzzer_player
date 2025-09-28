@@ -1804,6 +1804,12 @@ input {
   background-image: url(../assets/icons/pause-white.svg) !important;
   background-size: 9px;
 }
+.single-product .faq-section .faq-title {
+  font-size: 16px;
+}
+.single-product .smile-card .picture img {
+  min-width: 240px;
+}
 
 /*********************** Contact page ******************************/
 .contact-page {

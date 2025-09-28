@@ -44,7 +44,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 
-	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header <?= is_front_page() ? '' : 'shadow' ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-md-12 m-auto">
