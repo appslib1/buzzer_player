@@ -943,7 +943,7 @@ input {
 }
 @media (max-width: 768px) {
   .faq-section .faq-card::before {
-    bottom: calc(100% + 22px);
+    bottom: calc(100% - 44px);
   }
 }
 .faq-section .accordion {
@@ -964,6 +964,8 @@ input {
   font-weight: 700;
   padding: 0;
   background: unset;
+  box-shadow: none;
+  color: #1E1E1E;
 }
 .faq-section .accordion .faq-item button::after {
   background-image: url("../assets/icons/arrow_drop_down.svg");
@@ -972,6 +974,11 @@ input {
 }
 .faq-section .accordion .faq-item .accordion-body {
   padding-left: 0;
+  color: #1E1E1E;
+}
+.faq-section .faq-footer .faq-link:hover {
+  background-color: #C92E26;
+  color: #fff;
 }
 
 /**************** Block Explanation ****************/

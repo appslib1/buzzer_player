@@ -444,7 +444,7 @@
             height: 66px;
             background-size: cover;
             @media (max-width: 768px){
-                bottom: calc(100% + 22px);
+                bottom: calc(100% - 44px);
             }
         }
     }
@@ -466,6 +466,8 @@
                 font-weight: 700;
                 padding: 0;
                 background: unset;
+                box-shadow: none;
+                color: variables.$noir-eben;
                 &::after{
                     background-image: url("../assets/icons/arrow_drop_down.svg");
                     background-size: 10px;
@@ -474,6 +476,15 @@
             }
             .accordion-body{
                 padding-left: 0;
+                color: variables.$noir-eben;
+            }
+        }
+    }
+    .faq-footer{
+        .faq-link{
+            &:hover{
+                background-color: variables.$rouge;
+                color: #fff;
             }
         }
     }
