@@ -252,6 +252,25 @@ footer .footer-bottom .copyright {
   text-align: right;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  line-height: normal;
+}
+
+.sound-button-group {
+  cursor: pointer;
+  max-width: 137px;
+}
+.sound-button-group .button-label.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sound-button-group.loading {
+  margin: auto 0;
+}
+
 body:not(.wp-admin) {
   font-family: "Work Sans", sans-serif !important;
   font-size: 18px !important;

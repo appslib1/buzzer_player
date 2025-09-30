@@ -1,5 +1,25 @@
 @use "variables";
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    line-height: normal;
+}
+
+.sound-button-group{
+    cursor: pointer;
+    max-width: 137px;
+    .button-label{
+        &.title{
+            display: -webkit-box;
+            -webkit-line-clamp: 2;   /* number of lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    &.loading{
+        margin: auto 0;
+    }
+}
 body:not(.wp-admin){
     font-family: variables.$work-sans !important;
     font-size: 18px !important;
