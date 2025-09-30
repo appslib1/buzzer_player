@@ -5,9 +5,9 @@
     position: relative;
     text-align: center;
     overflow: hidden;
+    background-color: variables.$beige-color;
 
     .hero-content {
-        background-color: variables.$beige-color;
         padding: 86px 20px 118px;
         align-items: center;
         justify-content: center;
@@ -16,6 +16,7 @@
         margin: 0 auto;
         @media (max-width: 768px){
             padding-bottom: 80px;
+            padding-top: 48px;
         }
         h1{
             font-family: variables.$bardon;
@@ -57,10 +58,8 @@
                 right: 15%;
                 width: 50px;
                 height: 50px;
-                transform: rotate(55.97deg);
                 @media (max-width: 768px){
-                    max-width: 29.42px;
-                    right: 18px;
+                    right: 16.34px;
                     top: 18px;
                 }
             }
@@ -106,7 +105,8 @@
     }
 
     .hero-footer {
-        margin-top: 29px;
+        padding-top: 29px;
+        background-color: #fff;
         ul{
             list-style: none;
             padding: 0;
@@ -114,8 +114,20 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 100px;
             margin: 0;
+            @media (max-width: 768px){
+                gap: 20px;
+                li{
+                    span{
+                        font-size: 14px;
+                        img{
+                            max-width: 20px;
+                        }
+                    }
+                
+                }
+            }
             img{
                 margin-right: 8px;
             }

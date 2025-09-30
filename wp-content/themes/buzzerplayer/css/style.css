@@ -496,9 +496,9 @@ input {
   position: relative;
   text-align: center;
   overflow: hidden;
+  background-color: #FDFBEE;
 }
 .hero-section .hero-content {
-  background-color: #FDFBEE;
   padding: 86px 20px 118px;
   align-items: center;
   justify-content: center;
@@ -509,6 +509,7 @@ input {
 @media (max-width: 768px) {
   .hero-section .hero-content {
     padding-bottom: 80px;
+    padding-top: 48px;
   }
 }
 .hero-section .hero-content h1 {
@@ -552,12 +553,10 @@ input {
   right: 15%;
   width: 50px;
   height: 50px;
-  transform: rotate(55.97deg);
 }
 @media (max-width: 768px) {
   .hero-section .hero-content .decoration.decoration-top-right {
-    max-width: 29.42px;
-    right: 18px;
+    right: 16.34px;
     top: 18px;
   }
 }
@@ -600,7 +599,8 @@ input {
   margin-right: auto;
 }
 .hero-section .hero-footer {
-  margin-top: 29px;
+  padding-top: 29px;
+  background-color: #fff;
 }
 .hero-section .hero-footer ul {
   list-style: none;
@@ -609,8 +609,19 @@ input {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 100px;
   margin: 0;
+}
+@media (max-width: 768px) {
+  .hero-section .hero-footer ul {
+    gap: 20px;
+  }
+  .hero-section .hero-footer ul li span {
+    font-size: 14px;
+  }
+  .hero-section .hero-footer ul li span img {
+    max-width: 20px;
+  }
 }
 .hero-section .hero-footer ul img {
   margin-right: 8px;
