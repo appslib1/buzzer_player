@@ -147,6 +147,14 @@
     .gap{
         column-gap: 40px;
     }
+    .check-link{
+        a{
+            &:hover{
+                background-color: variables.$rouge;
+                color: #fff;
+            }
+        }
+    }
 }
 
 /**************** Block featured products ****************/

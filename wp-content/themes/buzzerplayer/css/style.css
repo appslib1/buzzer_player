@@ -269,6 +269,8 @@ footer .footer-bottom .copyright {
 }
 .sound-button-group.loading {
   margin: auto 0;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 body:not(.wp-admin) {
@@ -503,10 +505,10 @@ input {
   padding: 10px 20px;
   text-decoration: none;
 }
-.sound-button-group:hover .button-label {
+.sound-button-group.show-use-it-btn .button-label {
   opacity: 0;
 }
-.sound-button-group:hover .button-label.button-label-2 {
+.sound-button-group.show-use-it-btn .button-label.button-label-2 {
   opacity: 1;
 }
 
@@ -655,6 +657,10 @@ input {
 }
 .sound-ideas-block .gap {
   column-gap: 40px;
+}
+.sound-ideas-block .check-link a:hover {
+  background-color: #C92E26;
+  color: #fff;
 }
 
 /**************** Block featured products ****************/

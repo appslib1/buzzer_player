@@ -18,6 +18,8 @@
     }
     &.loading{
         margin: auto 0;
+        max-width: 50px;
+        max-height: 50px;
     }
 }
 body:not(.wp-admin){
@@ -261,7 +263,7 @@ input{
             padding: 10px 20px;
             text-decoration: none;
         }
-        &:hover{
+        &.show-use-it-btn{
             .button-label {
                 opacity: 0;
                 &.button-label-2{

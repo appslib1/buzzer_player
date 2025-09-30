@@ -52,6 +52,7 @@
 
         $(document).on('click', '.audios .sound-button-group img', function(e) {
             e.preventDefault();
+            $(this).parent().addClass('show-use-it-btn');
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
