@@ -154,7 +154,7 @@ add_action( 'widgets_init', 'buzzerplayer_faq_widgets_init' );
 function buzzerplayer_footer_widgets_init() {
     register_sidebar(
         array(
-            'name'          => esc_html__( 'Footer widget', 'buzzerplayer' ),
+            'name'          => esc_html__( 'Footer Need help widget', 'buzzerplayer' ),
             'id'            => 'footer-widget', // Unique ID
             'description'   => esc_html__( 'Footer right widget', 'buzzerplayer' ),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',

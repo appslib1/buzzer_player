@@ -180,6 +180,19 @@ footer .links-column ul li a {
 footer .footer-contact {
   text-align: right;
 }
+@media (max-width: 768px) {
+  footer .footer-contact {
+    padding-bottom: 40px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 20px;
+  }
+  footer .footer-contact .widget_block {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 244px;
+  }
+}
 footer .footer-contact h4 {
   font-weight: 700;
   font-size: 24px;
@@ -236,20 +249,58 @@ footer .footer-bottom .legal-links .language:after {
 footer .footer-bottom .legal-links ul {
   display: inline-flex;
   gap: 30px;
+  margin-bottom: 0;
 }
 footer .footer-bottom .legal-links ul li a {
   color: #fff;
   font-size: 12px;
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  footer .footer-bottom .legal-links {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer .footer-bottom .legal-links .language {
+    margin: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  footer .footer-bottom .legal-links .language::after {
+    display: none;
+  }
+  footer .footer-bottom .legal-links ul {
+    display: block;
+    padding: 0;
+  }
+  footer .footer-bottom .legal-links ul li {
+    margin-bottom: 20px;
+  }
+  footer .footer-bottom .legal-links ul li a {
+    font-size: 18px;
+  }
+}
 footer .footer-bottom .payment-methods {
   text-align: right;
+}
+@media (max-width: 768px) {
+  footer .footer-bottom .payment-methods {
+    text-align: center;
+    margin-top: 41px;
+  }
 }
 footer .footer-bottom .copyright {
   color: #fff;
   margin-bottom: 0;
   margin-top: 26px;
   text-align: right;
+}
+@media (max-width: 768px) {
+  footer .footer-bottom .copyright {
+    text-align: center;
+    margin-top: 10px;
+  }
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {

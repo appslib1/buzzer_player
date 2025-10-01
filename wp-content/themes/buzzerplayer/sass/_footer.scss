@@ -32,6 +32,18 @@ footer{
     }
     .footer-contact{
         text-align: right;
+        @media (max-width: 768px){
+            padding-bottom: 40px;
+            border-bottom: 2px solid #fff;
+            margin-bottom: 20px;
+            .widget_block{
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 244px;
+            }
+            
+        }
         h4{
             font-weight: 700;
             font-size: 24px;
@@ -91,6 +103,7 @@ footer{
             ul{
                 display: inline-flex;
                 gap: 30px;
+                margin-bottom: 0;
                 li{
                     a{
                         color: #fff;
@@ -99,15 +112,47 @@ footer{
                     }
                 }
             }
+            @media (max-width: 768px){
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                .language{
+                    //padding: 0;
+                    margin: 0;
+                    margin-bottom: 20px;
+                    display: inline-block;
+                    &::after{
+                        display: none;
+                    }
+                }
+                ul{
+                    display: block;
+                    padding: 0;
+                    li{
+                        margin-bottom: 20px;
+                        a{
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
         }
         .payment-methods{
             text-align: right;
+            @media (max-width: 768px){
+                text-align: center;
+                margin-top: 41px;
+            }
         }
         .copyright{
             color: #fff;
             margin-bottom: 0;
             margin-top: 26px;
             text-align: right;
+            @media (max-width: 768px){
+                text-align: center;
+                margin-top: 10px;
+            }
         }
     }
 }

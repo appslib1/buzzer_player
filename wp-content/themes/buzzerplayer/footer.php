@@ -101,7 +101,7 @@ if ( isset( $locations['footer_menu_bottom'] ) ) {  // Replace with your locatio
 			</div>
 
 			<div class="row footer-bottom">
-				<div class="col-md-8">
+				<div class="col-md-8 d-flex align-items-end">
 					<div class="legal-links">
 						<span class="language">
 							English
