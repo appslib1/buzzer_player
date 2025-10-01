@@ -121,7 +121,7 @@
 
             var productThumbs = new Swiper(".productThumbs", {
                 spaceBetween: 10,
-                slidesPerView: 4,
+                slidesPerView: 5,
                 freeMode: true,
                 watchSlidesProgress: true,
                 navigation: {
