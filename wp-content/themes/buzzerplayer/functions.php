@@ -166,6 +166,21 @@ function buzzerplayer_footer_widgets_init() {
 }
 add_action( 'widgets_init', 'buzzerplayer_footer_widgets_init' );
 
+function buzzerplayer_footer_top_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Section au dessus du footer', 'buzzerplayer' ),
+            'id'            => 'section-dessus-footer', // Unique ID
+            'description'   => esc_html__( 'Section au dessus du footer', 'buzzerplayer' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+}
+add_action( 'widgets_init', 'buzzerplayer_footer_top_widgets_init' );
+
 
 function buzzerplayer_sm_widgets_init() {
     register_sidebar(
