@@ -111,12 +111,13 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                   <?php 
                     foreach ( $saved_audios as $audio ) {
                   ?>
-                      <div>
-                          <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
-                          <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                          <span><?= $audio['name'] ?></span>
-                          <button class="cancel remove-audio-session"></button>
-                      </div>
+                        <div>
+                            <div class="loading-animation"></div>
+                            <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
+                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                            <span><?= $audio['name'] ?></span>
+                            <button class="cancel remove-audio-session"></button>
+                        </div>
                   <?php 
                     }
                   ?>
@@ -260,7 +261,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 <div id="recordModal" class="recordModal modal">
     <div>
         <h2>Add a song</h2>
-        <span>
+        <span class="infos">
           You have up to <strong>3 minutes</strong> to record your song.
           You can also add multiple audio clips by recording multiple times.
         </span>
@@ -284,6 +285,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
               CONFIRM AND SELECT
             </a>
         </div>
+        <span class="back"></span>
         <span class="closeModal">&times;</span>
     </div>
 </div>
@@ -329,6 +331,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
               </a>
           </div>
         </div>
+        <span class="back"></span>
         <span class="closeModal">&times;</span>
     </div>
 </div>
@@ -409,14 +412,16 @@ jQuery(document).ready(function($){
         $(this).parents('.modal').removeClass('show');
     });
 
+    $(document).on("click",".modal .back",function(e) {
+        e.preventDefault();
+        $(this).parents('.modal').removeClass('show');
+        $('.addSongModal').addClass('show');
+    });
+
 
     $(document).on("click",".add-song",function(e) {
         e.preventDefault();
         $('.addSongModal').addClass('show');
-    });
-
-    $(document).on("click",".addSongModal .closeModal,.listAudiosModal .closeModal",function(e) {
-        $(this).parents('.modal').removeClass('show');
     });
 
     var currentBtn = null;
@@ -446,6 +451,18 @@ jQuery(document).ready(function($){
             }
         }
 
+         currentAudio.ontimeupdate = function() {
+            if (!isNaN(currentAudio.duration)) {
+                let remaining = Math.max(0, currentAudio.duration - currentAudio.currentTime);
+                let minutes = Math.floor(remaining / 60);
+                let seconds = Math.floor(remaining % 60);
+                let formatted = 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+                $(currentBtn).parent().find('.timer').text(formatted);
+            }
+        };
+
         currentAudio.onended = function() {
             $(currentBtn).removeClass('pause');
         };
@@ -465,10 +482,12 @@ jQuery(document).ready(function($){
             $(this).addClass('active');
         }
         if($('.listAudiosModal ul li button.active').length){
-              $('.listAudiosModal .confirm-wrapper').removeClass('d-none');
+            $('#audio-list').addClass('custom-pt');
+            $('.listAudiosModal .confirm-wrapper').removeClass('d-none');
         }
         else{
-              $('.listAudiosModal .confirm-wrapper').addClass('d-none');
+            $('#audio-list').removeClass('custom-pt');
+            $('.listAudiosModal .confirm-wrapper').addClass('d-none');
         }
         
     });
@@ -524,22 +543,25 @@ jQuery(document).ready(function($){
           const base64Audio = reader.result;
 
           // Send AJAX request to save in session
-          $.ajax({
-              url: '<?php echo admin_url("admin-ajax.php"); ?>',
-              type: 'POST',
-              data: {
-                  action: 'save_recorded_audio',
-                  audio: base64Audio,
-                  name: "Recorded " + new Date().toLocaleString()
-              },
-              success: function (response) {
-                  if (response.success) {
-                        location.reload();
-                  } else {
-                      alert("Failed to save audio: " + response.data);
-                  }
-              }
-          });
+            $('.modal').removeClass('show');
+            $('.addSongModal').addClass('show');
+            $('.addSongModal .btns').addClass('loading');
+            $.ajax({
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                type: 'POST',
+                data: {
+                    action: 'save_recorded_audio',
+                    audio: base64Audio,
+                    name: "Recorded " + new Date().toLocaleString()
+                },
+                success: function (response) {
+                    if (response.success) {
+                            location.reload();
+                    } else {
+                        alert("Failed to save audio: " + response.data);
+                    }
+                }
+            });
       };
 
     });
@@ -635,39 +657,43 @@ jQuery(document).ready(function($){
     
     //Confirmation des songs fournis par le pop up
     $(document).on("click",".listAudiosModal .buzzer-default-btn",function(e) {
-      e.preventDefault();
-      
-      var audiosList = $('.listAudiosModal #audio-list li button.active');
+        e.preventDefault();
+        
+        var audiosList = $('.listAudiosModal #audio-list li button.active');
 
-      var audioElements = [];
+        var audioElements = [];
 
-      audiosList.each(function() {
-          var url = $(this).find('a').attr('data-audio');
-          var title = $(this).find('.title').text();
-          audioElements.push({ name: title, url: url });
-          //if (url) audioUrls.push(url);
-      });
+        audiosList.each(function() {
+            var url = $(this).find('a').attr('data-audio');
+            var title = $(this).find('.title').text();
+            audioElements.push({ name: title, url: url });
+            //if (url) audioUrls.push(url);
+        });
 
-      $.ajax({
-          url: '<?php echo admin_url("admin-ajax.php"); ?>', // WordPress provides this in admin, or use localized script for frontend
-          type: 'POST',
-          data: {
-              action: 'save_audios_session', // PHP hook
-              audios: audioElements
-          },
-          success: function(response) {
-              //console.log(response);
-              location.reload();
-          }
-      });
+        $('.modal').removeClass('show');
+        $('.addSongModal').addClass('show');
+        $('.addSongModal .btns').addClass('loading');
+        
+        $.ajax({
+            url: '<?php echo admin_url("admin-ajax.php"); ?>', // WordPress provides this in admin, or use localized script for frontend
+            type: 'POST',
+            data: {
+                action: 'save_audios_session', // PHP hook
+                audios: audioElements
+            },
+            success: function(response) {
+                location.reload();
+            }
+        });
     });
 
     var currentBtn_1 = null;
     let currentAudio_1 = null;
 
-    $(document).on("click",".product-top-section .select-audio-files .play-recorded-audio",function(e) {
+    $(document).on("click",".product-top-section .select-audio-files > div",function(e) {
         e.preventDefault();
-        var audioUrl = $(this).attr('data-audio');
+        var audioUrl = $(this).find('button').attr('data-audio');
+        console.log(audioUrl);  
 
         if (!currentAudio_1 || currentAudio_1.src !== audioUrl) {
             if (currentAudio_1) {
@@ -676,17 +702,17 @@ jQuery(document).ready(function($){
                 $(currentBtn_1).removeClass('pause');
             }
             currentAudio_1 = new Audio(audioUrl);
-            currentBtn_1 = this;
+            currentBtn_1 = $(this).find('button');
             currentAudio_1.play();
-            $(this).addClass('pause');
+            $(this).find('button').addClass('pause');
         }
         else {
             if (currentAudio_1.paused) {
                 currentAudio_1.play();
-                $(this).addClass('pause');
+                $(this).find('button').addClass('pause');
             } else {
                 currentAudio_1.pause();
-                $(this).removeClass('pause');
+                $(this).find('button').removeClass('pause');
             }
         }
 
@@ -699,6 +725,7 @@ jQuery(document).ready(function($){
 
     $(document).on("click",".product-top-section .select-audio-files .remove-audio-session",function(e) {
         var audioUrl = $(this).parent().find('button').attr('data-audio');
+        $(this).parent().addClass("loading");
         $.ajax({
             url: '<?php echo admin_url("admin-ajax.php"); ?>',
             type: 'POST',
