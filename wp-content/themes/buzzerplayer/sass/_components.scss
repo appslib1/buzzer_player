@@ -144,12 +144,13 @@ body:not(.wp-admin){
     }
 }
 
+select,
 textarea,
 input{
-    padding: 10.25px 22px;
-    border: 2px solid variables.$noir-eben;
+    padding: 10.25px 22px !important;
+    border: 2px solid #1E1E1E !important;
     font-size: 17px;
-    border-radius: 5px;
+    border-radius: 5px !important;
 }
 
 .product-card {
