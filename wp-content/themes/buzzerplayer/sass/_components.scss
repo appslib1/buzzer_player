@@ -33,6 +33,14 @@ body:not(.wp-admin){
     font-size: 18px !important;
     transition: .3s all;
     color: variables.$noir-eben !important;
+    select,
+    textarea,
+    input{
+        padding: 10.25px 22px !important;
+        border: 2px solid #1E1E1E !important;
+        font-size: 17px;
+        border-radius: 5px !important;
+    }
     a{
         transition: .3s all;
     }
@@ -142,15 +150,6 @@ body:not(.wp-admin){
             text-align: left;
         }
     }
-}
-
-select,
-textarea,
-input{
-    padding: 10.25px 22px !important;
-    border: 2px solid #1E1E1E !important;
-    font-size: 17px;
-    border-radius: 5px !important;
 }
 
 .product-card {

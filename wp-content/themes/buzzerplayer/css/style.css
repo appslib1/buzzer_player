@@ -337,6 +337,14 @@ body:not(.wp-admin) {
   transition: 0.3s all;
   color: #1E1E1E !important;
 }
+body:not(.wp-admin) select,
+body:not(.wp-admin) textarea,
+body:not(.wp-admin) input {
+  padding: 10.25px 22px !important;
+  border: 2px solid #1E1E1E !important;
+  font-size: 17px;
+  border-radius: 5px !important;
+}
 body:not(.wp-admin) a {
   transition: 0.3s all;
 }
@@ -441,15 +449,6 @@ body:not(.wp-admin) input:hover {
 }
 .body:not(.wp-admin) .page-title.left {
   text-align: left;
-}
-
-select,
-textarea,
-input {
-  padding: 10.25px 22px !important;
-  border: 2px solid #1E1E1E !important;
-  font-size: 17px;
-  border-radius: 5px !important;
 }
 
 .product-card {
