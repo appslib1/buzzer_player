@@ -123,12 +123,14 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 			</div>
 			<?php if ( wc_coupons_enabled() ) { ?>
+                <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" method="post">
                 <div class="coupon">
                     <label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> 
                     <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> 
                     <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
                     <?php do_action( 'woocommerce_cart_coupon' ); ?>
                 </div>
+			</form>
             <?php } ?>
 		</div>
 	</div>

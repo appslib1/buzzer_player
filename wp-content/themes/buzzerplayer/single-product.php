@@ -196,24 +196,16 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                 <div class="product-details">
                     <?php the_content() ?>
                 </div>
+                <?php if(get_field('shipping_and_delivery') != "") { ?>
                 <div class="shipping">
                     <h3>Shipping and delivery</h3>
                     <div>
-                        <strong>Standard delivery</strong>
-                        <ul>
-                            <li>FREE order in the UK</li>
-                            <li>£3.50 on all orders less than £20</li>
-                        </ul>
-                        <br>
-                        <strong>Delivery</strong>
-                        <ul>
-                          <li>Order by 7pm Monday to Friday for next working day</li>
-                        </ul>
-                        <br>
-                        <strong>More info</strong>
-                        <p>Visit our <a href="">Shipping & Delivery</a> page for more detailed info.</p>
+                        <?php
+                            echo get_field('shipping_and_delivery')
+                        ?>
                     </div>
                 </div>
+                <?php } ?>
               </div>
               <div class="col-md-6">
                   <?php if ( is_active_sidebar( 'faq-produit' ) ) : ?>

@@ -327,6 +327,8 @@ footer .footer-bottom .copyright {
   margin: auto 0;
   max-width: 50px;
   max-height: 50px;
+  margin-left: 43.5px;
+  margin-right: 43.5px;
 }
 
 body:not(.wp-admin) {
