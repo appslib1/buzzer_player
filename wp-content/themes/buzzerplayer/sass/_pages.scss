@@ -375,6 +375,30 @@
                     text-overflow: ellipsis;
                 }
             }
+            .add-other-song-wrapper{
+                position: relative;
+                display: block;
+                margin-bottom: 60px;
+                width: fit-content;
+                button{
+                    width: 24px;
+                    height: 24px;
+                    background-image: url(../assets/icons/help.svg);
+                    transition: .3s all;
+                    position: absolute;
+                    left: calc(100% + 14px);
+                    bottom: 0;
+                    top: 0;
+                    margin: auto;
+                    border: none;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: #fff;
+                    &:hover{
+                        background-image: url(../assets/icons/help-red.svg);
+                    }
+                }
+            }
             .add-another-audio{
                 font-size: 18px;
                 font-weight: 400;
@@ -382,7 +406,6 @@
                 position: relative;
                 display: inline-block;
                 padding-left: 44px;
-                margin-bottom: 60px;
                 width: fit-content;
                 background: #fff;
                 border: 2px solid variables.$rouge;

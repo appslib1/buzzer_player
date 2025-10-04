@@ -121,9 +121,12 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                   <?php 
                     }
                   ?>
-                  <a href="" class="buzzer-default-btn add-another-audio add-song">
-                      Add another audio
-                  </a>
+                    <span class="add-other-song-wrapper">
+                        <a href="" class="buzzer-default-btn add-another-audio add-song">
+                            Add another audio
+                        </a>
+                        <button class="help"></button>
+                    </span>
               </div>
           <?php 
             }
