@@ -339,11 +339,21 @@ body:not(.wp-admin) {
 }
 body:not(.wp-admin) select,
 body:not(.wp-admin) textarea,
-body:not(.wp-admin) input {
+body:not(.wp-admin) input[type=text],
+body:not(.wp-admin) input[type=email],
+body:not(.wp-admin) input[type=tel] {
   padding: 10.25px 22px !important;
   border: 2px solid #1E1E1E !important;
   font-size: 17px;
   border-radius: 5px !important;
+}
+body:not(.wp-admin) .select2-container .select2-dropdown, body:not(.wp-admin) .select2-container .select2-selection {
+  border: 2px solid #1E1E1E !important;
+  font-size: 17px;
+  border-radius: 5px !important;
+}
+body:not(.wp-admin) .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 22px !important;
 }
 body:not(.wp-admin) a {
   transition: 0.3s all;
@@ -379,6 +389,7 @@ body:not(.wp-admin) input[type=checkbox] {
   padding: 0;
   min-width: 20px;
   accent-color: #1E1E1E;
+  border-radius: 5px;
 }
 body:not(.wp-admin) input::placeholder {
   color: #BDBDBD;
