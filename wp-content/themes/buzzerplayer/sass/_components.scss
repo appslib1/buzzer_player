@@ -256,6 +256,16 @@ body:not(.wp-admin){
     }
 }
 
+.wp-block-lazyblock-idees-de-bruitage{
+    .sound-button-group {
+        @media (max-width: 768px){
+            &:nth-child(n+5){
+                display: none;
+            }
+        }
+    }
+}
+
 .sound-button-group {
         &.loading{
             border: 8px solid #f3f3f3; /* Light gray */
@@ -275,9 +285,7 @@ body:not(.wp-admin){
         }
         @media (max-width: 768px){
             flex: 0 0 40%;
-            &:nth-child(n+5){
-                display: none;
-            }
+            
         }
         .sound-button {
             width: 116px;
