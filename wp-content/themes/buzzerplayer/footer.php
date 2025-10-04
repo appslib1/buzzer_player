@@ -65,6 +65,15 @@ if ( isset( $locations['footer_menu_bottom'] ) ) {  // Replace with your locatio
 	</div>
 	<?php endif; ?>
 
+
+	<lottie-player 
+		src="https://assets5.lottiefiles.com/datafiles/zc3XRzudyWE36ZBJr7PIkkqq0PFIrIBgp4ojqShI/newAnimation.json"  
+		background="transparent"  
+		speed="1" 
+		loop 
+		autoplay >
+	</lottie-player>
+
 	<footer class="footer">
 		<div class="footer-container container">
 			<div class="row">

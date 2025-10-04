@@ -207,6 +207,7 @@ function buzzerplayer_scripts() {
 
 	wp_enqueue_script( 'bootstrap-js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'buzzerplayer-swiper', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lottie-js', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', array(), _S_VERSION, true );
 
 
 //	wp_enqueue_script( 'buzzerplayer-js', get_template_directory_uri() . '/js/custom.js', array(), _S_VERSION, true );
@@ -718,3 +719,10 @@ function redirect_to_cart_page() {
     return wc_get_cart_url();
 }
 
+
+
+function allow_json_uploads($mimes) {
+    $mimes['json'] = 'application/json';
+    return $mimes;
+}
+add_filter('upload_mimes', 'allow_json_uploads');
