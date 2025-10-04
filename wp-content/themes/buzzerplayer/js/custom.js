@@ -134,6 +134,20 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                breakpoints: {
+                    0: {         // from 0px up
+                        slidesPerView: 2,
+                    },
+                    480: {       // from 480px up
+                        slidesPerView: 3,
+                    },
+                    768: {       // from 768px up
+                        slidesPerView: 4,
+                    },
+                    1024: {      // from 1024px up
+                        slidesPerView: 5,
+                    },
+                },
             });
 
             var productSwiper = new Swiper(".productSwiper", {

@@ -1251,7 +1251,6 @@ body:not(.wp-admin) input:hover {
 }
 .page-template-template-product main .audios-wrapper .audios .sound-button-group {
   width: 20%;
-  max-width: 131px;
 }
 @media (max-width: 991px) {
   .page-template-template-product main .audios-wrapper .audios .sound-button-group {
