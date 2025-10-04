@@ -12,7 +12,7 @@ header {
   background-color: #fff !important;
   position: sticky;
   top: 0;
-  z-index: 999999;
+  z-index: 9999;
 }
 header.shadow {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2509803922);
@@ -307,37 +307,6 @@ footer .footer-bottom .copyright {
   line-height: normal;
 }
 
-input[type=checkbox]:not(:checked),
-input[type=radio]:not(:checked) {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  border: none;
-}
-
-input[type=checkbox] {
-  -webkit-box-shadow: 0px 0px 0px 2px #1E1E1E;
-  -moz-box-shadow: 0px 0px 0px 2px #1E1E1E;
-  box-shadow: 0px 0px 0px 2px #1E1E1E;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  min-width: 20px;
-  accent-color: #1E1E1E;
-}
-
-input::placeholder {
-  color: #BDBDBD;
-}
-input:focus-visible, input:focus {
-  outline: none;
-  border: 2px solid #1E1E1E;
-}
-input:hover {
-  background-color: #FDFBEE;
-}
-
 .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
   background-color: #C92E26;
   border-color: #C92E26;
@@ -382,6 +351,34 @@ body:not(.wp-admin) .section-title {
   body:not(.wp-admin) .section-title {
     font-size: 16px;
   }
+}
+body:not(.wp-admin) input[type=checkbox]:not(:checked),
+body:not(.wp-admin) input[type=radio]:not(:checked) {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+}
+body:not(.wp-admin) input[type=checkbox] {
+  -webkit-box-shadow: 0px 0px 0px 2px #1E1E1E;
+  -moz-box-shadow: 0px 0px 0px 2px #1E1E1E;
+  box-shadow: 0px 0px 0px 2px #1E1E1E;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  min-width: 20px;
+  accent-color: #1E1E1E;
+}
+body:not(.wp-admin) input::placeholder {
+  color: #BDBDBD;
+}
+body:not(.wp-admin) input:focus-visible, body:not(.wp-admin) input:focus {
+  outline: none;
+  border: 2px solid #1E1E1E;
+}
+body:not(.wp-admin) input:hover {
+  background-color: #FDFBEE;
 }
 
 .add_to_cart_button,
@@ -2272,6 +2269,12 @@ input {
 .page-template-template-checkout main .cart-cards .cart-card .cart-head .audios-list .audio span,
 .page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .audio span {
   font-size: 14px;
+  max-width: 150px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .page-template-template-checkout main .cart-cards .cart-card .cart-head .audios-list .audio button,
 .page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .audio button {
@@ -2361,8 +2364,12 @@ input {
   border-top-width: 2px;
   border-bottom-width: 2px;
 }
-.page-template-template-checkout main .cart-products .add-more-products a,
-.page-template-template-cart main .cart-products .add-more-products a {
+.page-template-template-checkout main .empty-text,
+.page-template-template-cart main .empty-text {
+  margin-bottom: 24px;
+}
+.page-template-template-checkout main .add-more-products a,
+.page-template-template-cart main .add-more-products a {
   padding: 7.5px 18px 7.5px 34px;
   border: 2px solid #C92E26;
   border-radius: 5px;
@@ -2372,8 +2379,8 @@ input {
   width: fit-content;
   position: relative;
 }
-.page-template-template-checkout main .cart-products .add-more-products a::after,
-.page-template-template-cart main .cart-products .add-more-products a::after {
+.page-template-template-checkout main .add-more-products a::after,
+.page-template-template-cart main .add-more-products a::after {
   position: absolute;
   content: "";
   top: 0;
@@ -2385,13 +2392,13 @@ input {
   background-image: url("../assets/icons/add.svg");
   transition: 0.3s all;
 }
-.page-template-template-checkout main .cart-products .add-more-products a:hover,
-.page-template-template-cart main .cart-products .add-more-products a:hover {
+.page-template-template-checkout main .add-more-products a:hover,
+.page-template-template-cart main .add-more-products a:hover {
   background-color: #ba3c30;
   color: white;
 }
-.page-template-template-checkout main .cart-products .add-more-products a:hover::after,
-.page-template-template-cart main .cart-products .add-more-products a:hover::after {
+.page-template-template-checkout main .add-more-products a:hover::after,
+.page-template-template-cart main .add-more-products a:hover::after {
   filter: brightness(0) invert(1); /* makes it white */
 }
 .page-template-template-checkout main .cart-collaterals,
