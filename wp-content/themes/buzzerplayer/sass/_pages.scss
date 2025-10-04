@@ -1339,6 +1339,12 @@
                         input,label,a{
                             color: variables.$rouge;
                         }
+                        input{
+                            -webkit-box-shadow: 0px 0px 0px 2px variables.$rouge;
+                            -moz-box-shadow: 0px 0px 0px 2px variables.$rouge;
+                            box-shadow: 0px 0px 0px 2px variables.$rouge;
+                        }
+
                     }
                     input{
                         margin-top: 5px;
@@ -1701,6 +1707,19 @@
         .order-card{
             display: flex;
             gap: 16px;
+            position: relative;
+            .qte{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                .title{
+                    font-size: 10px;
+                }
+            }
             .audios-list{
                 .audio{
                     display: flex;
@@ -1709,6 +1728,12 @@
                     margin-bottom: 10px;
                     span{
                         font-size: 14px;
+                        max-width: 200px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     button{
                         width: 22px;
@@ -1770,7 +1795,7 @@
     .contact-card{
         padding: 22px 20px;
         border: 2px solid #1E1E1E;
-        border-radius: 5px;
+        border-radius: 10px;
         @media (max-width: 768px) {
             margin-top: 20px;
         }

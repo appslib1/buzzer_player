@@ -123,7 +123,12 @@ do_action( 'woocommerce_before_cart' ); ?>
     </div>
 
     <div class="cart-actions d-none" style="margin-top:20px;">
-        <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : '' ); ?>" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
+        <button 
+            onclick="window.onbeforeunload = null;" 
+            type="submit" 
+            class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : '' ); ?>" 
+            name="update_cart" 
+            value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
             <?php esc_html_e('Update cart', 'woocommerce'); ?>
         </button>
         <?php do_action('woocommerce_cart_actions'); ?>
@@ -134,7 +139,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
     <div class="cart-products">
         <div class="add-more-products">
-            <a href="<?= home_url('shop') ?>" class="add-prodcuts">
+            <a href="<?= home_url('sounds') ?>" class="add-prodcuts">
                 Add another buzzer
             </a>
         </div>

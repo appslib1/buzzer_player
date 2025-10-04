@@ -34,7 +34,13 @@
 
         $(document).on('change', 'input.qty', function() {
             $('button[name="update_cart"]').prop('disabled', false).trigger('click');
+            $(document).ajaxComplete(function(event, xhr, settings) {
+                if (settings.data && settings.data.indexOf('update_cart') !== -1) {
+                    window.location.reload();
+                }
+            });
         });
+        
         
 
         jQuery(document).ready(function($) {

@@ -2491,6 +2491,12 @@ input {
 .page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error a {
   color: #C92E26;
 }
+.page-template-template-checkout main .cart-collaterals .cart_totals .accept-check.error input,
+.page-template-template-cart main .cart-collaterals .cart_totals .accept-check.error input {
+  -webkit-box-shadow: 0px 0px 0px 2px #C92E26;
+  -moz-box-shadow: 0px 0px 0px 2px #C92E26;
+  box-shadow: 0px 0px 0px 2px #C92E26;
+}
 .page-template-template-checkout main .cart-collaterals .cart_totals .accept-check input,
 .page-template-template-cart main .cart-collaterals .cart_totals .accept-check input {
   margin-top: 5px;
@@ -2864,6 +2870,19 @@ input {
 .woocommerce-order-received .orders-cards .order-card {
   display: flex;
   gap: 16px;
+  position: relative;
+}
+.woocommerce-order-received .orders-cards .order-card .qte {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.woocommerce-order-received .orders-cards .order-card .qte .title {
+  font-size: 10px;
 }
 .woocommerce-order-received .orders-cards .order-card .audios-list .audio {
   display: flex;
@@ -2873,6 +2892,12 @@ input {
 }
 .woocommerce-order-received .orders-cards .order-card .audios-list .audio span {
   font-size: 14px;
+  max-width: 200px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .woocommerce-order-received .orders-cards .order-card .audios-list .audio button {
   width: 22px;
@@ -2925,7 +2950,7 @@ input {
 .woocommerce-order-received .contact-card {
   padding: 22px 20px;
   border: 2px solid #1E1E1E;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 @media (max-width: 768px) {
   .woocommerce-order-received .contact-card {

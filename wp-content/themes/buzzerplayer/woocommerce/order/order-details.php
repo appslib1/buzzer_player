@@ -69,6 +69,11 @@ if ( $show_downloads ) {
                 $price             = wc_price( $product->get_price() );
                 $quantity          = $item->get_quantity();
                 $subtotal          = wc_price( $product->get_price() * $quantity );
+
+                // Assuming you have the $order object
+                $shipping_address = $order->get_formatted_shipping_address();
+                $billing_address  = $order->get_formatted_billing_address();
+
                 ?>
                 <div class="order-card">
                     <div class="thumb">
@@ -90,6 +95,10 @@ if ( $show_downloads ) {
                             </div>
                         <?php } ?>
                     </div>
+                    <div class="qte">
+                        <span class="title">QUANTITY</span>
+                        <span class="nb"><?= $quantity ?></span>
+                    </div>
                 </div>
                 <?php } ?>
             </div>
@@ -103,10 +112,7 @@ if ( $show_downloads ) {
                 <div class="address">
                     <p>Delivery address</p>
                     <span>
-                        Buzzer Player<br>
-                        74 Haverstock Hill<br>
-                        NW32BE<br>
-                        London
+                        <?= $billing_address ?>
                     </span>
                 </div>
             </div>
