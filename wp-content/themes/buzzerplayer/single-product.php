@@ -135,18 +135,18 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                   <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
               </label>
               <!-- Add to Cart Button -->
-              <?php 
-                if ( $product ) {
-                    $add_to_cart_url = $product->add_to_cart_url();
-                    $add_to_cart_text = "Add to cart"
+              <?php if ( $product ) {
+                    $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
+                    $add_to_cart_text = "Add to cart";
                     ?>
-                    <a id="add-to-cart-btn" href="<?php echo esc_url( $add_to_cart_url ); ?>" 
-                    class="btn btn-primary btn-lg mt-3 add_to_cart_button ajax_add_to_cart "
-                    data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
+                    <a id="add-to-cart-btn" 
+                    href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
+                    class="btn btn-primary add_to_cart_button btn-lg mt-3"
                     rel="nofollow">
-                    <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                        <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
                     </a>
                 <?php } ?>
+
           <?php } else { ?>
             <a href="" class="buzzer-default-btn add-song" id="openModal"> 
               <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">

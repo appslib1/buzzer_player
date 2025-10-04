@@ -2293,10 +2293,17 @@ input {
   inset: 0;
   margin: auto;
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .page-template-template-checkout main .cart-cards .cart-card .cart-head .audios-list .audio button.pause:after,
 .page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .audio button.pause:after {
   background-image: url("../assets/icons/pause-red.svg");
+}
+.page-template-template-checkout main .cart-cards .cart-card .cart-head .audios-list .left-items,
+.page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .left-items {
+  font-size: 12px;
+  padding-left: 29px;
 }
 .page-template-template-checkout main .cart-cards .cart-card .quantity-group,
 .page-template-template-cart main .cart-cards .cart-card .quantity-group {
@@ -2322,7 +2329,7 @@ input {
   height: 27px;
   padding-bottom: 0;
   padding-top: 0;
-  border: 1px solid;
+  border: 2px solid;
   border-color: #1E1E1E;
   position: relative;
   width: 37px;
@@ -2351,6 +2358,8 @@ input {
   border: 1px solid;
   border-radius: 0;
   height: 100%;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
 }
 .page-template-template-checkout main .cart-products .add-more-products a,
 .page-template-template-cart main .cart-products .add-more-products a {

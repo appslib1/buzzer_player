@@ -61,15 +61,23 @@ do_action( 'woocommerce_before_cart' ); ?>
                     <h3><a href="<?= $product_permalink ?>"><?= $product_name ?></a></h3>
                     <div class="audios-list">
                         <?php if ( ! empty( $cart_item['selected_audios'] ) ) : ?>
-                            <?php foreach ( $cart_item['selected_audios'] as $audio ) : 
+                            <?php foreach ( $cart_item['selected_audios'] as $key => $audio ) : 
                                 $audio_name = esc_html( $audio['name'] );
                                 $audio_url  = esc_url( $audio['url'] );
                             ?>
-                                <div class="audio">
-                                    <button data-audio="<?= $audio_url ?>"></button>
-                                    <span><?= $audio_name ?></span>
-                                </div>
+                                <?php if ( $key <= 1 ) : ?>
+                                    <div class="audio">
+                                        <button data-audio="<?= $audio_url ?>"></button>
+                                        <span><?= $audio_name ?></span>
+                                    </div>
+                                <?php endif; ?>
                             <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if ( count($cart_item['selected_audios']) > 2 ) : ?>
+                            <div class="left-items">
+                                <i>+<?= count($cart_item['selected_audios']) - 2 ?> fart sounds</i>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>

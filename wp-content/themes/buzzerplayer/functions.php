@@ -713,3 +713,8 @@ function save_tracking_number_admin_field($order_id, $post){
     }
 }
 /*************************/
+add_filter( 'woocommerce_add_to_cart_redirect', 'redirect_to_cart_page' );
+function redirect_to_cart_page() {
+    return wc_get_cart_url();
+}
+

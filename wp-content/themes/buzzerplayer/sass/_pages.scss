@@ -1161,6 +1161,8 @@
                                     inset: 0;
                                     margin: auto;
                                     background-size: contain;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
                                 }
                                 &.pause{
                                     &:after{
@@ -1168,6 +1170,10 @@
                                     }
                                 }
                             }
+                        }
+                        .left-items{
+                            font-size: 12px;
+                            padding-left: 29px;
                         }
                     }
                 }
@@ -1191,7 +1197,7 @@
                             height: 27px;
                             padding-bottom: 0;
                             padding-top: 0;
-                            border: 1px solid;
+                            border: 2px solid;
                             border-color: variables.$noir-eben;
                             position: relative;
                             width: 37px;
@@ -1218,6 +1224,8 @@
                             border: 1px solid;
                             border-radius: 0;
                             height: 100%;
+                            border-top-width: 2px;
+                            border-bottom-width: 2px;
                         }
                     }
                 }
