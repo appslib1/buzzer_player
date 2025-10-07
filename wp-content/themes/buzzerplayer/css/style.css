@@ -380,6 +380,12 @@ body:not(.wp-admin) input[type=radio]:not(:checked) {
   appearance: none;
   border: none;
 }
+body:not(.wp-admin) input[type=checkbox]:checked,
+body:not(.wp-admin) input[type=radio]:checked {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 body:not(.wp-admin) input[type=checkbox] {
   -webkit-box-shadow: 0px 0px 0px 2px #1E1E1E;
   -moz-box-shadow: 0px 0px 0px 2px #1E1E1E;
@@ -1027,6 +1033,11 @@ body:not(.wp-admin) input:hover {
     padding-top: 64px;
   }
 }
+@media (max-width: 768px) {
+  .faq-section {
+    padding-top: 38px;
+  }
+}
 .faq-section .faq-card {
   max-width: 780px;
   margin: auto;
@@ -1293,7 +1304,7 @@ body:not(.wp-admin) input:hover {
 }
 @media (max-width: 768px) {
   .single-product .product-top-section {
-    padding: 14px 0;
+    padding: 14px 0 38px;
   }
 }
 .single-product .product-top-section h1 {
@@ -1324,6 +1335,12 @@ body:not(.wp-admin) input:hover {
   width: 513px;
   height: 430px;
   object-fit: contain;
+}
+@media (max-width: 768px) {
+  .single-product .product-top-section .productSwiper img {
+    height: 100%;
+    width: 100%;
+  }
 }
 .single-product .product-top-section .productThumbsContainer {
   padding: 0 41px;
@@ -1432,13 +1449,13 @@ body:not(.wp-admin) input:hover {
 .single-product .product-top-section .select-audio-files > div {
   border: 2px solid #1E1E1E;
   width: 100%;
-  padding: 13px 0;
+  padding: 8px 0;
   border-radius: 10px;
   position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  min-height: 62px;
+  min-height: 54px;
 }
 .single-product .product-top-section .select-audio-files > div:hover {
   background-color: #FDFBEE;
@@ -1512,6 +1529,11 @@ body:not(.wp-admin) input:hover {
   display: block;
   margin-bottom: 60px;
   width: fit-content;
+}
+@media (max-width: 768px) {
+  .single-product .product-top-section .select-audio-files .add-other-song-wrapper {
+    margin-bottom: 38px;
+  }
 }
 .single-product .product-top-section .select-audio-files .add-other-song-wrapper button {
   width: 24px;

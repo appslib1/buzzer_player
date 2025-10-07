@@ -738,6 +738,15 @@ jQuery(document).ready(function($){
         });
     });
 
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.modal > div,a.add-another-audio').length) {
+            // Clicked outside .my-div
+            if($('.modal').hasClass('show')){
+                $('.modal').removeClass('show');
+            }
+        }
+    });
+
     
     $('#uploadAudioForm').submit(function(e) {
         e.preventDefault();

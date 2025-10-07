@@ -431,6 +431,9 @@
         padding-right: 15px;
         padding-top: 64px;
     }
+    @media (max-width: 768px) {
+        padding-top: 38px;
+    }
     .faq-card{
         max-width: 780px;
         margin: auto;

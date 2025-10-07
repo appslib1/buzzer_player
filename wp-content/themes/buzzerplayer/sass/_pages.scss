@@ -156,7 +156,7 @@
         margin: auto;
         padding: 50px 0;
         @media (max-width: 768px){
-            padding: 14px 0;
+            padding: 14px 0 38px;
         }
         h1{
             text-align: left;
@@ -183,6 +183,10 @@
                 width: 513px;
                 height: 430px;
                 object-fit: contain;
+                @media (max-width: 768px){
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
         .productThumbsContainer{
@@ -297,13 +301,13 @@
             &>div{
                 border: 2px solid #1E1E1E;
                 width: 100%;
-                padding: 13px 0;
+                padding: 8px 0;
                 border-radius: 10px;
                 position: relative;
                 display: flex;
                 align-items: center;
                 margin-bottom: 20px;
-                min-height: 62px;
+                min-height: 54px;
                 &:hover{
                     background-color: variables.$beige-color;
                     cursor: pointer;
@@ -379,6 +383,9 @@
                 display: block;
                 margin-bottom: 60px;
                 width: fit-content;
+                @media (max-width: 768px){
+                    margin-bottom: 38px;
+                }
                 button{
                     width: 24px;
                     height: 24px;
