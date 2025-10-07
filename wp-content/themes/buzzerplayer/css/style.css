@@ -1024,6 +1024,7 @@ body:not(.wp-admin) input:hover {
   .faq-section {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 64px;
   }
 }
 .faq-section .faq-card {
@@ -1043,7 +1044,7 @@ body:not(.wp-admin) input:hover {
 }
 @media (max-width: 768px) {
   .faq-section .faq-card::before {
-    bottom: calc(100% - 44px);
+    bottom: calc(100% + 34px);
   }
 }
 .faq-section .accordion {
@@ -1066,6 +1067,7 @@ body:not(.wp-admin) input:hover {
   background: unset;
   box-shadow: none;
   color: #1E1E1E;
+  font-size: 24px;
 }
 .faq-section .accordion .faq-item button::after {
   background-image: url("../assets/icons/arrow_drop_down.svg");

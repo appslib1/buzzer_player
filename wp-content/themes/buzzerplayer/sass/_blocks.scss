@@ -429,6 +429,7 @@
     @media (max-width: 991px){
         padding-left: 15px;
         padding-right: 15px;
+        padding-top: 64px;
     }
     .faq-card{
         max-width: 780px;
@@ -444,7 +445,7 @@
             height: 66px;
             background-size: cover;
             @media (max-width: 768px){
-                bottom: calc(100% - 44px);
+                bottom: calc(100% + 34px);
             }
         }
     }
@@ -468,6 +469,7 @@
                 background: unset;
                 box-shadow: none;
                 color: variables.$noir-eben;
+                font-size: 24px;
                 &::after{
                     background-image: url("../assets/icons/arrow_drop_down.svg");
                     background-size: 10px;
