@@ -1551,7 +1551,7 @@
                     span{
                         &:first-child{
                             &:after{
-                                transform: rotate(180deg);
+                                transform: rotate(0deg);
                             }
                         }
                     }
@@ -1571,6 +1571,7 @@
                             top: 0;
                             bottom: 0;
                             background-image: url("../assets/icons/arrow_drop_down.svg");
+                            transform: rotate(180deg);
                         }
                     }
                 }
@@ -1590,7 +1591,8 @@
                         font-weight: 700;
                         font-size: 20px;
                         padding-top: 20px;
-                        border-top: 1px solid #B4B4B4;
+                        //border-top: 1px solid #B4B4B4;
+
                     }
                 }
                 .coupon{

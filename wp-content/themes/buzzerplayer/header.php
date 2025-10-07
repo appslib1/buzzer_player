@@ -58,7 +58,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 								<img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/cart.svg') ?>" alt="cart">
 								<?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
 								<?php if ( $cart_count > 0 ) : ?>
-									<span class="cart-count"><?= $cart_count; ?></span>
+									<span class="cart-count"></span>
 								<?php endif; ?>
 							</a>
 							<button class="navbar-toggler" id="customToggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 										<img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/cart.svg') ?>" alt="cart">
 										<?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
 										<?php if ( $cart_count > 0 ) : ?>
-											<span class="cart-count"><?= $cart_count; ?></span>
+											<span class="cart-count"></span>
 										<?php endif; ?>
 										<label for="">Basket</label>
 									</a>
