@@ -372,7 +372,7 @@
                 }
                 span{
                     display: -webkit-box;
-                    -webkit-line-clamp: 2;
+                    -webkit-line-clamp: 1;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -504,6 +504,9 @@
                 align-items: center;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                @media (max-width: 768px){
+                    gap: 14px;
+                }
                 .feature-item{
                     display: flex;
                     align-items: center;
@@ -511,6 +514,14 @@
                     p{
                         margin: 0;
                         height: fit-content;
+                        @media (max-width: 768px){
+                            font-size: 14px;
+                        }
+                    }
+                    img{
+                        @media (max-width: 768px){
+                            max-width: 20px;
+                        }
                     }
                 }
             }
@@ -545,6 +556,9 @@
             }
         }
         .faq-section{
+            .accordion{
+                margin-bottom: 0;
+            }
             .faq-card{
                 .faq-title{
                     text-align: left;
@@ -720,6 +734,7 @@
             background-image: url("../assets/icons/back.svg");
             background-repeat: no-repeat;
             background-position: center;
+            cursor: pointer;
         }
     }
     .listAudiosModal{

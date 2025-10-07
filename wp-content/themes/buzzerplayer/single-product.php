@@ -360,6 +360,12 @@ jQuery(document).ready(function($){
         }
     });
 
+    $('#agree-checkbox').on('change', function(e) {
+        if ($('#agree-checkbox').is(':checked')) {
+            $('.agree-checkbox-wrapper').removeClass('error'); 
+        }
+    });
+
     $(document).on("click",".single-product .recordModal > div div.record-section .recorded-audio-result > div .cancel",function(e) {
         if(currentRecordedAudio != null){
             currentRecordedAudio.pause();
@@ -415,6 +421,7 @@ jQuery(document).ready(function($){
 
 
     $(document).on("click",".add-song",function(e) {
+    //$(document).on("click",".add-song",function(e) {
         e.preventDefault();
         $('.addSongModal').addClass('show');
     });
@@ -687,6 +694,9 @@ jQuery(document).ready(function($){
 
     $(document).on("click",".product-top-section .select-audio-files > div",function(e) {
         e.preventDefault();
+        if ($(e.target).closest('.remove-audio-session').length) {
+            return; // stop — do nothing
+        }
         var audioUrl = $(this).find('button').attr('data-audio');
         console.log(audioUrl);  
 
@@ -739,7 +749,7 @@ jQuery(document).ready(function($){
     });
 
     $(document).on('click', function(e) {
-        if (!$(e.target).closest('.modal > div,a.add-another-audio').length) {
+        if (!$(e.target).closest('.modal > div,a.add-another-audio, .add-song').length) {
             // Clicked outside .my-div
             if($('.modal').hasClass('show')){
                 $('.modal').removeClass('show');

@@ -1519,7 +1519,7 @@ body:not(.wp-admin) input:hover {
 }
 .single-product .product-top-section .select-audio-files > div span {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1653,6 +1653,11 @@ body:not(.wp-admin) input:hover {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+@media (max-width: 768px) {
+  .single-product .features-bar .features-bar-content .feature-items {
+    gap: 14px;
+  }
+}
 .single-product .features-bar .features-bar-content .feature-items .feature-item {
   display: flex;
   align-items: center;
@@ -1661,6 +1666,16 @@ body:not(.wp-admin) input:hover {
 .single-product .features-bar .features-bar-content .feature-items .feature-item p {
   margin: 0;
   height: fit-content;
+}
+@media (max-width: 768px) {
+  .single-product .features-bar .features-bar-content .feature-items .feature-item p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .single-product .features-bar .features-bar-content .feature-items .feature-item img {
+    max-width: 20px;
+  }
 }
 .single-product .product-features {
   max-width: 1072px;
@@ -1686,6 +1701,9 @@ body:not(.wp-admin) input:hover {
 }
 .single-product .product-features .shipping > div {
   padding-left: 20px;
+}
+.single-product .product-features .faq-section .accordion {
+  margin-bottom: 0;
 }
 .single-product .product-features .faq-section .faq-card .faq-title {
   text-align: left;
@@ -1893,6 +1911,7 @@ body:not(.wp-admin) input:hover {
   background-image: url("../assets/icons/back.svg");
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 .single-product .listAudiosModal > div {
   padding-left: 0;
