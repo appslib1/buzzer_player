@@ -589,6 +589,7 @@ function save_recorded_audio() {
 
     $audio_data = $_POST['audio']; // Base64 encoded
     $name = sanitize_text_field($_POST['name']);
+    $name = "Recorded audio";
 
     if (!isset($_SESSION['selected_audios'])) {
         $_SESSION['selected_audios'] = [];
