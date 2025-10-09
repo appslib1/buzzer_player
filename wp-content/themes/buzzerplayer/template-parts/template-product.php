@@ -13,7 +13,7 @@ $pageContent = get_the_content();
 <main>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12 m-auto">
+            <div class="col-lg-12 col-md-12 m-auto">
                 <div class="header">
                     <h1><?php echo esc_html($pageTitle); ?></h1>
                     <div class="description">
@@ -62,14 +62,16 @@ $pageContent = get_the_content();
                             $icon  = get_the_post_thumbnail_url($bruitage_id, 'thumbnail') ?: get_template_directory_uri() . '/assets/icons/buzzBtn.png';
                         ?>
                         <div class="sound-button-group position-relative text-center">
-                            <img data-audio="<?php echo esc_url(get_field('upload_mp3', $bruitage_id)['url']); ?>"
-                                 src="<?php echo esc_url($icon); ?>" 
-                                 alt="<?php echo esc_attr($title); ?>" 
-                                 class="sound-button">
-                            <div class="position-relative">
-                                <div class="button-label title"><?php echo esc_html($title); ?></div>
-                                <div class="button-label button-label-2 text-center">
-                                    <a href="#" class="use-it-button btn btn-danger">USE IT</a>
+                            <div>
+                                <img data-audio="<?php echo esc_url(get_field('upload_mp3', $bruitage_id)['url']); ?>"
+                                    src="<?php echo esc_url($icon); ?>" 
+                                    alt="<?php echo esc_attr($title); ?>" 
+                                    class="sound-button">
+                                <div class="position-relative">
+                                    <div class="button-label title"><?php echo esc_html($title); ?></div>
+                                    <div class="button-label button-label-2 text-center">
+                                        <a href="#" class="use-it-button btn btn-danger">USE IT</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

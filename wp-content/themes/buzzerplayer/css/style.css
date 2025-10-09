@@ -1173,6 +1173,9 @@ body:not(.wp-admin) input:hover {
 }
 .page-template-template-product main .header {
   position: relative;
+  max-width: 875px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .page-template-template-product main .header:after {
   position: absolute;
@@ -1219,6 +1222,9 @@ body:not(.wp-admin) input:hover {
 }
 .page-template-template-product main .filters {
   margin-bottom: 36px;
+  max-width: 875px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .page-template-template-product main .filters ul {
   padding: 0;
@@ -1255,13 +1261,13 @@ body:not(.wp-admin) input:hover {
 }
 .page-template-template-product main .audios-wrapper {
   padding-top: 33px;
-  padding-left: 65px;
-  padding-right: 65px;
   padding-bottom: 58px;
   background: #FDFBEE;
   border-radius: 10px;
-  row-gap: 65px;
   margin-bottom: 69px;
+  max-width: 875px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (max-width: 768px) {
   .page-template-template-product main .audios-wrapper {
@@ -1274,20 +1280,24 @@ body:not(.wp-admin) input:hover {
   justify-content: space-between;
   align-items: center;*/
   text-align: center;
-}
-@media (max-width: 768px) {
-  .page-template-template-product main .audios-wrapper .audios {
-    justify-content: space-around;
-    row-gap: 20px;
-  }
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .page-template-template-product main .audios-wrapper .audios .sound-button-group {
-  width: 19.32%;
+  width: 19%;
   display: inline-block;
+  margin-bottom: 60px;
+  max-width: unset;
+}
+.page-template-template-product main .audios-wrapper .audios .sound-button-group > div {
+  max-width: 116px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (max-width: 991px) {
   .page-template-template-product main .audios-wrapper .audios .sound-button-group {
-    width: 50%;
+    width: 49%;
+    margin-bottom: 10px;
   }
 }
 .page-template-template-product main .audios-wrapper .audios .sound-button-group.loading {
@@ -1308,9 +1318,6 @@ body:not(.wp-admin) input:hover {
   100% {
     transform: rotate(360deg);
   }
-}
-.page-template-template-product main .audios-wrapper .paginate {
-  margin-top: 50px;
 }
 .page-template-template-product main .product-grid .product-card {
   margin-bottom: 60px;

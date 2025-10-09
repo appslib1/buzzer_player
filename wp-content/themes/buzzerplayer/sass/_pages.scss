@@ -18,6 +18,9 @@
         }
         .header{
             position: relative;
+            max-width: 875px;
+            margin-left: auto;
+            margin-right: auto;
             &:after{
                 position: absolute;
                 right: 0;
@@ -58,6 +61,9 @@
         }
         .filters{
             margin-bottom: 36px;
+            max-width: 875px;
+            margin-left: auto;
+            margin-right: auto;
             ul{
                 padding: 0;
                 padding: 0;
@@ -97,14 +103,14 @@
         }
         .audios-wrapper{
             padding-top: 33px;
-            padding-left: 65px;
-            padding-right: 65px;
             padding-bottom: 58px;
             background: variables.$beige-color;
             border-radius: 10px;
-            row-gap: 65px;
             //column-gap: 30px;
             margin-bottom: 69px;
+            max-width: 875px;
+            margin-left: auto;
+            margin-right: auto;
             @media (max-width: 768px){
                 padding: 33px 0;
             }
@@ -114,17 +120,21 @@
                 justify-content: space-between;
                 align-items: center;*/
                 text-align: center;
-                //row-gap: 65px;
-                @media (max-width: 768px){
-                    justify-content: space-around;
-                    row-gap: 20px;
-                }
+                padding-left: 40px;
+                padding-right: 40px;
                 .sound-button-group{
-                    //width: 20%;
-                    width: 19.32%;
+                    width: 19%;
                     display: inline-block;
+                    margin-bottom: 60px;
+                    max-width: unset;
+                    &>div{
+                        max-width: 116px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
                     @media (max-width: 991px){
-                        width: 50%;
+                        width: 49%;
+                        margin-bottom: 10px;
                     }
                     &.loading{
                         border: 8px solid #f3f3f3; /* Light gray */
@@ -143,9 +153,6 @@
                         100% { transform: rotate(360deg); }
                     }
                 }
-            }
-            .paginate{
-                margin-top: 50px;
             }
         }
         .product-grid{
