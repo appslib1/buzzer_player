@@ -1167,6 +1167,11 @@
 }
 
 /*********************** Cart page ******************************/
+.page-template-template-cart{
+    .woocommerce-message{
+        display: none;
+    }
+}
 .page-template-template-checkout,
 .page-template-template-cart{
     main{

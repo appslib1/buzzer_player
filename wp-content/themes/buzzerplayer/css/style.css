@@ -2332,6 +2332,10 @@ body:not(.wp-admin) input:hover {
 }
 
 /*********************** Cart page ******************************/
+.page-template-template-cart .woocommerce-message {
+  display: none;
+}
+
 .page-template-template-checkout main,
 .page-template-template-cart main {
   padding: 50px 0;
