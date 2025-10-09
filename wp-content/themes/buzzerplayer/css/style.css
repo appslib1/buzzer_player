@@ -1227,6 +1227,7 @@ body:not(.wp-admin) input:hover {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .page-template-template-product main .filters ul li {
   flex: 1;
@@ -1234,7 +1235,7 @@ body:not(.wp-admin) input:hover {
 }
 .page-template-template-product main .filters ul li a {
   background-color: #DBDBDB;
-  border-radius: 10px;
+  border-radius: 55px;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -1243,11 +1244,14 @@ body:not(.wp-admin) input:hover {
   text-decoration: none;
   display: block;
   color: #414141;
-  min-width: 149px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
-.page-template-template-product main .filters ul li a.active, .page-template-template-product main .filters ul li a:hover {
-  background-color: #C92E26;
-  color: white;
+.page-template-template-product main .filters ul li a:hover {
+  background-color: #c2c2c2;
+}
+.page-template-template-product main .filters ul li a.active {
+  background-color: #FFC80A;
 }
 .page-template-template-product main .audios-wrapper {
   padding-top: 33px;
@@ -1265,11 +1269,11 @@ body:not(.wp-admin) input:hover {
   }
 }
 .page-template-template-product main .audios-wrapper .audios {
-  display: flex;
+  /*display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  row-gap: 65px;
+  align-items: center;*/
+  text-align: center;
 }
 @media (max-width: 768px) {
   .page-template-template-product main .audios-wrapper .audios {
@@ -1278,7 +1282,8 @@ body:not(.wp-admin) input:hover {
   }
 }
 .page-template-template-product main .audios-wrapper .audios .sound-button-group {
-  width: 20%;
+  width: 19.32%;
+  display: inline-block;
 }
 @media (max-width: 991px) {
   .page-template-template-product main .audios-wrapper .audios .sound-button-group {
@@ -3137,6 +3142,10 @@ body:not(.wp-admin) input:hover {
     width: 60px;
     height: 54px;
   }
+}
+
+.simple-page {
+  padding: 57px 0;
 }
 
 /*# sourceMappingURL=style.css.map */

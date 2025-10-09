@@ -16,10 +16,10 @@ get_header();
 ?>
 
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main simple-page">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-lg-10 col-md-12 m-auto">
 					<h1 class="page-title"><?= the_title() ?></h1>
 					<?= the_content() ?>
 				</div>
