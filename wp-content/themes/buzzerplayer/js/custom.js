@@ -124,34 +124,36 @@
             });
         }
 
-        if ($('.productThumbs').length && ('.productSwiper').length) {
+        if ($('.productThumbs').length && $('.productSwiper').length) {
 
             var productThumbs = new Swiper(".productThumbs", {
                 spaceBetween: 10,
                 slidesPerView: 5,
-                freeMode: true,
+                freeMode: false,
                 watchSlidesProgress: true,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                }
+                loop: true, // ✅ Infinite loop for thumbnails
             });
 
             var productSwiper = new Swiper(".productSwiper", {
                 spaceBetween: 10,
+                loop: true, // ✅ Infinite loop for main images
                 thumbs: {
                     swiper: productThumbs,
                 },
             });
 
-            $(".swiper-button-next").on("click", function () {
-                productSwiper.slideNext(); // Move to next image
+            // ✅ Custom next/prev click handlers for infinite looping
+            $(".swiper-button-next").on("click", function (e) {
+                e.preventDefault();
+                productSwiper.slideNext();
             });
 
-            $(".swiper-button-prev").on("click", function () {
-                productSwiper.slidePrev(); // Move to previous image
+            $(".swiper-button-prev").on("click", function (e) {
+                e.preventDefault();
+                productSwiper.slidePrev();
             });
         }
+
 
 
     });
