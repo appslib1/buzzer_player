@@ -397,23 +397,26 @@ add_filter('lzb/register_blocks', function ($blocks) {
 
     return $blocks;
 });
+
 add_action('wp_ajax_filter_audio', 'filter_audio_callback');
 add_action('wp_ajax_nopriv_filter_audio', 'filter_audio_callback');
 
 function filter_audio_callback() {
     $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $paged    = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
     $args = [
         'post_type'      => 'audio',
-        'posts_per_page' => -1,
+        'posts_per_page' => 15, // adjust as needed
         'orderby'        => 'date',
         'order'          => 'DESC',
+        'paged'          => $paged,
     ];
 
     if (!empty($category)) {
         $args['tax_query'] = [
             [
-                'taxonomy' => 'category', // replace with your custom taxonomy if needed
+                'taxonomy' => 'category', // replace if needed
                 'field'    => 'slug',
                 'terms'    => $category,
             ]
@@ -423,7 +426,7 @@ function filter_audio_callback() {
     $query = new WP_Query($args);
 
     if ($query->have_posts()) {
-        ob_start(); // start output buffering
+        ob_start();
         echo '<div class="audios">';
         while ($query->have_posts()) {
             $query->the_post();
@@ -447,15 +450,21 @@ function filter_audio_callback() {
         }
         echo '</div>';
         wp_reset_postdata();
+
         $html = ob_get_clean();
 
-        wp_send_json_success($html);
+        wp_send_json_success([
+            'html' => $html,
+            'max_pages' => $query->max_num_pages,
+            'current_page' => $paged,
+        ]);
     } else {
         wp_send_json_error('<p>No posts found</p>');
     }
 
     wp_die();
 }
+
 
 function add_page_excerpts() {
     add_post_type_support( 'page', 'excerpt' );

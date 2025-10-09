@@ -45,6 +45,9 @@ $pageContent = get_the_content();
                 </div>
 
                 <div class="audios-wrapper">
+                    <div class="loading-items">
+                        <div class="spinner"></div>
+                    </div>
                     <div id="audio-list" class="audios">
                         <?php
                         $args = array(
@@ -102,6 +105,7 @@ jQuery(document).ready(function($){
 
         $('.page-template-template-product .filters ul a').removeClass('active');
         $(this).addClass('active');
+        $('.audios-wrapper .loading-items').addClass('show');
 
         let category = $(this).attr('data-slug');
 
@@ -111,10 +115,18 @@ jQuery(document).ready(function($){
             data: {
                 action: 'filter_audio',
                 category: category,
+                page: 1
             },
             success: function(response) {
+                console.log(response);
+                $('.audios-wrapper .loading-items').removeClass('show');
                 if(response.success){
-                    $('.audios').html(response.data); 
+                    $('.audios').html(response.data.html); 
+                    if (response.data.max_pages > page) {
+                        $('.paginate').show();
+                    } else {
+                        $('.paginate').hide();
+                    }
                 } else {
                     $('.audios').html('<p>No audios found.</p>');
                 }

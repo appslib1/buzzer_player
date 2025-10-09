@@ -1268,6 +1268,41 @@ body:not(.wp-admin) input:hover {
   max-width: 875px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+}
+.page-template-template-product main .audios-wrapper .loading-items {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.5294117647);
+  display: none;
+}
+.page-template-template-product main .audios-wrapper .loading-items.show {
+  display: block;
+}
+.page-template-template-product main .audios-wrapper .loading-items .spinner {
+  animation: spin 1s linear infinite;
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #C92E26; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+.page-template-template-product main .audios-wrapper.loading {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #C92E26; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+.page-template-template-product main .audios-wrapper.loading > * {
+  display: none;
 }
 @media (max-width: 768px) {
   .page-template-template-product main .audios-wrapper {

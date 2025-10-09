@@ -111,6 +111,42 @@
             max-width: 875px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            .loading-items{
+                position: absolute;
+                inset: 0;
+                margin: auto;
+                z-index: 9;
+                background: #ffffff87;
+                display: none;
+                &.show{
+                    display: block;
+                }
+                .spinner{
+                    animation: spin 1s linear infinite;
+                    border: 8px solid #f3f3f3; /* Light gray */
+                    border-top: 8px solid variables.$rouge; /* Blue */
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    animation: spin 1s linear infinite;
+                    position: absolute;
+                    inset: 0;
+                    margin: auto;
+                }
+            }
+            &.loading{
+                border: 8px solid #f3f3f3; /* Light gray */
+                border-top: 8px solid variables.$rouge; /* Blue */
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 1s linear infinite;
+                //margin: auto; /* center it */
+                &>*{
+                    display: none;
+                }
+            }
             @media (max-width: 768px){
                 padding: 33px 0;
             }
