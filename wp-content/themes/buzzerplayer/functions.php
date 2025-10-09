@@ -614,6 +614,7 @@ function save_uploaded_audio() {
 
     $file = $_FILES['audio_file'];
     $name = sanitize_file_name($_POST['name']);
+    $name = preg_replace('/\.[^.]+$/', '', $name);
 
     // Optional: check file type
     $allowed_types = ['audio/mpeg','audio/mp3','audio/webm','audio/wav'];
