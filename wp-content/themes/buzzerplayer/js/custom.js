@@ -59,7 +59,7 @@
         $(document).on('click', '.audios .sound-button-group img', function(e) {
             e.preventDefault();
             $('.sound-button-group').removeClass('show-use-it-btn');
-            $(this).parent().addClass('show-use-it-btn');
+            $(this).parents('.sound-button-group').addClass('show-use-it-btn');
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -142,6 +142,14 @@
                 thumbs: {
                     swiper: productThumbs,
                 },
+            });
+
+            $(".swiper-button-next").on("click", function () {
+                productSwiper.slideNext(); // Move to next image
+            });
+
+            $(".swiper-button-prev").on("click", function () {
+                productSwiper.slidePrev(); // Move to previous image
             });
         }
 
