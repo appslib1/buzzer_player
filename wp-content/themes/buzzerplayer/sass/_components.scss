@@ -40,9 +40,26 @@ body:not(.wp-admin){
     input[type=tel]
     {
         padding: 10.25px 22px !important;
-        border: 2px solid #1E1E1E !important;
+        //border: 2px solid #1E1E1E !important;
+        border: unset !important;
         font-size: 17px;
         border-radius: 5px !important;
+        box-shadow: 0 0 0 2px #1E1E1E !important;
+        border-bottom: 1px solid transparent !important;
+         &::placeholder{
+            color: #BDBDBD !important;
+        }
+        &:focus-visible,&:focus{
+            outline: none;
+            //border: 2px solid variables.$noir-eben;
+        }
+        &:focus{
+            //border-bottom-width: 3px !important;
+            border-bottom: 1px solid #1E1E1E !important;
+        }
+        &:hover{
+            background-color: variables.$beige-color;
+        }
     }
     .select2-container .select2-dropdown, .select2-container .select2-selection{
         border: 2px solid #1E1E1E !important;
@@ -95,18 +112,6 @@ body:not(.wp-admin){
         min-width: 20px;
         accent-color: variables.$noir-eben;
         border-radius: 5px;
-    }
-    input{
-        &::placeholder{
-            color: #BDBDBD;
-        }
-        &:focus-visible,&:focus{
-            outline: none;
-            border: 2px solid variables.$noir-eben;
-        }
-        &:hover{
-            background-color: variables.$beige-color;
-        }
     }
 
 }

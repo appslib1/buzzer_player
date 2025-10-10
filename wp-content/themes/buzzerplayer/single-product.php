@@ -91,10 +91,12 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 
           <div class="price-reviews">
               <!-- Ratings -->
+               <?php if(get_field('nombre_de_reviews') != "") { ?>
               <div class="ratings">
                 <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
-                <small class="nb-ratings">120 reviews</small>
+                <small class="nb-ratings"><?= get_field('nombre_de_reviews') ?> reviews</small>
               </div>
+              <?php } ?>
 
               <!-- Price -->
               <h4 class="text-price"><?= $product->get_price_html(); ?></h4>

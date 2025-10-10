@@ -358,9 +358,43 @@ body:not(.wp-admin) input[type=text],
 body:not(.wp-admin) input[type=email],
 body:not(.wp-admin) input[type=tel] {
   padding: 10.25px 22px !important;
-  border: 2px solid #1E1E1E !important;
+  border: unset !important;
   font-size: 17px;
   border-radius: 5px !important;
+  box-shadow: 0 0 0 2px #1E1E1E !important;
+  border-bottom: 1px solid transparent !important;
+}
+body:not(.wp-admin) select::placeholder,
+body:not(.wp-admin) textarea::placeholder,
+body:not(.wp-admin) input[type=text]::placeholder,
+body:not(.wp-admin) input[type=email]::placeholder,
+body:not(.wp-admin) input[type=tel]::placeholder {
+  color: #BDBDBD !important;
+}
+body:not(.wp-admin) select:focus-visible, body:not(.wp-admin) select:focus,
+body:not(.wp-admin) textarea:focus-visible,
+body:not(.wp-admin) textarea:focus,
+body:not(.wp-admin) input[type=text]:focus-visible,
+body:not(.wp-admin) input[type=text]:focus,
+body:not(.wp-admin) input[type=email]:focus-visible,
+body:not(.wp-admin) input[type=email]:focus,
+body:not(.wp-admin) input[type=tel]:focus-visible,
+body:not(.wp-admin) input[type=tel]:focus {
+  outline: none;
+}
+body:not(.wp-admin) select:focus,
+body:not(.wp-admin) textarea:focus,
+body:not(.wp-admin) input[type=text]:focus,
+body:not(.wp-admin) input[type=email]:focus,
+body:not(.wp-admin) input[type=tel]:focus {
+  border-bottom: 1px solid #1E1E1E !important;
+}
+body:not(.wp-admin) select:hover,
+body:not(.wp-admin) textarea:hover,
+body:not(.wp-admin) input[type=text]:hover,
+body:not(.wp-admin) input[type=email]:hover,
+body:not(.wp-admin) input[type=tel]:hover {
+  background-color: #FDFBEE;
 }
 body:not(.wp-admin) .select2-container .select2-dropdown, body:not(.wp-admin) .select2-container .select2-selection {
   border: 2px solid #1E1E1E !important;
@@ -411,16 +445,6 @@ body:not(.wp-admin) input[type=checkbox] {
   min-width: 20px;
   accent-color: #1E1E1E;
   border-radius: 5px;
-}
-body:not(.wp-admin) input::placeholder {
-  color: #BDBDBD;
-}
-body:not(.wp-admin) input:focus-visible, body:not(.wp-admin) input:focus {
-  outline: none;
-  border: 2px solid #1E1E1E;
-}
-body:not(.wp-admin) input:hover {
-  background-color: #FDFBEE;
 }
 
 .add_to_cart_button,
@@ -2715,6 +2739,7 @@ body:not(.wp-admin) input:hover {
   padding-left: 13px !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  box-shadow: unset !important;
 }
 .page-template-template-checkout main .cart-collaterals .coupon button,
 .page-template-template-cart main .cart-collaterals .coupon button {
