@@ -364,3 +364,84 @@ body:not(.wp-admin){
         text-align: left !important;
     }
 }
+
+.woocommerce-billing-fields__field-wrapper{
+    &>p{
+        &.woocommerce-invalid-required-field{
+            input{
+                box-shadow: 0 0 0 2px variables.$rouge !important;
+                &:focus{
+                    border-color: variables.$rouge !important;
+                }
+            }
+            label{
+                color: variables.$rouge;
+            }
+            .select2-selection{
+                border-color: variables.$rouge !important;
+                .select2-selection__arrow{
+                    b{
+                        border-color: variables.$rouge transparent transparent transparent;
+                    }
+                }
+            }
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input{
+            width: 100%;
+        }
+        .select2-selection{
+            height: 51px;
+            .select2-selection__rendered{
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+            .select2-selection__arrow{
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                margin-right: 14px;
+                b{
+                    border-color: variables.$noir-eben transparent transparent transparent;
+                }
+            }
+        }
+    }
+}
+
+
+/* WooCommerce checkout loader */
+.woocommerce .blockUI.blockOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.6;
+    z-index: 9999;
+}
+
+.woocommerce .blockUI.blockOverlay::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-left: -24px;
+    margin-top: -24px;
+    border: 4px solid #ededed;
+    border-top-color: #0071a1; /* WooCommerce default blue */
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

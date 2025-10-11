@@ -1290,6 +1290,10 @@
                     position: absolute;
                     bottom: 15px;
                     right: 15px;
+                    @media (max-width: 768px){
+                        position: relative;
+                        float: right;
+                    }
                     label{
                         text-transform: uppercase;
                         font-size: 10px;
@@ -1334,6 +1338,7 @@
                             height: 100%;
                             border-top-width: 2px;
                             border-bottom-width: 2px;
+                            text-align: center;
                         }
                     }
                 }
@@ -1395,6 +1400,7 @@
                 table{
                     border: none;
                     margin-bottom: 0;
+                    width: 100%;
                     tr{
                         margin-bottom: 12px;
                         display: block;
@@ -1463,12 +1469,15 @@
                     padding-top: 0;
                     a{
                         font-weight: 700;
-                        padding: 14.5px 0 14.5px 20px;
+                        padding: 11.5px 0 11.5px 20px;
                         font-size: 18px;
                         background-color: variables.$rouge;
                         text-align: left;
                         border-radius: 5px;
                         position: relative;
+                        display: block;
+                        color: #fff;
+                        text-decoration: none;
                         &.pay{
                             text-align: center;
                             text-transform: uppercase;
@@ -1510,9 +1519,10 @@
                 }
                 button{
                     font-weight: 400;
-                    font-size: 18px;
+                    font-size: 14px;
                     padding: 6px 8px;
                     border-radius: 5px;
+                    border: none;
                 }
             }
         }
@@ -1658,11 +1668,12 @@
                     padding-bottom: 7px;
                     border-radius: 5px;
                     input{
-                        border: none;
+                        border: none !important;
                         font-size: 16px;
-                        padding-left: 20px;
-                        padding-top: 0;
-                        padding-bottom: 0;
+                        padding-left: 20px !important;
+                        padding-top: 0 !important;
+                        padding-bottom: 0 !important;
+                        box-shadow: none !important;
                     }
                     button{
                         position: absolute;
