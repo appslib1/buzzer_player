@@ -67,7 +67,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 								<span></span>
 							</button>
 						</div>
-						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="collapse navbar-collapse" id="navbarNav">
 							<ul class="navbar-nav ms-auto">
 								<?= $header_items ?>
 								<li class="nav-item">
@@ -77,7 +77,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 										<?php if ( $cart_count > 0 ) : ?>
 											<span class="cart-count"></span>
 										<?php endif; ?>
-										<label for="">Basket</label>
+										<label>Basket</label>
 									</a>
 								</li>
 							</ul>
