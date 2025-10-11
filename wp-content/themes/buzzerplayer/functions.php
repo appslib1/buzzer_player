@@ -765,3 +765,34 @@ function allow_json_uploads($mimes) {
     return $mimes;
 }
 add_filter('upload_mimes', 'allow_json_uploads');
+
+
+add_action( 'wp_enqueue_scripts', 'remove_woocommerce_layout_css', 20 );
+function remove_woocommerce_layout_css() {
+    wp_dequeue_style( 'woocommerce-layout' );
+    wp_deregister_style( 'woocommerce-layout' );
+}
+
+add_action( 'wp_enqueue_scripts', 'remove_woocommerce_smallscreen_css', 20 );
+function remove_woocommerce_smallscreen_css() {
+    wp_dequeue_style( 'woocommerce-smallscreen' );
+    wp_deregister_style( 'woocommerce-smallscreen' );
+}
+
+add_action( 'wp_enqueue_scripts', 'remove_woocommerce_styles', 20 );
+function remove_woocommerce_styles() {
+    wp_dequeue_style( 'woocommerce-general' );
+    wp_deregister_style( 'woocommerce-general' );
+}
+
+add_action( 'wp_enqueue_scripts', 'remove_brands_css', 20 );
+function remove_brands_css() {
+    wp_dequeue_style( 'brands-styles' );
+    wp_deregister_style( 'brands-styles' );
+}
+
+add_action( 'wp_enqueue_scripts', 'remove_coming_soon_css', 20 );
+function remove_coming_soon_css() {
+    wp_dequeue_style( 'woocommerce-coming-soon' );
+    wp_deregister_style( 'woocommerce-coming-soon' );
+}
