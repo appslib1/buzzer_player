@@ -344,3 +344,21 @@ body:not(.wp-admin){
             }
         }
     }
+    
+
+.woocommerce-order-received,
+.single-product,
+.error404,
+.page-template-template-contact{
+    .wp-block-lazyblock-section-au-dessus-du-footer{
+        display: none;
+    }
+}
+.max-875{
+    max-width: 875px;
+}
+.page-template-default{
+    h1{
+        text-align: left;
+    }
+}

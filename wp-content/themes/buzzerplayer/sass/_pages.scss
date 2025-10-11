@@ -1685,6 +1685,9 @@
 }
 
 .page-template-template-checkout{
+    .woocommerce-SavedPaymentMethods-saveNew{
+        display: none !important;
+    }
     .woocommerce .col2-set .col-2, 
     .woocommerce-page .col2-set .col-2,
     .woocommerce .col2-set .col-1,

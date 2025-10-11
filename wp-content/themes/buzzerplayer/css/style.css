@@ -657,6 +657,21 @@ body:not(.wp-admin) input[type=checkbox] {
   opacity: 1;
 }
 
+.woocommerce-order-received .wp-block-lazyblock-section-au-dessus-du-footer,
+.single-product .wp-block-lazyblock-section-au-dessus-du-footer,
+.error404 .wp-block-lazyblock-section-au-dessus-du-footer,
+.page-template-template-contact .wp-block-lazyblock-section-au-dessus-du-footer {
+  display: none;
+}
+
+.max-875 {
+  max-width: 875px;
+}
+
+.page-template-default h1 {
+  text-align: left;
+}
+
 /**************** Block Hero ****************/
 .hero-section {
   position: relative;
@@ -2936,6 +2951,9 @@ body:not(.wp-admin) input[type=checkbox] {
   font-weight: normal;
 }
 
+.page-template-template-checkout .woocommerce-SavedPaymentMethods-saveNew {
+  display: none !important;
+}
 .page-template-template-checkout .woocommerce .col2-set .col-2,
 .page-template-template-checkout .woocommerce-page .col2-set .col-2,
 .page-template-template-checkout .woocommerce .col2-set .col-1,

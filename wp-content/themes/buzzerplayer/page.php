@@ -20,8 +20,10 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-md-12 m-auto">
-					<h1 class="page-title"><?= the_title() ?></h1>
-					<?= the_content() ?>
+					<div class="max-875">
+						<h1 class="page-title"><?= the_title() ?></h1>
+						<?= the_content() ?>
+					</div>
 				</div>
 			</div>
 		</div>

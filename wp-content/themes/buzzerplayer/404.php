@@ -1,60 +1,44 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package BuzzerPlayer
+ * Custom 404 template (Bootstrap version)
+ * Copy this file to your active theme (or child theme) as 404.php
  */
 
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="site-content" role="main" class="py-5">
+  <div class="container text-center my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <h1 class="display-4 fw-bold mb-3">Oops! Page Not Found</h1>
+        <p class="lead text-muted mb-4">
+          The page you’re looking for doesn’t exist, has been moved, or is no longer available.
+        </p>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'buzzerplayer' ); ?></h1>
-			</header><!-- .page-header -->
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'buzzerplayer' ); ?></p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+		  <div class="check-link">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="">
+            <i class="bi bi-house-door"></i> Home
+          </a>
+			</div>
+		  <div class="check-link">
+			<a href="<?php echo esc_url( home_url( 'contact' ) ); ?>" class="">
+				<i class="bi bi-envelope"></i> Contact Us
+			</a>
+		  </div>
+        </div>
 
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'buzzerplayer' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$buzzerplayer_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'buzzerplayer' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$buzzerplayer_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+        <div class="mt-5">
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/pink_smile.svg' ); ?>" 
+               alt="404 illustration" class="img-fluid" style="max-width: 400px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <?php
 get_footer();
+?>
