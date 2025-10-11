@@ -765,3 +765,6 @@ function allow_json_uploads($mimes) {
     return $mimes;
 }
 add_filter('upload_mimes', 'allow_json_uploads');
+
+// If added by WordPress filter, you can disable it
+remove_action('wp_head', 'wp_print_auto_sizes_contain_css_fix');
