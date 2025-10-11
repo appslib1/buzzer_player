@@ -356,9 +356,11 @@ body:not(.wp-admin){
 }
 .max-875{
     max-width: 875px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .page-template-default{
     h1{
-        text-align: left;
+        text-align: left !important;
     }
 }
