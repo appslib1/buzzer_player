@@ -46,7 +46,7 @@ header{
                     &.cart{
                         position: relative;
                         padding: 5px;
-                        span{
+                        span:not(.cart-label){
                             position: absolute;
                             bottom: 4px;
                             right: 16px;
@@ -60,7 +60,7 @@ header{
                             color: #fff;
                             font-size: 12px;
                         }
-                        label{
+                        .cart-label{
                             display: none;
                             @media (max-width: 991px){
                                 display: block;

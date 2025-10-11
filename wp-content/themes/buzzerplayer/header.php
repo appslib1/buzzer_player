@@ -77,7 +77,7 @@ if ( isset( $locations['header_menu'] ) ) {  // Replace with your location slug
 										<?php if ( $cart_count > 0 ) : ?>
 											<span class="cart-count"></span>
 										<?php endif; ?>
-										<label>Basket</label>
+										<span class="cart-label">Basket</span>
 									</a>
 								</li>
 							</ul>

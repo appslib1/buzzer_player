@@ -93,12 +93,12 @@
         $(document).on('click', '#customToggler', function() {
             if(!$(this).hasClass('open')){
                 $(this).addClass('open');
-                $('#navbarNavAltMarkup').addClass('show');
+                $('#navbarNav').addClass('show');
                 $('header').addClass('f-height');
             }
             else{
                 $(this).removeClass('open');
-                $('#navbarNavAltMarkup').removeClass('show');
+                $('#navbarNav').removeClass('show');
                 $('header').removeClass('f-height');
             }
         });

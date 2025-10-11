@@ -57,7 +57,7 @@ header .navbar ul li a.cart {
   position: relative;
   padding: 5px;
 }
-header .navbar ul li a.cart span {
+header .navbar ul li a.cart span:not(.cart-label) {
   position: absolute;
   bottom: 4px;
   right: 16px;
@@ -71,11 +71,11 @@ header .navbar ul li a.cart span {
   color: #fff;
   font-size: 12px;
 }
-header .navbar ul li a.cart label {
+header .navbar ul li a.cart .cart-label {
   display: none;
 }
 @media (max-width: 991px) {
-  header .navbar ul li a.cart label {
+  header .navbar ul li a.cart .cart-label {
     display: block;
   }
 }
