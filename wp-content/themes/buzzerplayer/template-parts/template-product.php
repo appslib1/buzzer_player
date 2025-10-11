@@ -88,7 +88,7 @@ $pageContent = get_the_content();
                     <?php } ?>
                 </div>
 
-                <div class="content">
+                <div class="content max-875">
                     <?php echo $pageContent; ?>
                 </div>
             </div>
