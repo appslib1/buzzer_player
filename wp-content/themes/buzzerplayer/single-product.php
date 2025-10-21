@@ -170,34 +170,6 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 <?php if ( is_active_sidebar( 'product-highlights' ) ) : ?>
     <?php dynamic_sidebar( 'product-highlights' ); ?>
 <?php endif; ?>
-<div class="features-bar">
-    <div class="features-bar-content">
-        <div class="container">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="feature-items">
-                          <div class="feature-item">
-                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/audio_file.svg') ?>" alt="Audio file icon" class="feature-icon">
-                            <p class="feature-text">Up to 3min sound</p>
-                          </div>
-                          <div class="feature-item">
-                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/battery.svg') ?>" alt="Battery icon" class="feature-icon">
-                            <p class="feature-text">Batteries included</p>
-                          </div>
-                          <div class="feature-item">
-                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/shipping.svg') ?>" alt="Shipping truck icon" class="feature-icon">
-                            <p class="feature-text">Free shipping in UK</p>
-                          </div>
-                          <div class="feature-item">
-                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/secure.svg') ?>" alt="Secure payment icon" class="feature-icon">
-                            <p class="feature-text">100% Secure Payment</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-        </div>
-    </div>
-</div>
 
 <div class="product-features">
       <div class="container">
