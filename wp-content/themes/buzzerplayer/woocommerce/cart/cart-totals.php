@@ -42,7 +42,18 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
 
-			<?php wc_cart_totals_shipping_html(); ?>
+			<?php //wc_cart_totals_shipping_html(); ?>
+			<tr class="woocommerce-shipping-totals shipping">
+				<th>Shipping</th>
+				<td data-title="Shipping">	
+					<span>
+                        <?php 
+                            $shipping_total = WC()->cart->get_shipping_total();
+                            echo $shipping_total > 0 ? wc_price( $shipping_total ) : 'Free';
+                        ?>
+                    </span>
+				</td>
+			</tr>
 
 			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
 
