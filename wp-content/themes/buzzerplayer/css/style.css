@@ -2699,6 +2699,7 @@ body:not(.wp-admin) input[type=checkbox] {
   padding: 20px;
   border: 2px solid #1E1E1E;
   border-radius: 10px;
+  min-width: 300px;
 }
 .page-template-template-checkout main .cart-collaterals .cart_totals h3,
 .page-template-template-checkout main .cart-collaterals .cart_totals h2,
