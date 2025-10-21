@@ -19,7 +19,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
     <div class="container">
       <div class="row">
         <!-- Left: Product Image -->
-        <div class="col-lg-7 col-md-6 text-center">
+        <div class="col-lg-6 col-md-6 text-center">
 
             <div class="product-imgs-wrapper">
                 <h2 class="section-title"><?= the_title() ?></h2>
@@ -85,79 +85,81 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 
 
         <!-- Right: Product Details -->
-        <div class="col-lg-5 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <!-- Title -->
-          <h1><?= the_title() ?></h1>
+            <div class="product-infos">
+                <h1><?= the_title() ?></h1>
 
-          <div class="price-reviews">
-              <!-- Ratings -->
-               <?php if(get_field('nombre_de_reviews') != "") { ?>
-              <div class="ratings">
-                <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
-                <small class="nb-ratings"><?= get_field('nombre_de_reviews') ?> reviews</small>
-              </div>
-              <?php } ?>
+                <div class="price-reviews">
+                    <!-- Ratings -->
+                    <?php if(get_field('nombre_de_reviews') != "") { ?>
+                    <div class="ratings">
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                        <small class="nb-ratings"><?= get_field('nombre_de_reviews') ?> reviews</small>
+                    </div>
+                    <?php } ?>
 
-              <!-- Price -->
-              <h4 class="text-price"><?= $product->get_price_html(); ?></h4>
-          </div>
+                    <!-- Price -->
+                    <h4 class="text-price"><?= $product->get_price_html(); ?></h4>
+                </div>
 
-          <!-- Description -->
-          <div class="product-description">
-              <?= the_excerpt() ?>
-          </div>
-          <?php 
-            if ( ! empty( $saved_audios ) ) {
-          ?>
-              <div class="select-audio-files">
-                  <?php 
-                    foreach ( $saved_audios as $audio ) {
-                  ?>
-                        <div>
-                            <div class="loading-animation"></div>
-                            <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
-                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                            <span><?= $audio['name'] ?></span>
-                            <button class="cancel remove-audio-session"></button>
-                        </div>
-                  <?php 
+                <!-- Description -->
+                <div class="product-description">
+                    <?= the_excerpt() ?>
+                </div>
+                <?php 
+                    if ( ! empty( $saved_audios ) ) {
+                ?>
+                    <div class="select-audio-files">
+                        <?php 
+                            foreach ( $saved_audios as $audio ) {
+                        ?>
+                                <div>
+                                    <div class="loading-animation"></div>
+                                    <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
+                                    <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                                    <span><?= $audio['name'] ?></span>
+                                    <button class="cancel remove-audio-session"></button>
+                                </div>
+                        <?php 
+                            }
+                        ?>
+                            <span class="add-other-song-wrapper">
+                                <a href="" class="buzzer-default-btn add-another-audio add-song">
+                                    Add another audio
+                                </a>
+                                <button class="help"></button>
+                            </span>
+                    </div>
+                <?php 
                     }
-                  ?>
-                    <span class="add-other-song-wrapper">
-                        <a href="" class="buzzer-default-btn add-another-audio add-song">
-                            Add another audio
-                        </a>
-                        <button class="help"></button>
-                    </span>
-              </div>
-          <?php 
-            }
-          ?>
+                ?>
 
-          <?php if ( ! empty( $saved_audios ) ) { ?>
-              <label class="agree-checkbox-wrapper">
-                  <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
-                  <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
-              </label>
-              <!-- Add to Cart Button -->
-              <?php if ( $product ) {
-                    $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
-                    $add_to_cart_text = "Add to cart";
-                    ?>
-                    <a id="add-to-cart-btn" 
-                    href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
-                    class="btn btn-primary add_to_cart_button btn-lg mt-3"
-                    rel="nofollow">
-                        <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                <?php if ( ! empty( $saved_audios ) ) { ?>
+                    <label class="agree-checkbox-wrapper">
+                        <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
+                        <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
+                    </label>
+                    <!-- Add to Cart Button -->
+                    <?php if ( $product ) {
+                            $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
+                            $add_to_cart_text = "Add to cart";
+                            ?>
+                            <a id="add-to-cart-btn" 
+                            href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
+                            class="btn btn-primary add_to_cart_button btn-lg mt-3"
+                            rel="nofollow">
+                                <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                            </a>
+                        <?php } ?>
+
+                <?php } else { ?>
+                    <a href="" class="buzzer-default-btn add-song" id="openModal"> 
+                    <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">
+                    <span>Add a song</span>
                     </a>
                 <?php } ?>
-
-          <?php } else { ?>
-            <a href="" class="buzzer-default-btn add-song" id="openModal"> 
-              <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">
-              <span>Add a song</span>
-            </a>
-          <?php } ?>
+            </div>
 
         </div>
       </div>
@@ -165,6 +167,9 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
 </section>
 
 
+<?php if ( is_active_sidebar( 'product-highlights' ) ) : ?>
+    <?php dynamic_sidebar( 'product-highlights' ); ?>
+<?php endif; ?>
 <div class="features-bar">
     <div class="features-bar-content">
         <div class="container">
@@ -377,19 +382,42 @@ jQuery(document).ready(function($){
         $('.single-product .recordModal > div .confirm-wrapper').addClass('d-none');
     });
 
-    $(document).on("click","#recordModal .recorded-audio-result .play-recorded-audio",function(e) {
-        var btn = $(this);
+    let activeAudio = null;
+    let activeBtn = null;
+
+    $(document).on("click", "#recordModal .recorded-audio-result > div", function(e) {
+        var btn = $(this).find('.play-recorded-audio');
+
+        // If this audio is already playing, pause it
+        if (activeAudio && activeBtn && activeBtn.is(btn)) {
+            activeAudio.pause();
+            btn.removeClass('play');
+            activeAudio = null;
+            activeBtn = null;
+            return;
+        }
+
+        // If another audio is playing, stop it
+        if (activeAudio && activeBtn) {
+            activeAudio.pause();
+            activeBtn.removeClass('play');
+        }
+
+        // Start the new audio
+        activeAudio = new Audio(recordedAudio);
+        activeBtn = btn;
+
+        activeAudio.play();
         btn.addClass('play');
-        currentRecordedAudio = new Audio(recordedAudio);
-        currentRecordedAudio.play();
-        currentRecordedAudio.addEventListener('ended', () => {
-          btn.removeClass('play');
-          console.log('Audio has finished playing.');
 
-          // You can add any other logic here, like resetting UI or playing next audio
+        activeAudio.addEventListener('ended', () => {
+            btn.removeClass('play');
+            activeAudio = null;
+            activeBtn = null;
+            console.log('Audio has finished playing.');
         });
-
     });
+
 
 
     $(document).on("click","#trigger-upload",function(e) {

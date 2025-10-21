@@ -1485,6 +1485,9 @@ body:not(.wp-admin) input[type=checkbox] {
     padding: 14px 0 38px;
   }
 }
+.single-product .product-top-section .product-infos {
+  max-width: 450px;
+}
 .single-product .product-top-section h1 {
   text-align: left;
   margin-bottom: 17px;
@@ -1498,6 +1501,7 @@ body:not(.wp-admin) input[type=checkbox] {
 }
 .single-product .product-top-section .product-imgs-wrapper {
   max-width: 517px;
+  margin-right: 20px;
 }
 .single-product .product-top-section .product-imgs-wrapper h2 {
   display: none;
@@ -1877,9 +1881,6 @@ body:not(.wp-admin) input[type=checkbox] {
   font-size: 16px;
   margin-bottom: 18px;
 }
-.single-product .product-features .shipping > div {
-  padding-left: 20px;
-}
 .single-product .product-features .faq-section .accordion {
   margin-bottom: 0;
 }
@@ -1983,6 +1984,8 @@ body:not(.wp-admin) input[type=checkbox] {
   border-radius: 10px;
   width: 100%;
   position: relative;
+  text-align: left;
+  padding-left: 77px;
 }
 .single-product .recordModal > div .btns button::after,
 .single-product .listAudiosModal > div .btns button::after,
@@ -2018,9 +2021,9 @@ body:not(.wp-admin) input[type=checkbox] {
   width: 24px;
   height: 30px;
 }
-.single-product .recordModal > div .btns button:nth-child(2)::before,
-.single-product .listAudiosModal > div .btns button:nth-child(2)::before,
-.single-product .addSongModal > div .btns button:nth-child(2)::before {
+.single-product .recordModal > div .btns button:nth-child(3)::before,
+.single-product .listAudiosModal > div .btns button:nth-child(3)::before,
+.single-product .addSongModal > div .btns button:nth-child(3)::before {
   background-image: url("../assets/icons/mic.svg");
   width: 23.16px;
   height: 31.43px;
@@ -2228,6 +2231,11 @@ body:not(.wp-admin) input[type=checkbox] {
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.single-product .recordModal > div div.record-section .recorded-audio-result > div:hover {
+  background-color: #FDFBEE;
 }
 .single-product .recordModal > div div.record-section .recorded-audio-result > div .cancel {
   position: absolute;
@@ -2514,16 +2522,11 @@ body:not(.wp-admin) input[type=checkbox] {
   font-size: 12px;
   font-weight: 400;
 }
-.page-template-template-checkout main .cart-cards .cart-card .cart-head h3 a,
-.page-template-template-cart main .cart-cards .cart-card .cart-head h3 a {
+.page-template-template-checkout main .cart-cards .cart-card .cart-head h3,
+.page-template-template-cart main .cart-cards .cart-card .cart-head h3 {
   font-size: 18px;
   font-weight: 500;
   color: #1E1E1E;
-  text-decoration: none;
-}
-.page-template-template-checkout main .cart-cards .cart-card .cart-head h3 a:hover,
-.page-template-template-cart main .cart-cards .cart-card .cart-head h3 a:hover {
-  text-decoration: underline;
 }
 .page-template-template-checkout main .cart-cards .cart-card .cart-head .audios-list .audio,
 .page-template-template-cart main .cart-cards .cart-card .cart-head .audios-list .audio {
@@ -2609,6 +2612,13 @@ body:not(.wp-admin) input[type=checkbox] {
   border-color: #1E1E1E;
   position: relative;
   width: 37px;
+}
+.page-template-template-checkout main .cart-cards .cart-card .quantity-group .qte-group button.btn-increase,
+.page-template-template-cart main .cart-cards .cart-card .quantity-group .qte-group button.btn-increase {
+  color: #1E1E1E;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
 }
 .page-template-template-checkout main .cart-cards .cart-card .quantity-group .qte-group button.delete:after,
 .page-template-template-cart main .cart-cards .cart-card .quantity-group .qte-group button.delete:after {

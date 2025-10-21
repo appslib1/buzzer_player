@@ -58,7 +58,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                     </div>
                 </div>
                 <div>
-                    <h3><a href="<?= $product_permalink ?>"><?= $product_name ?></a></h3>
+                    <h3><?= $product_name ?></h3>
                     <div class="audios-list">
                         <?php if ( ! empty( $cart_item['selected_audios'] ) ) : ?>
                             <?php foreach ( $cart_item['selected_audios'] as $key => $audio ) : 

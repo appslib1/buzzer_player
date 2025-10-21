@@ -150,6 +150,22 @@ function buzzerplayer_faq_widgets_init() {
 }
 add_action( 'widgets_init', 'buzzerplayer_faq_widgets_init' );
 
+// Register FAQ de la page produit widget area
+function buzzerplayer_product_highlights_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Product highlits', 'buzzerplayer' ),
+            'id'            => 'product-highlights', // Unique ID
+            'description'   => esc_html__( 'Ajouter les points forts d’un produit.', 'buzzerplayer' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+}
+add_action( 'widgets_init', 'buzzerplayer_product_highlights_widgets_init' );
+
 
 function buzzerplayer_footer_widgets_init() {
     register_sidebar(
@@ -210,7 +226,6 @@ function buzzerplayer_scripts() {
 	wp_enqueue_script( 'lottie-js', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', array(), _S_VERSION, true );
 
 
-//	wp_enqueue_script( 'buzzerplayer-js', get_template_directory_uri() . '/js/custom.js', array(), _S_VERSION, true );
 	wp_enqueue_script(
 		'buzzerplayer-js',
 		get_template_directory_uri() . '/js/custom.js',

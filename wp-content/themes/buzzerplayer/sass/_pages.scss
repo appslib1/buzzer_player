@@ -208,6 +208,9 @@
         @media (max-width: 768px){
             padding: 14px 0 38px;
         }
+        .product-infos{
+            max-width: 450px;
+        }
         h1{
             text-align: left;
             margin-bottom: 17px;
@@ -219,6 +222,7 @@
         }
         .product-imgs-wrapper{
             max-width: 517px;
+            margin-right: 20px;
             h2{
                 display: none;
                 font-size: 18px;
@@ -600,11 +604,7 @@
                 margin-bottom: 18px;
             }
         }
-        .shipping{
-            &>div{
-                padding-left: 20px;
-            }
-        }
+        
         .faq-section{
             .accordion{
                 margin-bottom: 0;
@@ -692,6 +692,8 @@
                     border-radius: 10px;
                     width: 100%;
                     position: relative;
+                    text-align: left;
+                    padding-left: 77px;
                     &::after{
                         content: "";
                         right: 29px;
@@ -722,7 +724,7 @@
                             height: 30px;
                         }
                     }
-                    &:nth-child(2){
+                    &:nth-child(3){
                         &::before{
                             background-image: url("../assets/icons/mic.svg");
                             width: 23.16px;
@@ -928,6 +930,11 @@
                         position: relative;
                         display: flex;
                         align-items: center;
+                        cursor: pointer;
+                        transition: .3s all;
+                        &:hover{
+                            background-color: variables.$beige-color;
+                        }
                         .cancel{
                             position: absolute;
                             bottom: calc(100% - 10px);
@@ -1226,16 +1233,9 @@
                         }
                     }
                     h3{
-                        a{
-                            font-size: 18px;
-                            font-weight: 500;
-                            color: variables.$noir-eben;
-                            text-decoration: none;
-                            &:hover{
-                                text-decoration: underline;
-                            }
-
-                        }
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: variables.$noir-eben;
                     }
                     .audios-list{
                         .audio{
@@ -1313,6 +1313,12 @@
                             border-color: variables.$noir-eben;
                             position: relative;
                             width: 37px;
+                            &.btn-increase{
+                                color: variables.$noir-eben;
+                                font-size: 26px;
+                                display: flex;
+                                align-items: center;
+                            }
                             &.delete{
                                 &:after{
                                     position: absolute;
