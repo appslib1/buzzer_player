@@ -1385,8 +1385,6 @@
             }
         }
         .cart-collaterals{
-            max-width: 335px;
-            float: right;
             @media (max-width: 768px){
                 display: none;
             }
@@ -1753,11 +1751,15 @@
                 display: none;
             }
             tbody{
-                display: none;
                 tr{
                     padding-top: 0;
                     margin-top: 0;
                     border-top: none;
+                    &.order-total{
+                        padding-top: 21px;
+                        margin-top: 21px;
+                        border-top: 1px solid #B4B4B4;
+                    }
                 }
             }
         }
