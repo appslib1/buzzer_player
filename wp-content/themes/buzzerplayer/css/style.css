@@ -2724,6 +2724,10 @@ body:not(.wp-admin) input[type=checkbox] {
   margin-bottom: 12px;
   display: block;
 }
+.page-template-template-checkout main .cart-collaterals .cart_totals table tr .woocommerce-shipping-destination,
+.page-template-template-cart main .cart-collaterals .cart_totals table tr .woocommerce-shipping-destination {
+  display: none;
+}
 .page-template-template-checkout main .cart-collaterals .cart_totals table tr th,
 .page-template-template-cart main .cart-collaterals .cart_totals table tr th {
   width: 90%;

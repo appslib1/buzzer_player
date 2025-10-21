@@ -1410,6 +1410,9 @@
                     tr{
                         margin-bottom: 12px;
                         display: block;
+                        .woocommerce-shipping-destination{
+                            display: none;
+                        }
                         th{
                             width: 90%;
                             padding: 0;
