@@ -249,7 +249,7 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                 <div>
                     <button class="play-recorded-audio"></button>
                     <img src="<?= home_url('/wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                    <span>Recording.webm</span>
+                    <span>Audio</span>
                     <button class="cancel"></button>
                 </div>
             </div>
