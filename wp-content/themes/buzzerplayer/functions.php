@@ -493,6 +493,7 @@ add_action('wp_ajax_nopriv_load_more_audios', 'load_more_audios');
 
 function load_more_audios() {
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $filter = $_POST['filter'];
 
     $args = array(
         'post_type'      => 'audio',
@@ -500,9 +501,20 @@ function load_more_audios() {
         'paged'          => $paged
     );
 
+    if (!empty($filter) && $filter != "") {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'category', // replace if needed
+                'field'    => 'slug',
+                'terms'    => $filter,
+            ]
+        ];
+    }
+
     $loop = new WP_Query($args);
 
     if ($loop->have_posts()) :
+        ob_start();
         while ($loop->have_posts()) : $loop->the_post();
             global $post;
             $bruitage_id = get_the_ID();
@@ -526,6 +538,16 @@ function load_more_audios() {
             <?php
         endwhile;
     endif;
+
+    wp_reset_postdata();
+
+        $html = ob_get_clean();
+
+        wp_send_json_success([
+            'html' => $html,
+            'max_pages' => $query->max_num_pages,
+            'current_page' => $paged,
+        ]);
 
     wp_die(); // important
 }

@@ -86,11 +86,23 @@ $pageContent = get_the_content();
                         <?php endwhile; wp_reset_postdata(); ?>
                     </div>
 
-                    <?php if($loop->found_posts > 15) { ?>
-                        <div class="paginate text-center">
-                            <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
-                        </div>
-                    <?php } ?>
+                    <?php 
+                        $showPagination = false;
+                        if(wp_is_mobile()){
+                            if($loop->found_posts > 12) {
+                                $showPagination = true;
+                            }
+                        }
+                        else{
+                            if($loop->found_posts > 15) {
+                                $showPagination = true;
+                            }
+                        }
+                    ?>
+                    <div class="paginate text-center <?= $showPagination ? '' : 'd-none' ?>">
+                        <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
+                    </div>
+                    
                 </div>
 
                 <div class="content max-875">
@@ -126,14 +138,14 @@ jQuery(document).ready(function($){
                 console.log(response);
                 $('.audios-wrapper .loading-items').removeClass('show');
                 if(response.success){
-                    $('.audios').html(response.data.html); 
-                    if (response.data.max_pages > page) {
-                        $('.paginate').show();
+                    $('#audio-list').html(response.data.html); 
+                    if (response.data.max_pages > response.data.current_page) {
+                        $('.paginate').removeClass('d-none');
                     } else {
-                        $('.paginate').hide();
+                        $('.paginate').addClass('d-none');
                     }
                 } else {
-                    $('.audios').html('<p>No audios found.</p>');
+                    $('#audio-list').html('<p>No audios found.</p>');
                 }
             }
         });
@@ -142,6 +154,8 @@ jQuery(document).ready(function($){
     // 🔹 Load More AJAX
     $(document).on('click', '.paginate .show-more', function(e) {
         e.preventDefault();
+        var existing_filter = $('.filters li a.active').attr('data-slug');
+        existing_filter = existing_filter == undefined || existing_filter == "all" ? "" : existing_filter;
 
         let button = $(this);
         let page   = parseInt(button.attr('data-page')) + 1;
@@ -151,17 +165,19 @@ jQuery(document).ready(function($){
             type: 'POST',
             data: {
                 action: 'load_more_audios',
+                filter : existing_filter,
                 page: page
             },
             beforeSend: function() {
                 button.text('Loading...');
             },
             success: function(response) {
-                if (response.trim() !== '') {
-                    $('#audio-list').append(response);
-                    button.attr('data-page', page).text('Display more sounds');
+
+                $('#audio-list').append(response.data.html); 
+                if (response.data.max_pages > response.data.current_page) {
+                    $('.paginate').removeClass('d-none');
                 } else {
-                    button.remove(); // no more posts
+                    $('.paginate').addClass('d-none');
                 }
             }
         });
