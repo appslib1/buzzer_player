@@ -496,7 +496,7 @@ function load_more_audios() {
 
     $args = array(
         'post_type'      => 'audio',
-        'posts_per_page' => 15,
+        'posts_per_page' => wp_is_mobile() ? 12 : 15,
         'paged'          => $paged
     );
 

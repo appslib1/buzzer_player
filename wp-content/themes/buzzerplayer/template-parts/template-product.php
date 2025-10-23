@@ -16,9 +16,11 @@ $pageContent = get_the_content();
             <div class="col-lg-12 col-md-12 m-auto">
                 <div class="header">
                     <h1><?php echo esc_html($pageTitle); ?></h1>
+                    <?php if(has_excerpt()) { ?>
                     <div class="description">
                         <?php the_excerpt(); ?>
                     </div>
+                    <?php } ?>
                 </div>
                 <div class="filters">
                     <?php 
@@ -52,7 +54,7 @@ $pageContent = get_the_content();
                         <?php
                         $args = array(
                             'post_type'      => 'audio',
-                            'posts_per_page' => 15,
+                            'posts_per_page' => wp_is_mobile() ? 12 : 15 ,
                             'paged'          => 1,
                         );
                         $loop = new WP_Query($args); 
@@ -82,9 +84,9 @@ $pageContent = get_the_content();
                     </div>
 
                     <?php if($loop->found_posts > 15) { ?>
-                    <div class="paginate text-center">
-                        <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
-                    </div>
+                        <div class="paginate text-center">
+                            <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
+                        </div>
                     <?php } ?>
                 </div>
 
