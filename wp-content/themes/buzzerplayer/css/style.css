@@ -362,7 +362,7 @@ body:not(.wp-admin) input[type=tel] {
   font-size: 17px;
   border-radius: 5px !important;
   box-shadow: 0 0 0 2px #1E1E1E !important;
-  border-bottom: 1px solid transparent !important;
+  border-bottom: 2px solid transparent !important;
 }
 body:not(.wp-admin) select::placeholder,
 body:not(.wp-admin) textarea::placeholder,
@@ -387,7 +387,7 @@ body:not(.wp-admin) textarea:focus,
 body:not(.wp-admin) input[type=text]:focus,
 body:not(.wp-admin) input[type=email]:focus,
 body:not(.wp-admin) input[type=tel]:focus {
-  border-bottom: 1px solid #1E1E1E !important;
+  border-bottom: 2px solid #1E1E1E !important;
 }
 body:not(.wp-admin) select:hover,
 body:not(.wp-admin) textarea:hover,

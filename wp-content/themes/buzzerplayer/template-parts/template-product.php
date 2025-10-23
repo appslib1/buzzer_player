@@ -23,6 +23,10 @@ $pageContent = get_the_content();
                     <?php } ?>
                 </div>
                 <div class="filters">
+                    <ul>
+                        <li>
+                            <a href="" data-slug="all">All</a>
+                        </li>
                     <?php 
                         $post_type   = 'audio';
                         $taxonomies  = get_object_taxonomies($post_type, 'objects'); // fixed: 'objects' not 'category'
@@ -34,16 +38,15 @@ $pageContent = get_the_content();
                             ]);
 
                             if (!empty($terms) && !is_wp_error($terms)) {
-                                echo '<ul>';
                                 foreach ($terms as $term) {
                                     if ($term->count > 0 && $term->slug != "non-classe") {
                                         echo '<li><a href="#" data-slug="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a></li>';
                                     }
                                 }
-                                echo '</ul>';
                             }
                         }
                     ?>
+                    </ul>
                 </div>
 
                 <div class="audios-wrapper">

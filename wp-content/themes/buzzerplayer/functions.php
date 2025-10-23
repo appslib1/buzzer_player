@@ -422,13 +422,13 @@ function filter_audio_callback() {
 
     $args = [
         'post_type'      => 'audio',
-        'posts_per_page' => 15, // adjust as needed
+        'posts_per_page' => wp_is_mobile() ? 12 : 15, // adjust as needed
         'orderby'        => 'date',
         'order'          => 'DESC',
         'paged'          => $paged,
     ];
 
-    if (!empty($category)) {
+    if (!empty($category) && $category != "all") {
         $args['tax_query'] = [
             [
                 'taxonomy' => 'category', // replace if needed
