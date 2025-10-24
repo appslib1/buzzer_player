@@ -1287,13 +1287,17 @@ body:not(.wp-admin) input[type=checkbox] {
 }
 
 /*********************** Archive product page ******************************/
+.page-template-template-sounds main,
 .page-template-template-product main {
   padding: 69px 0 0;
 }
+.page-template-template-sounds main .description,
+.page-template-template-sounds main h1,
 .page-template-template-product main .description,
 .page-template-template-product main h1 {
   margin-bottom: 19px;
 }
+.page-template-template-sounds main .description,
 .page-template-template-product main .description {
   max-width: 784px;
   text-align: center;
@@ -1302,12 +1306,14 @@ body:not(.wp-admin) input[type=checkbox] {
   margin-left: auto;
   margin-right: auto;
 }
+.page-template-template-sounds main .header,
 .page-template-template-product main .header {
   position: relative;
   max-width: 875px;
   margin-left: auto;
   margin-right: auto;
 }
+.page-template-template-sounds main .header:after,
 .page-template-template-product main .header:after {
   position: absolute;
   right: 0;
@@ -1320,6 +1326,7 @@ body:not(.wp-admin) input[type=checkbox] {
   background-repeat: no-repeat;
 }
 @media (max-width: 991px) {
+  .page-template-template-sounds main .header:after,
   .page-template-template-product main .header:after {
     width: 48.15px;
     height: 28.25px;
@@ -1327,6 +1334,7 @@ body:not(.wp-admin) input[type=checkbox] {
     top: unset;
   }
 }
+.page-template-template-sounds main .header:before,
 .page-template-template-product main .header:before {
   position: absolute;
   right: 100%;
@@ -1339,6 +1347,7 @@ body:not(.wp-admin) input[type=checkbox] {
   background-repeat: no-repeat;
 }
 @media (max-width: 991px) {
+  .page-template-template-sounds main .header:before,
   .page-template-template-product main .header:before {
     bottom: 0;
     width: 46px;
@@ -1346,17 +1355,20 @@ body:not(.wp-admin) input[type=checkbox] {
   }
 }
 @media (max-width: 768px) {
+  .page-template-template-sounds main .header:before,
   .page-template-template-product main .header:before {
     left: 0;
     top: calc(100% - 10px);
   }
 }
+.page-template-template-sounds main .filters,
 .page-template-template-product main .filters {
   margin-bottom: 36px;
   max-width: 875px;
   margin-left: auto;
   margin-right: auto;
 }
+.page-template-template-sounds main .filters ul,
 .page-template-template-product main .filters ul {
   padding: 0;
   padding: 0;
@@ -1366,10 +1378,12 @@ body:not(.wp-admin) input[type=checkbox] {
   flex-wrap: wrap;
   justify-content: center;
 }
+.page-template-template-sounds main .filters ul li,
 .page-template-template-product main .filters ul li {
   flex: 1;
   text-align: center;
 }
+.page-template-template-sounds main .filters ul li a,
 .page-template-template-product main .filters ul li a {
   background-color: #DBDBDB;
   border-radius: 55px;
@@ -1384,17 +1398,21 @@ body:not(.wp-admin) input[type=checkbox] {
   padding-left: 45px;
   padding-right: 45px;
 }
+.page-template-template-sounds main .filters ul li a:hover,
 .page-template-template-product main .filters ul li a:hover {
   background-color: #c2c2c2;
 }
+.page-template-template-sounds main .filters ul li a.active,
 .page-template-template-product main .filters ul li a.active {
   background-color: #FFC80A;
 }
 @media (max-width: 768px) {
+  .page-template-template-sounds main .filters ul li:first-child,
   .page-template-template-product main .filters ul li:first-child {
     flex: 100%;
     text-align: center;
   }
+  .page-template-template-sounds main .filters ul li:first-child a,
   .page-template-template-product main .filters ul li:first-child a {
     max-width: fit-content;
     margin-left: auto;
@@ -1402,16 +1420,19 @@ body:not(.wp-admin) input[type=checkbox] {
   }
 }
 @media (max-width: 768px) {
+  .page-template-template-sounds main .filters ul li,
   .page-template-template-product main .filters ul li {
     flex: unset;
     width: fit-content;
   }
+  .page-template-template-sounds main .filters ul li a,
   .page-template-template-product main .filters ul li a {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
   }
 }
+.page-template-template-sounds main .audios-wrapper,
 .page-template-template-product main .audios-wrapper {
   padding-top: 33px;
   padding-bottom: 58px;
@@ -1423,6 +1444,7 @@ body:not(.wp-admin) input[type=checkbox] {
   margin-right: auto;
   position: relative;
 }
+.page-template-template-sounds main .audios-wrapper .loading-items,
 .page-template-template-product main .audios-wrapper .loading-items {
   position: absolute;
   inset: 0;
@@ -1431,9 +1453,11 @@ body:not(.wp-admin) input[type=checkbox] {
   background: rgba(255, 255, 255, 0.5294117647);
   display: none;
 }
+.page-template-template-sounds main .audios-wrapper .loading-items.show,
 .page-template-template-product main .audios-wrapper .loading-items.show {
   display: block;
 }
+.page-template-template-sounds main .audios-wrapper .loading-items .spinner,
 .page-template-template-product main .audios-wrapper .loading-items .spinner {
   animation: spin 1s linear infinite;
   border: 8px solid #f3f3f3; /* Light gray */
@@ -1446,6 +1470,7 @@ body:not(.wp-admin) input[type=checkbox] {
   inset: 0;
   margin: auto;
 }
+.page-template-template-sounds main .audios-wrapper.loading,
 .page-template-template-product main .audios-wrapper.loading {
   border: 8px solid #f3f3f3; /* Light gray */
   border-top: 8px solid #C92E26; /* Blue */
@@ -1454,14 +1479,17 @@ body:not(.wp-admin) input[type=checkbox] {
   height: 50px;
   animation: spin 1s linear infinite;
 }
+.page-template-template-sounds main .audios-wrapper.loading > *,
 .page-template-template-product main .audios-wrapper.loading > * {
   display: none;
 }
 @media (max-width: 768px) {
+  .page-template-template-sounds main .audios-wrapper,
   .page-template-template-product main .audios-wrapper {
     padding: 33px 0;
   }
 }
+.page-template-template-sounds main .audios-wrapper .audios,
 .page-template-template-product main .audios-wrapper .audios {
   /*display: flex;
   flex-wrap: wrap;
@@ -1472,28 +1500,33 @@ body:not(.wp-admin) input[type=checkbox] {
   padding-right: 40px;
 }
 @media (max-width: 991px) {
+  .page-template-template-sounds main .audios-wrapper .audios,
   .page-template-template-product main .audios-wrapper .audios {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
+.page-template-template-sounds main .audios-wrapper .audios .sound-button-group,
 .page-template-template-product main .audios-wrapper .audios .sound-button-group {
   width: 19%;
   display: inline-block;
   margin-bottom: 60px;
   max-width: unset;
 }
+.page-template-template-sounds main .audios-wrapper .audios .sound-button-group > div,
 .page-template-template-product main .audios-wrapper .audios .sound-button-group > div {
   max-width: 116px;
   margin-left: auto;
   margin-right: auto;
 }
 @media (max-width: 991px) {
+  .page-template-template-sounds main .audios-wrapper .audios .sound-button-group,
   .page-template-template-product main .audios-wrapper .audios .sound-button-group {
     width: 49%;
     margin-bottom: 10px;
   }
 }
+.page-template-template-sounds main .audios-wrapper .audios .sound-button-group.loading,
 .page-template-template-product main .audios-wrapper .audios .sound-button-group.loading {
   border: 8px solid #f3f3f3; /* Light gray */
   border-top: 8px solid #C92E26; /* Blue */
@@ -1502,6 +1535,7 @@ body:not(.wp-admin) input[type=checkbox] {
   height: 50px;
   animation: spin 1s linear infinite;
 }
+.page-template-template-sounds main .audios-wrapper .audios .sound-button-group.loading > *,
 .page-template-template-product main .audios-wrapper .audios .sound-button-group.loading > * {
   display: none;
 }
@@ -1513,10 +1547,12 @@ body:not(.wp-admin) input[type=checkbox] {
     transform: rotate(360deg);
   }
 }
+.page-template-template-sounds main .product-grid .product-card,
 .page-template-template-product main .product-grid .product-card {
   margin-bottom: 60px;
 }
 @media (max-width: 768px) {
+  .page-template-template-sounds main .paginate,
   .page-template-template-product main .paginate {
     margin-top: 60px;
   }

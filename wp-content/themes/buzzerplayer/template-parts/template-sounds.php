@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Sounds Page
+ * Template Name: Bruitage
  * Description: A custom page template with a special layout.
  */
 

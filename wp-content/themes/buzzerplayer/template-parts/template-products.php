@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Products Page
+ * Template Name: Liste produits
  * Description: A custom page template with a special layout.
  */
 
