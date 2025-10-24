@@ -117,10 +117,10 @@ $pageContent = get_the_content();
 jQuery(document).ready(function($){
 
     // 🔹 Filter AJAX
-    $(document).on('click', '.page-template-template-product .filters ul a', function(e) {
+    $(document).on('click', '.page-template-template-sounds .filters ul a', function(e) {
         e.preventDefault();
 
-        $('.page-template-template-product .filters ul a').removeClass('active');
+        $('.page-template-template-sounds .filters ul a').removeClass('active');
         $(this).addClass('active');
         $('.audios-wrapper .loading-items').addClass('show');
 
