@@ -139,7 +139,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
     <div class="cart-products">
         <div class="add-more-products">
-            <a href="<?= home_url('cart') ?>" class="add-prodcuts">
+            <a href="<?= home_url('product') ?>" class="add-prodcuts">
                 Add another buzzer
             </a>
         </div>
