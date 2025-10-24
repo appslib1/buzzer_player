@@ -59,7 +59,7 @@ if ( isset( $locations['footer_menu_bottom'] ) ) {  // Replace with your locatio
 
 ?>
 
-	<?php if (is_front_page() || is_home() || is_cart()) : ?>
+	<?php if (is_front_page() || is_home() || is_cart() || is_checkout()) : ?>
 		<?php if ( is_active_sidebar( 'section-dessus-footer' ) ) : ?>
 			<div class="footer-contact">
 				<?php dynamic_sidebar( 'section-dessus-footer' ); ?>

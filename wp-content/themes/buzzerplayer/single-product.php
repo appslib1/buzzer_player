@@ -16,6 +16,9 @@ $audio = get_field('audio');
 ?>
 
 
+<div class="loading-effect">
+    <div class="loading-container"></div>
+</div>
 <section class="product-top-section">
     <div class="container">
       <div class="row">
@@ -769,7 +772,7 @@ jQuery(document).ready(function($){
     
     $('#uploadAudioForm').submit(function(e) {
         e.preventDefault();
-
+        $('.loading-effect').addClass('loading');
         var fileInput = $('#uploadAudioInput')[0];
         if (!fileInput.files.length) return alert('Select a file');
 
@@ -786,6 +789,7 @@ jQuery(document).ready(function($){
             processData: false,
             contentType: false,
             success: function(response) {
+                $('.loading-effect').removeClass('loading');
                 if (response.success) {
                     location.reload();
                 } else {
