@@ -717,11 +717,18 @@ function save_uploaded_audio() {
 add_filter('woocommerce_add_cart_item_data', 'add_session_audios_to_cart', 10, 2);
 function add_session_audios_to_cart($cart_item_data, $product_id) {
     if (!session_id()) session_start();
+    $audio = get_field('audio', $product_id);
 
-    if (!empty($_SESSION['selected_audios'])) {
+    if (isset($audio) && !empty($audio['url'])) {
+        $cart_item_data['selected_audios'][] = [
+            'name' => $audio['title'],
+            'url'  => $audio['url'],
+        ];
+    } elseif (!empty($_SESSION['selected_audios'])) {
         // Store in cart item
         $cart_item_data['selected_audios'] = $_SESSION['selected_audios'];
     }
+
 
     return $cart_item_data;
 }

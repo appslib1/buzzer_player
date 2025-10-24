@@ -950,6 +950,7 @@ body:not(.wp-admin) input[type=checkbox] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 200px;
 }
 @media (max-width: 768px) {
   .products-section .product-grid .product-card {
@@ -978,6 +979,7 @@ body:not(.wp-admin) input[type=checkbox] {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-height: 93px;
 }
 .products-section .product-grid .product-card .product-details .product-title {
   font-family: "Work Sans", Tahoma;
@@ -988,25 +990,38 @@ body:not(.wp-admin) input[type=checkbox] {
   margin: 0;
   text-align: left;
 }
+.products-section .product-grid .product-card .product-details .product-title span {
+  font-weight: normal;
+  font-size: 16px;
+}
 .products-section .product-grid .product-card .product-details .prices {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-direction: row-reverse;
+  justify-content: left;
+  position: relative;
+  width: fit-content;
 }
-.products-section .product-grid .product-card .product-details .prices .current-price {
+.products-section .product-grid .product-card .product-details .prices ins {
+  font-weight: 700;
+  text-decoration: none;
   font-family: "Work Sans", Tahoma;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.2;
   color: #1E1E1E;
 }
-.products-section .product-grid .product-card .product-details .prices .old-price {
+.products-section .product-grid .product-card .product-details .prices del {
   font-family: "Work Sans", Tahoma;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.2;
   color: #7A7A7A;
   text-decoration: line-through;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 10px);
 }
 
 /**************** Block features ****************/

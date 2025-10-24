@@ -208,6 +208,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            min-width: 200px;
             @media (max-width: 768px){
                 margin-bottom: 30px;
             }
@@ -236,6 +237,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
+                min-height: 93px;
 
                 .product-title {
                     font-family: variables.$work-sans;
@@ -245,28 +247,39 @@
                     color: variables.$noir-eben;
                     margin: 0;
                     text-align: left;
+                    span{
+                        font-weight: normal;
+                        font-size: 16px;
+                    }
                 }
 
                 .prices {
                     display: flex;
                     align-items: center;
                     gap: 10px;
-
-                    .current-price {
+                    flex-direction: row-reverse;
+                    justify-content: left;
+                    position: relative;
+                    width: fit-content;
+                    ins{
+                        font-weight: 700;
+                        text-decoration: none;
                         font-family: variables.$work-sans;
                         font-weight: 700;
                         font-size: 28px;
                         line-height: 1.2;
                         color: variables.$noir-eben;
                     }
-
-                    .old-price {
+                    del {
                         font-family: variables.$work-sans;
                         font-weight: 500;
                         font-size: 18px;
                         line-height: 1.2;
                         color: variables.$gris;
                         text-decoration: line-through;
+                        position: absolute;
+                        top: 0;
+                        left: calc(100% + 10px);
                     }
                 }
             }

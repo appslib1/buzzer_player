@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Product Page
+ * Template Name: Sounds Page
  * Description: A custom page template with a special layout.
  */
 

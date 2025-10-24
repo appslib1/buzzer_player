@@ -11,6 +11,7 @@ $attachment_ids = $product->get_gallery_image_ids();
 
 // Get saved audios
 $saved_audios = $_SESSION['selected_audios'] ?? [];
+$audio = get_field('audio');
 
 ?>
 
@@ -108,50 +109,56 @@ $saved_audios = $_SESSION['selected_audios'] ?? [];
                     <?= the_excerpt() ?>
                 </div>
                 <?php 
-                    if ( ! empty( $saved_audios ) ) {
+                    if ( isset($audio) && !empty($audio['url']) ) { 
                 ?>
                     <div class="select-audio-files">
-                        <?php 
-                            foreach ( $saved_audios as $audio ) {
-                        ?>
-                                <div>
-                                    <div class="loading-animation"></div>
-                                    <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
-                                    <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                                    <span><?= $audio['name'] ?></span>
-                                    <button class="cancel remove-audio-session"></button>
-                                </div>
-                        <?php 
-                            }
-                        ?>
-                            <span class="add-other-song-wrapper">
-                                <a href="" class="buzzer-default-btn add-another-audio add-song">
-                                    Add another audio
-                                </a>
-                                <button class="help"></button>
-                            </span>
+                        <div>
+                            <div class="loading-animation"></div>
+                            <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
+                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                            <span><?= $audio['name'] ?></span>
+                        </div>
                     </div>
                 <?php 
-                    }
+                    } elseif ( ! empty( $saved_audios ) ) { 
                 ?>
+                    <div class="select-audio-files">
+                        <?php foreach ( $saved_audios as $audio ) { ?>
+                            <div>
+                                <div class="loading-animation"></div>
+                                <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
+                                <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                                <span><?= $audio['name'] ?></span>
+                                <button class="cancel remove-audio-session"></button>
+                            </div>
+                        <?php } ?>
+                        <span class="add-other-song-wrapper">
+                            <a href="" class="buzzer-default-btn add-another-audio add-song">
+                                Add another audio
+                            </a>
+                            <button class="help"></button>
+                        </span>
+                    </div>
+                <?php } ?>
 
-                <?php if ( ! empty( $saved_audios ) ) { ?>
+
+                <?php if ( ! empty( $saved_audios )  || (isset($audio) && $audio['url'] != "") ) { ?>
                     <label class="agree-checkbox-wrapper">
                         <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
                         <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
                     </label>
                     <!-- Add to Cart Button -->
                     <?php if ( $product ) {
-                            $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
-                            $add_to_cart_text = "Add to cart";
-                            ?>
-                            <a id="add-to-cart-btn" 
-                            href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
-                            class="btn btn-primary add_to_cart_button btn-lg mt-3"
-                            rel="nofollow">
-                                <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
-                            </a>
-                        <?php } ?>
+                        $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
+                        $add_to_cart_text = "Add to cart";
+                        ?>
+                        <a id="add-to-cart-btn" 
+                        href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
+                        class="btn btn-primary add_to_cart_button btn-lg mt-3"
+                        rel="nofollow">
+                            <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                        </a>
+                    <?php } ?>
 
                 <?php } else { ?>
                     <a href="" class="buzzer-default-btn add-song" id="openModal"> 
