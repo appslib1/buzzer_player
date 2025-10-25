@@ -544,12 +544,14 @@ body:not(.wp-admin){
             .prices {
                 display: flex;
                 align-items: center;
-                gap: 10px;
                 flex-direction: row-reverse;
                 justify-content: left;
                 position: relative;
                 width: fit-content;
                 ins{
+                    text-decoration: none;
+                }
+                bdi{
                     font-weight: 700;
                     text-decoration: none;
                     font-family: variables.$work-sans;
@@ -557,19 +559,22 @@ body:not(.wp-admin){
                     font-size: 28px;
                     line-height: 1.2;
                     color: variables.$noir-eben;
+                    text-decoration: none;
                 }
                 del {
-                    font-family: variables.$work-sans;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 1.2;
-                    color: variables.$gris;
-                    text-decoration: line-through;
-                    position: absolute;
-                    top: 0;
-                    left: calc(100% + 10px);
-                    @media (max-width: 991px){
-                        display: none;
+                    bdi{
+                        font-family: variables.$work-sans;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 1.2;
+                        color: variables.$gris;
+                        text-decoration: line-through;
+                        position: absolute;
+                        top: 0;
+                        left: calc(100% + 10px);
+                        @media (max-width: 991px){
+                            display: none;
+                        }
                     }
                 }
             }

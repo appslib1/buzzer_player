@@ -845,13 +845,15 @@ body:not(.wp-admin) input[type=checkbox] {
 .product-grid .product-card .product-details .prices {
   display: flex;
   align-items: center;
-  gap: 10px;
   flex-direction: row-reverse;
   justify-content: left;
   position: relative;
   width: fit-content;
 }
 .product-grid .product-card .product-details .prices ins {
+  text-decoration: none;
+}
+.product-grid .product-card .product-details .prices bdi {
   font-weight: 700;
   text-decoration: none;
   font-family: "Work Sans", Tahoma;
@@ -859,8 +861,9 @@ body:not(.wp-admin) input[type=checkbox] {
   font-size: 28px;
   line-height: 1.2;
   color: #1E1E1E;
+  text-decoration: none;
 }
-.product-grid .product-card .product-details .prices del {
+.product-grid .product-card .product-details .prices del bdi {
   font-family: "Work Sans", Tahoma;
   font-weight: 500;
   font-size: 18px;
@@ -872,7 +875,7 @@ body:not(.wp-admin) input[type=checkbox] {
   left: calc(100% + 10px);
 }
 @media (max-width: 991px) {
-  .product-grid .product-card .product-details .prices del {
+  .product-grid .product-card .product-details .prices del bdi {
     display: none;
   }
 }
