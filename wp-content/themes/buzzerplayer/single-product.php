@@ -11,7 +11,17 @@ $attachment_ids = $product->get_gallery_image_ids();
 
 // Get saved audios
 $saved_audios = $_SESSION['selected_audios'] ?? [];
-$audio = get_field('audio');
+
+$product_audios = get_post_meta(get_the_ID(), '_product_audios', true);
+if (!empty($audios)) {
+    echo '<ul class="product-audios">';
+    foreach ($audios as $audio_id) {
+        $url = wp_get_attachment_url($audio_id);
+        echo '<li><audio controls src="' . esc_url($url) . '"></audio></li>';
+    }
+    echo '</ul>';
+}
+
 
 ?>
 
@@ -112,18 +122,23 @@ $audio = get_field('audio');
                     <?= the_excerpt() ?>
                 </div>
                 <?php 
-                    if ( isset($audio) && !empty($audio['url']) ) { 
+                    if ( !empty($product_audios) ) { 
+                        foreach($product_audios as $audio){ 
+                            $url = wp_get_attachment_url($audio);          // Audio file URL
+                            $title = get_the_title($audio);               // Attachment title
                 ?>
                     <div class="select-audio-files">
                         <div>
                             <div class="loading-animation"></div>
-                            <button class="play-recorded-audio" data-audio="<?= $audio['url'] ?>"></button>
+                            <button class="play-recorded-audio" data-audio="<?= $url ?>"></button>
                             <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                            <span><?= $audio['name'] ?></span>
+                            <span><?= $title ?></span>
                         </div>
                     </div>
                 <?php 
-                    } elseif ( ! empty( $saved_audios ) ) { 
+                    } 
+                    } 
+                    elseif ( ! empty( $saved_audios ) ) { 
                 ?>
                     <div class="select-audio-files">
                         <?php foreach ( $saved_audios as $audio ) { ?>
@@ -145,7 +160,7 @@ $audio = get_field('audio');
                 <?php } ?>
 
 
-                <?php if ( ! empty( $saved_audios )  || (isset($audio) && $audio['url'] != "") ) { ?>
+                <?php if ( ! empty( $saved_audios )  || (!empty($product_audios)) ) { ?>
 
                     <?php if(!isset($audio) && !isset($audio['url'])) { ?>
                     <label class="agree-checkbox-wrapper">

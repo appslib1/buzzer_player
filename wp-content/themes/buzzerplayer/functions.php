@@ -732,13 +732,20 @@ function save_uploaded_audio() {
 add_filter('woocommerce_add_cart_item_data', 'add_session_audios_to_cart', 10, 2);
 function add_session_audios_to_cart($cart_item_data, $product_id) {
     if (!session_id()) session_start();
-    $audio = get_field('audio', $product_id);
+        $audios = get_post_meta($product_id, '_product_audios', true); // Get all uploaded audio IDs
 
-    if (isset($audio) && !empty($audio['url'])) {
-        $cart_item_data['selected_audios'][] = [
-            'name' => $audio['title'],
-            'url'  => $audio['url'],
-        ];
+    if (!empty($audios)) {
+        foreach ($audios as $audio_id) {
+            $url  = wp_get_attachment_url($audio_id);   // Get audio URL
+            $name = get_the_title($audio_id);           // Get attachment title
+
+            if ($url) { // Make sure URL exists
+                $cart_item_data['selected_audios'][] = [
+                    'name' => $name,
+                    'url'  => $url,
+                ];
+            }
+        }
     } elseif (!empty($_SESSION['selected_audios'])) {
         // Store in cart item
         $cart_item_data['selected_audios'] = $_SESSION['selected_audios'];
@@ -881,3 +888,110 @@ function aj_remove_wc_blockui_front() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'aj_remove_wc_blockui_front', 100 );
+
+
+
+// Add meta box for audio files
+add_action('add_meta_boxes', 'add_product_audio_metabox');
+function add_product_audio_metabox() {
+    add_meta_box(
+        'product_audios',
+        'Product Audios',
+        'render_product_audio_metabox',
+        'product',
+        'normal',
+        'default'
+    );
+}
+
+// Render the meta box
+function render_product_audio_metabox($post) {
+    wp_nonce_field('save_product_audio_metabox', 'product_audio_nonce');
+
+    $audios = get_post_meta($post->ID, '_product_audios', true);
+
+    echo '<div id="audio-repeater">';
+    if (!empty($audios)) {
+        foreach ($audios as $index => $audio_id) {
+            $audio_url = wp_get_attachment_url($audio_id);
+            echo '<div class="audio-row">';
+            echo '<input type="hidden" name="product_audios[]" value="' . esc_attr($audio_id) . '">';
+            echo '<button class="upload-audio button">Upload Audio</button>';
+            echo '<span class="audio-filename">' . basename($audio_url) . '</span>';
+            echo ' <button class="remove-audio button">Remove</button>';
+            echo '</div>';
+        }
+    } else {
+        echo '<div class="audio-row">';
+        echo '<input type="hidden" name="product_audios[]" value="">';
+        echo '<button class="upload-audio button">Upload Audio</button>';
+        echo '<span class="audio-filename"></span>';
+        echo ' <button class="remove-audio button">Remove</button>';
+        echo '</div>';
+    }
+    echo '</div>';
+    echo '<button id="add-audio" class="button">Add Audio</button>';
+
+    ?>
+    <script>
+    jQuery(document).ready(function($){
+        function initUploader(button){
+            var file_frame;
+            button.click(function(e){
+                e.preventDefault();
+                if(file_frame){ file_frame.open(); return; }
+
+                file_frame = wp.media.frames.file_frame = wp.media({
+                    title: 'Select or Upload Audio',
+                    button: { text: 'Use this audio' },
+                    multiple: false,
+                    library: { type: 'audio' } // ← Accept only audio files
+                });
+
+                file_frame.on('select', function(){
+                    var attachment = file_frame.state().get('selection').first().toJSON();
+                    button.siblings('input[type="hidden"]').val(attachment.id);
+                    button.siblings('.audio-filename').text(attachment.filename);
+                });
+
+                file_frame.open();
+            });
+        }
+
+        // Init existing buttons
+        $('#audio-repeater').find('.upload-audio').each(function(){
+            initUploader($(this));
+        });
+
+        // Add new row
+        $('#add-audio').click(function(e){
+            e.preventDefault();
+            var row = $('<div class="audio-row"><input type="hidden" name="product_audios[]" value=""><button class="upload-audio button">Upload Audio</button><span class="audio-filename"></span> <button class="remove-audio button">Remove</button></div>');
+            $('#audio-repeater').append(row);
+            initUploader(row.find('.upload-audio'));
+        });
+
+        // Remove row
+        $(document).on('click', '.remove-audio', function(e){
+            e.preventDefault();
+            $(this).parent('.audio-row').remove();
+        });
+    });
+    </script>
+    <style>
+    #audio-repeater .audio-row { margin-bottom: 5px; }
+    .audio-filename { margin-left: 10px; }
+    </style>
+    <?php
+}
+
+// Save the meta box data
+add_action('save_post', 'save_product_audio_metabox');
+function save_product_audio_metabox($post_id) {
+    if (!isset($_POST['product_audio_nonce']) || !wp_verify_nonce($_POST['product_audio_nonce'], 'save_product_audio_metabox')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    $audios = array_filter($_POST['product_audios']); // Remove empty
+    update_post_meta($post_id, '_product_audios', $audios);
+}
