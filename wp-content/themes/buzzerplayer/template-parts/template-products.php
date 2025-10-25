@@ -39,43 +39,41 @@ get_header();
                                 global $product;
                             ?>
                             <div class="col-md-3 col-6 mb-4">
-                                <div class="product-card">
-                                <div class="image-container">
-                                    <a href="<?php the_permalink(); ?>">
-                                    <?php if ( has_post_thumbnail() ) : ?>
-                                        <?php the_post_thumbnail('medium', ['class' => 'product-image', 'alt' => get_the_title()]); ?>
-                                    <?php else : ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/product-example.png" alt="Default product" class="product-image">
-                                    <?php endif; ?>
-                                    </a>
-                                </div>
+                                <a class="product-card" href="<?php the_permalink(); ?>">
+                                    <div class="image-container">
+                                        <?php if ( has_post_thumbnail() ) : ?>
+                                            <?php the_post_thumbnail('medium', ['class' => 'product-image', 'alt' => get_the_title()]); ?>
+                                        <?php else : ?>
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/product-example.png" alt="Default product" class="product-image">
+                                        <?php endif; ?>
+                                    </div>
 
-                                <div class="product-details">
-                                    <?php 
-                                    // Récupérer les catégories du produit
-                                    $terms = get_the_terms( $product->get_id(), 'product_cat' );
-                                    $cats = [];
-                                    
-                                    if ( $terms && ! is_wp_error( $terms ) ) {
-                                        foreach ( $terms as $term ) {
-                                            if ( strtolower($term->name) !== 'uncategorized' ) { // Exclure "Uncategorized"
-                                                $cats[] = $term->name;
+                                    <div class="product-details">
+                                        <?php 
+                                        // Récupérer les catégories du produit
+                                        $terms = get_the_terms( $product->get_id(), 'product_cat' );
+                                        $cats = [];
+                                        
+                                        if ( $terms && ! is_wp_error( $terms ) ) {
+                                            foreach ( $terms as $term ) {
+                                                if ( strtolower($term->name) !== 'uncategorized' ) { // Exclure "Uncategorized"
+                                                    $cats[] = $term->name;
+                                                }
                                             }
                                         }
-                                    }
-                                    
-                                    // Transformer en chaîne séparée par une virgule
-                                    $cats_list = !empty($cats) ? '<span class="product-category">' . implode(', ', $cats) . '</span>' : '';
-                                    ?>
-                                    <h3 class="product-title">
-                                    <?php the_title(); ?>
-                                    <?php echo $cats_list; ?>
-                                    </h3>
-                                    <div class="prices">
-                                    <?= $product->get_price_html(); ?>
+                                        
+                                        // Transformer en chaîne séparée par une virgule
+                                        $cats_list = !empty($cats) ? '<span class="product-category">' . implode(', ', $cats) . '</span>' : '';
+                                        ?>
+                                        <h3 class="product-title">
+                                        <?php the_title(); ?>
+                                        <?php echo $cats_list; ?>
+                                        </h3>
+                                        <div class="prices">
+                                        <?= $product->get_price_html(); ?>
+                                        </div>
                                     </div>
-                                </div>
-                                </div>
+                                </a>
                             </div>
                             <?php
                                 endwhile;
