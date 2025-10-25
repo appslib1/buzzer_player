@@ -7,7 +7,7 @@
 get_header();
 
 $pageTitle   = get_the_title();
-$pageContent = get_the_content();
+$pageId = get_the_ID();
 ?>
 
 <main>
@@ -105,8 +105,8 @@ $pageContent = get_the_content();
                     
                 </div>
 
-                <div class="content max-875">
-                    <?php echo $pageContent; ?>
+                <div class="content max-875">   
+                    <?php the_content($pageId) ?>
                 </div>
             </div>
         </div>
