@@ -995,3 +995,4 @@ function save_product_audio_metabox($post_id) {
     $audios = array_filter($_POST['product_audios']); // Remove empty
     update_post_meta($post_id, '_product_audios', $audios);
 }
+

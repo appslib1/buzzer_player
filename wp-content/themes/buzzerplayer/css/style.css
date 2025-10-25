@@ -3136,6 +3136,25 @@ body:not(.wp-admin) input[type=checkbox] {
   display: none;
   overflow: hidden;
 }
+.page-template-template-checkout main .mobile-order-infos .order-totals table,
+.page-template-template-cart main .mobile-order-infos .order-totals table {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.page-template-template-checkout main .mobile-order-infos .order-totals table thead,
+.page-template-template-checkout main .mobile-order-infos .order-totals table tbody,
+.page-template-template-cart main .mobile-order-infos .order-totals table thead,
+.page-template-template-cart main .mobile-order-infos .order-totals table tbody {
+  display: none;
+}
+.page-template-template-checkout main .mobile-order-infos .order-totals table tfoot td,
+.page-template-template-cart main .mobile-order-infos .order-totals table tfoot td {
+  text-align: right;
+}
+.page-template-template-checkout main .mobile-order-infos .order-totals table tfoot td ul li,
+.page-template-template-cart main .mobile-order-infos .order-totals table tfoot td ul li {
+  justify-content: end;
+}
 .page-template-template-checkout main .mobile-order-infos .order-totals ul,
 .page-template-template-cart main .mobile-order-infos .order-totals ul {
   padding: 0;
@@ -3201,6 +3220,13 @@ body:not(.wp-admin) input[type=checkbox] {
 }
 .page-template-template-checkout .woocommerce-form-coupon-toggle {
   display: none;
+}
+.page-template-template-checkout .cart_totals #order_review .shop_table tbody {
+  display: none;
+}
+.page-template-template-checkout .cart_totals #order_review .shop_table #shipping_method {
+  list-style: none;
+  padding: 0;
 }
 .page-template-template-checkout #place_order {
   font-weight: 700;

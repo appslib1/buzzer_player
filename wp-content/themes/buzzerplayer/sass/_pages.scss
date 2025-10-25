@@ -1683,6 +1683,24 @@
             .order-totals{
                 display: none;
                 overflow: hidden;
+                table{
+                    margin-bottom: 20px;
+                    width: 100%;
+                    thead,
+                    tbody{
+                        display: none;
+                    }
+                    tfoot{
+                        td{
+                            text-align: right;
+                            ul{
+                                li{
+                                    justify-content: end;
+                                }
+                            }
+                        }
+                    }
+                }
                 ul{
                     padding: 0;
                     list-style: none;
@@ -1749,6 +1767,19 @@
     }
     .woocommerce-form-coupon-toggle{
         display: none;
+    }
+    .cart_totals{
+        #order_review{
+            .shop_table{
+                tbody{
+                    display: none;
+                }
+                #shipping_method{
+                    list-style: none;
+                    padding: 0;
+                }
+            }
+        }
     }
     #place_order{
         font-weight: 700;
