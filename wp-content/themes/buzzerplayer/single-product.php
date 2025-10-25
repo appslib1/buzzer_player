@@ -146,10 +146,13 @@ $audio = get_field('audio');
 
 
                 <?php if ( ! empty( $saved_audios )  || (isset($audio) && $audio['url'] != "") ) { ?>
+
+                    <?php if(!isset($audio) && !isset($audio['url'])) { ?>
                     <label class="agree-checkbox-wrapper">
                         <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
                         <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
                     </label>
+                    <?php } ?>
                     <!-- Add to Cart Button -->
                     <?php if ( $product ) {
                         $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
@@ -342,10 +345,12 @@ jQuery(document).ready(function($){
     });*/
 
     $('#add-to-cart-btn').on('click', function(e) {
-        if (!$('#agree-checkbox').is(':checked')) {
-            e.preventDefault(); // Stop the default add to cart
-            $('.agree-checkbox-wrapper').addClass('error');
-            return false;
+        if($('.agree-checkbox-wrapper').length){
+            if (!$('#agree-checkbox').is(':checked')) {
+                e.preventDefault(); // Stop the default add to cart
+                $('.agree-checkbox-wrapper').addClass('error');
+                return false;
+            }
         }
     });
 
