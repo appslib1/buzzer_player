@@ -199,7 +199,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					</table>
 					<div class="accept-check d-none">
 						<input id="terms" type="checkbox" name="" id="">
-						<label for="terms">I accept the <a href="" target="_blank">Terms & Conditions</a>, including for custom products.</label>
+						<label for="terms">I accept the <a href="<?= home_url('terms-conditions') ?>" target="_blank">Terms & Conditions</a>, including for custom products.</label>
 					</div>
 					<div class="wc-proceed-to-checkout pb-0">
 						<a href="" class="checkout-button button alt wc-forward mb-0">
