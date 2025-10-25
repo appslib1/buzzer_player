@@ -805,6 +805,14 @@ function redirect_to_cart_page() {
 
 
 function allow_json_uploads($mimes) {
+    $mimes['mp3']  = 'audio/mpeg';
+    $mimes['wav']  = 'audio/wav';
+    $mimes['ogg']  = 'audio/ogg';
+    $mimes['m4a']  = 'audio/mp4';
+    $mimes['aac']  = 'audio/aac';
+    $mimes['3gp']  = 'audio/3gpp';
+    $mimes['caf']  = 'audio/x-caf';
+    $mimes['amr']  = 'audio/amr';
     $mimes['json'] = 'application/json';
     return $mimes;
 }
