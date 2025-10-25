@@ -872,7 +872,7 @@ function aj_remove_wp_block_library_css_front() {
         wp_dequeue_style( 'wc-blocks-style' ); // Optional: WooCommerce blocks
     }
 }
-add_action( 'wp_enqueue_scripts', 'aj_remove_wp_block_library_css_front', 100 );
+//add_action( 'wp_enqueue_scripts', 'aj_remove_wp_block_library_css_front', 100 );
 
 function aj_remove_wc_blockui_front() {
     if ( ! is_admin() && function_exists( 'wp_dequeue_script' ) ) {
