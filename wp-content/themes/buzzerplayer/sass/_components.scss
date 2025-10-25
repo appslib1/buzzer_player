@@ -307,6 +307,7 @@ body:not(.wp-admin){
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
+            max-width: 50px;
             //margin: auto; /* center it */
             &>*{
                 display: none;
