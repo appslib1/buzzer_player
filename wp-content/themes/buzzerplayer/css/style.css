@@ -1031,11 +1031,10 @@ body:not(.wp-admin) input[type=checkbox] {
 /**************** Block featured products ****************/
 .products-section {
   background-color: #FDFBEE;
-  padding: 80px 20px;
 }
 @media (max-width: 768px) {
   .products-section {
-    padding: 38px 20px 59px;
+    padding: 38px 0px 59px;
   }
 }
 .products-section .header {
