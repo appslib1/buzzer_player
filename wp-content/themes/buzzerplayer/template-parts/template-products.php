@@ -24,13 +24,13 @@ get_header();
                                 'post_type'      => 'product',
                                 'posts_per_page' => 4, // Adjust number as needed
                                 'post_status'    => 'publish',
-                                'meta_query'     => array(
+                                /*'meta_query'     => array(
                                     array(
                                         'key'     => 'audio',      // The custom field
                                         'value'   => '',           // Exclude empty values
                                         'compare' => '!=',         // Not equal to empty
                                     ),
-                                ),
+                                ),*/
                             );
                             $products = new WP_Query($args);
 
