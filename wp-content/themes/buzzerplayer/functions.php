@@ -690,6 +690,7 @@ function save_uploaded_audio() {
         'audio/wav',    // wav
         'audio/ogg',    // ogg
         'audio/mp4',    // m4a
+        'audio/x-m4a',  // m4a alternative
         'audio/aac',    // aac
         'audio/3gpp',   // 3gp
         'audio/x-caf',  // caf
@@ -699,7 +700,7 @@ function save_uploaded_audio() {
 
 
     if (!in_array($file['type'], $allowed_types)) {
-        wp_send_json_error('Invalid audio format'.$file['type']);
+        wp_send_json_error('Invalid audio format');
     }
 
     // Use WordPress function to handle upload
