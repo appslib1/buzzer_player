@@ -208,7 +208,6 @@ if (!empty($audios)) {
                 </div>
                 <?php if(get_field('shipping_and_delivery') != "") { ?>
                 <div class="shipping">
-                    <h3>Shipping and delivery</h3>
                     <div>
                         <?php
                             echo get_field('shipping_and_delivery')

@@ -76,7 +76,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
                         <?php if ( count($cart_item['selected_audios']) > 2 ) : ?>
                             <div class="left-items">
-                                <i>+<?= count($cart_item['selected_audios']) - 2 ?> fart sounds</i>
+                                <i>+<?= count($cart_item['selected_audios']) - 2 ?> sounds</i>
                             </div>
                         <?php endif; ?>
                     </div>
