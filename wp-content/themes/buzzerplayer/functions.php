@@ -223,7 +223,7 @@ function buzzerplayer_scripts() {
 
 	wp_enqueue_script( 'bootstrap-js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'buzzerplayer-swiper', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'lottie-js', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lottie-js', 'https://cdnjs.cloudflare.com/ajax/libs/lottie-player/1.4.3/lottie-player.min.js', array(), _S_VERSION, true );
 
 
 	wp_enqueue_script(
@@ -840,3 +840,21 @@ function remove_coming_soon_css() {
     wp_dequeue_style( 'woocommerce-coming-soon' );
     wp_deregister_style( 'woocommerce-coming-soon' );
 }
+
+
+function aj_remove_wp_block_library_css_front() {
+    if ( ! is_admin() ) {
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+        wp_dequeue_style( 'wc-blocks-style' ); // Optional: WooCommerce blocks
+    }
+}
+add_action( 'wp_enqueue_scripts', 'aj_remove_wp_block_library_css_front', 100 );
+
+function aj_remove_wc_blockui_front() {
+    if ( ! is_admin() && function_exists( 'wp_dequeue_script' ) ) {
+        wp_dequeue_script( 'jquery-blockui' );
+        wp_deregister_script( 'jquery-blockui' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'aj_remove_wc_blockui_front', 100 );
