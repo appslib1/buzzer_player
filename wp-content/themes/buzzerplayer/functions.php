@@ -679,11 +679,25 @@ function save_uploaded_audio() {
     }
 
     $file = $_FILES['audio_file'];
+
     $name = sanitize_file_name($_POST['name']);
     $name = preg_replace('/\.[^.]+$/', '', $name);
 
     // Optional: check file type
-    $allowed_types = ['audio/mpeg','audio/mp3','audio/webm','audio/wav'];
+    $allowed_types = [
+        'audio/mpeg',   // mp3
+        'audio/mp3',    // mp3 alternative
+        'audio/wav',    // wav
+        'audio/ogg',    // ogg
+        'audio/mp4',    // m4a
+        'audio/aac',    // aac
+        'audio/3gpp',   // 3gp
+        'audio/x-caf',  // caf
+        'audio/amr',    // amr
+        'audio/webm'    // webm
+    ];
+
+
     if (!in_array($file['type'], $allowed_types)) {
         wp_send_json_error('Invalid audio format');
     }

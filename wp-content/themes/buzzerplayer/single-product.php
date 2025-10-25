@@ -777,7 +777,6 @@ jQuery(document).ready(function($){
         if (!fileInput.files.length) return alert('Select a file');
 
         var file = fileInput.files[0];
-        alert(file.name);
         var formData = new FormData();
         formData.append('action', 'save_uploaded_audio');
         formData.append('audio_file', file);
