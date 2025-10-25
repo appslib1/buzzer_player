@@ -785,6 +785,10 @@ body:not(.wp-admin) input[type=checkbox] {
     transform: rotate(360deg);
   }
 }
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
 .product-grid .product-card {
   background: #ffffff;
   border: 2px solid #1E1E1E;
@@ -793,7 +797,7 @@ body:not(.wp-admin) input[type=checkbox] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-width: 200px;
+  max-width: 200px;
 }
 @media (max-width: 768px) {
   .product-grid .product-card {
@@ -865,6 +869,11 @@ body:not(.wp-admin) input[type=checkbox] {
   position: absolute;
   top: 0;
   left: calc(100% + 10px);
+}
+@media (max-width: 991px) {
+  .product-grid .product-card .product-details .prices del {
+    display: none;
+  }
 }
 
 /**************** Block Hero ****************/
@@ -1047,13 +1056,13 @@ body:not(.wp-admin) input[type=checkbox] {
   max-width: 603px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 23px;
 }
 .products-section .header .decoration {
   position: absolute;
-  bottom: calc(100% - 24px);
-  right: calc(100% - 28px);
+  bottom: calc(100% - 11px);
+  right: calc(100% - 29px);
   width: 95px;
-  height: 95px;
 }
 @media (max-width: 991px) {
   .products-section .header .decoration {

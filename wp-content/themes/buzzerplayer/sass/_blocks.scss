@@ -184,14 +184,14 @@
             max-width: 603px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 23px;
         }
 
         .decoration {
             position: absolute;
-            bottom: calc(100% - 24px);
-            right: calc(100% + -28px);
+            bottom: calc(100% - 11px);
+            right: calc(100% - 29px);
             width: 95px;
-            height: 95px;
             @media (max-width: 991px){
                 display: none;
             }

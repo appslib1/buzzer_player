@@ -485,6 +485,8 @@ body:not(.wp-admin){
 
 
 .product-grid {
+    display: flex;
+    flex-wrap: wrap;
     .product-card {
         background: #ffffff;
         border: 2px solid variables.$noir-eben;
@@ -493,7 +495,7 @@ body:not(.wp-admin){
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        min-width: 200px;
+        max-width: 200px;
         @media (max-width: 768px){
             margin-bottom: 30px;
         }
@@ -565,6 +567,9 @@ body:not(.wp-admin){
                     position: absolute;
                     top: 0;
                     left: calc(100% + 10px);
+                    @media (max-width: 991px){
+                        display: none;
+                    }
                 }
             }
         }

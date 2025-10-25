@@ -38,7 +38,7 @@ get_header();
                                 while ( $products->have_posts() ) : $products->the_post();
                                 global $product;
                             ?>
-                            <div class="col-md-3 col-sm-6 col-12 mb-4">
+                            <div class="col-md-3 col-6 mb-4">
                                 <div class="product-card">
                                 <div class="image-container">
                                     <a href="<?php the_permalink(); ?>">
