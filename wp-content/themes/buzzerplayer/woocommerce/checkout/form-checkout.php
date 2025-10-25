@@ -266,7 +266,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		// Proceed with checkout if all fields are filled
 		if ($('.paying-form').hasClass('d-none')) {
-			$('.cart_totals a, .mobile-order-infos a').text('Confirm and pay').addClass('pay');
+			//$('.cart_totals a, .mobile-order-infos a').text('Confirm and pay').addClass('pay');
 			$('.accept-check').removeClass('d-none');
 			$('.paying-form').removeClass('d-none');
 			$('.shipping-form').addClass('d-none');
