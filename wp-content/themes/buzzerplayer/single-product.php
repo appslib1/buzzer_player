@@ -321,7 +321,7 @@ $audio = get_field('audio');
 </div>
 
 <form id="uploadAudioForm" enctype="multipart/form-data" class="d-none">
-    <input type="file" id="uploadAudioInput" accept="audio/*">
+    <input type="file" id="uploadAudioInput" accept="audio/*" capture="">
     <button type="submit">Upload Audio</button>
 </form>
 
