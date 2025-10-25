@@ -699,7 +699,7 @@ function save_uploaded_audio() {
 
 
     if (!in_array($file['type'], $allowed_types)) {
-        wp_send_json_error('Invalid audio format');
+        wp_send_json_error('Invalid audio format'.$file['type']);
     }
 
     // Use WordPress function to handle upload
