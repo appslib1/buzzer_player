@@ -30,7 +30,7 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 					You have nothing in your card. Please add at least one item to continue.
 				</p>
 				<div class="add-more-products">
-					<a href="<?= home_url('sounds') ?>" class="add-prodcuts">
+					<a href="<?= home_url('product') ?>" class="add-prodcuts">
 						Add a buzzer
 					</a>
 				</div>
