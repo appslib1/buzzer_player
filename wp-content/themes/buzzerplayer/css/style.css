@@ -581,7 +581,7 @@ body:not(.wp-admin) input[type=checkbox] {
 .product-card .product-details .text-price ins .woocommerce-Price-amount bdi {
   font-family: "Work Sans", Tahoma;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 22px;
   line-height: 1.2;
   color: #1E1E1E;
   text-decoration: none;
