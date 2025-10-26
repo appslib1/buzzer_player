@@ -138,7 +138,7 @@ if (!empty($audios)) {
                 <?php  } 
                     if(count($product_audios) > 5 ) {
                 ?> 
-                        <a href="" class="show-more-audios buzzer-default-btn mb-4">show more</a>
+                        <a href="" class="show-more-audios buzzer-default-btn mb-4">Show more</a>
                 <?php } } 
                     elseif ( ! empty( $saved_audios ) ) { 
                 ?>
