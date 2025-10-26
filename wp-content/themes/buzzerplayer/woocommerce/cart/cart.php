@@ -161,7 +161,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                     <span>
                         <?php 
                             $shipping_total = WC()->cart->get_shipping_total();
-                            echo $shipping_total > 0 ? wc_price( $shipping_total ) : 'Free';
+                            echo $shipping_total > 0 ? wc_price( $shipping_total ) : '-';
                         ?>
                     </span>
                 </li>
