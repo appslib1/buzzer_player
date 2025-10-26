@@ -122,6 +122,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <script>
     jQuery(document).ready(function($){
+
+	$(document).ajaxComplete(function(event, xhr, settings) {
+		let priceHtml = $('.mobile-order-infos table .order-total .woocommerce-Price-amount').html();
+		$('.mobile-order-infos > button .woocommerce-Price-amount').html(priceHtml);
+	});
+
 	$(document).on("click", ".page-template-template-checkout .cart_totals .checkout-button,.mobile-order-infos a", function(e) {
 		e.preventDefault(); // prevent default checkout action
 
