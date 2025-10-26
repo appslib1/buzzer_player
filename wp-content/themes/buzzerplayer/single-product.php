@@ -783,7 +783,8 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if (response.success) {
-                    location.reload();
+                    var currentUrl = window.location.href.split('?')[0]; // remove existing query
+                    window.location.href = currentUrl + '?_=' + new Date().getTime();
                 } else {
                     alert(response.data);
                 }
