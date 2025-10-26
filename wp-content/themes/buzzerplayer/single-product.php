@@ -724,7 +724,9 @@ jQuery(document).ready(function($){
                 audios: audioElements
             },
             success: function(response) {
-                location.reload();
+                if(response.success){
+                    location.reload();
+                }
             }
         });
     });
