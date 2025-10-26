@@ -1017,3 +1017,13 @@ function save_product_audio_metabox($post_id) {
     update_post_meta($post_id, '_product_audios', $audios);
 }
 
+
+add_action( 'wp_print_scripts', 'disable_stripe_express_on_custom_single', 999 );
+function disable_stripe_express_on_custom_single() {
+    // Vérifie si on est exactement sur ton template
+    if ( is_singular('product') && basename( get_page_template() ) === 'single-product.php' ) {
+        // Supprime le script Stripe Express Checkout
+        wp_dequeue_script( 'wc-stripe-express-checkout' );
+        wp_deregister_script( 'wc-stripe-express-checkout' );
+    }
+}

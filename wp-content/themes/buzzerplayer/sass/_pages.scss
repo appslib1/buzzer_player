@@ -1792,6 +1792,14 @@
     .woocommerce-SavedPaymentMethods-saveNew{
         display: none !important;
     }
+    .paying-form{
+        ul{
+            list-style: none;
+            .input-radio{
+                display: none;
+            }
+        }
+    }
     .woocommerce .col2-set .col-2, 
     .woocommerce-page .col2-set .col-2,
     .woocommerce .col2-set .col-1,

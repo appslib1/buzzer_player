@@ -3243,6 +3243,12 @@ body:not(.wp-admin) input[type=checkbox] {
 .page-template-template-checkout .woocommerce-SavedPaymentMethods-saveNew {
   display: none !important;
 }
+.page-template-template-checkout .paying-form ul {
+  list-style: none;
+}
+.page-template-template-checkout .paying-form ul .input-radio {
+  display: none;
+}
 .page-template-template-checkout .woocommerce .col2-set .col-2,
 .page-template-template-checkout .woocommerce-page .col2-set .col-2,
 .page-template-template-checkout .woocommerce .col2-set .col-1,
