@@ -348,7 +348,7 @@ function create_audio_post_type() {
     $args = array(
         'label'                 => __( 'Audio', 'text_domain' ),
         'labels'                => $labels,
-        'public'                => true,
+        'public'                => false,
         'show_in_menu'          => true,
         'supports'              => array( 'title' ), // seulement le titre
         'taxonomies'            => array( 'category' ), // activer les catégories
