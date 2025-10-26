@@ -349,6 +349,7 @@ function create_audio_post_type() {
         'label'                 => __( 'Audio', 'text_domain' ),
         'labels'                => $labels,
         'public'                => false,
+        'show_ui'               => true,
         'show_in_menu'          => true,
         'supports'              => array( 'title' ), // seulement le titre
         'taxonomies'            => array( 'category' ), // activer les catégories

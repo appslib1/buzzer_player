@@ -598,7 +598,8 @@ jQuery(document).ready(function($){
                 },
                 success: function (response) {
                     if (response.success) {
-                            location.reload();
+                            var currentUrl = window.location.href.split('?')[0]; // remove existing query
+                            window.location.href = currentUrl + '?_=' + new Date().getTime();
                     } else {
                         alert("Failed to save audio: " + response.data);
                     }
@@ -823,7 +824,8 @@ jQuery(document).ready(function($){
             success: function(response) {
                 $('.loading-effect').removeClass('loading');
                 if (response.success) {
-                    location.reload();
+                    var currentUrl = window.location.href.split('?')[0]; // remove existing query
+                    window.location.href = currentUrl + '?_=' + new Date().getTime();
                 } else {
                     alert('Upload failed: ' + response.data);
                 }

@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
                 audios: audioElements
             },
             success: function(response) {
-                window.location.replace("<?= home_url('/product/buzzer-with-customized-sound/') ?>");
+                window.location.replace("<?= home_url('/product/buzzer-with-customized-sound/') ?>" + '?_=' + new Date().getTime());
             }
         });
     });
