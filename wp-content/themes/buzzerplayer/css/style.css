@@ -1637,6 +1637,11 @@ body:not(.wp-admin) input[type=checkbox] {
   max-width: 517px;
   margin-right: 20px;
 }
+@media (max-width: 768px) {
+  .single-product .product-top-section .product-imgs-wrapper {
+    margin-right: 0;
+  }
+}
 .single-product .product-top-section .product-imgs-wrapper h2 {
   display: none;
   font-size: 18px;

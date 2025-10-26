@@ -253,6 +253,9 @@
         .product-imgs-wrapper{
             max-width: 517px;
             margin-right: 20px;
+            @media (max-width: 768px){
+                margin-right: 0;
+            }
             h2{
                 display: none;
                 font-size: 18px;
