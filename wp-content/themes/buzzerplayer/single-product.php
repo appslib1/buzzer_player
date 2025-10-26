@@ -345,15 +345,6 @@ if (!empty($audios)) {
 </form>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var stripeScript = document.getElementById('wc_stripe_express-checkout-js');
-    if(stripeScript) {
-        stripeScript.remove();
-        console.log('Stripe script removed on single product page');
-    }
-});
-</script>
 
 <script>
 jQuery(document).ready(function($){

@@ -1027,3 +1027,10 @@ function disable_stripe_express_on_custom_single() {
         wp_deregister_script( 'wc-stripe-express-checkout' );
     }
 }
+
+add_action('wp_enqueue_scripts', function() {
+    if (is_product()) { // Only on single product pages
+        wp_dequeue_script('wc_stripe_express_checkout');
+        wp_deregister_script('wc_stripe_express_checkout');
+    }
+}, 20); // Priority 20 to run after WooCommerce enqueues its scripts
