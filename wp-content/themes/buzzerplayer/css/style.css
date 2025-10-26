@@ -1904,6 +1904,41 @@ body:not(.wp-admin) input[type=checkbox] {
 .single-product .product-top-section .select-audio-files .add-another-audio:hover:before {
   background-image: url("../assets/icons/add-white.svg");
 }
+.single-product .product-top-section .show-more-audios {
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: unset;
+  position: relative;
+  display: inline-block;
+  padding-left: 44px;
+  width: fit-content;
+  background: #fff;
+  border: 2px solid #C92E26;
+  color: #1E1E1E;
+  transition: 0.2s all;
+  margin-top: 0;
+}
+.single-product .product-top-section .show-more-audios:before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/add.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 0.2s all;
+}
+.single-product .product-top-section .show-more-audios:hover {
+  background-color: #C92E26;
+  color: #fff;
+}
+.single-product .product-top-section .show-more-audios:hover:before {
+  background-image: url("../assets/icons/add-white.svg");
+}
 .single-product .product-top-section #add-to-cart-btn {
   margin-top: 15px !important;
 }

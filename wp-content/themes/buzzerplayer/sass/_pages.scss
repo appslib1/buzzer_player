@@ -527,6 +527,43 @@
                 }
             }
         }
+        .show-more-audios{
+                font-size: 18px;
+                font-weight: 400;
+                text-transform: unset;
+                position: relative;
+                display: inline-block;
+                padding-left: 44px;
+                width: fit-content;
+                background: #fff;
+                border: 2px solid variables.$rouge;
+                color: variables.$noir-eben;
+                transition: .2s all;
+                margin-top: 0;
+                
+                &:before{
+                    content: "";
+                    position: absolute;
+                    left: 15px;
+                    bottom: 0;
+                    top: 0;
+                    margin: auto;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("../assets/icons/add.svg");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    transition: .2s all;
+                }
+                &:hover{
+                    background-color: variables.$rouge;
+                    color: #fff;
+                    &:before{
+                        background-image: url("../assets/icons/add-white.svg");
+                    }
+                    
+                }
+            }
         #add-to-cart-btn{
             margin-top: 15px !important;
         }

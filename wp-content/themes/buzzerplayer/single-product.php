@@ -123,11 +123,11 @@ if (!empty($audios)) {
                 </div>
                 <?php 
                     if ( !empty($product_audios) ) { 
-                        foreach($product_audios as $audio){ 
+                        foreach($product_audios as $key => $audio){ 
                             $url = wp_get_attachment_url($audio);          // Audio file URL
                             $title = get_the_title($audio);               // Attachment title
                 ?>
-                    <div class="select-audio-files">
+                    <div class="select-audio-files <?= $key > 4 ? 'd-none' : '' ?> ">
                         <div>
                             <div class="loading-animation"></div>
                             <button class="play-recorded-audio" data-audio="<?= $url ?>"></button>
@@ -135,9 +135,11 @@ if (!empty($audios)) {
                             <span><?= $title ?></span>
                         </div>
                     </div>
-                <?php 
-                    } 
-                    } 
+                <?php  } 
+                    if(count($product_audios) > 5 ) {
+                ?> 
+                        <a href="" class="show-more-audios buzzer-default-btn mb-4">show more</a>
+                <?php } } 
                     elseif ( ! empty( $saved_audios ) ) { 
                 ?>
                     <div class="select-audio-files">
@@ -372,6 +374,13 @@ jQuery(document).ready(function($){
         if ($('#agree-checkbox').is(':checked')) {
             $('.agree-checkbox-wrapper').removeClass('error'); 
         }
+    });
+    //show-more-audios
+    $(document).on("click",".single-product .show-more-audios",function(e) {
+        e.preventDefault();
+        $(this).parent().find('.d-none').removeClass('d-none');
+        $(this).remove();
+
     });
 
     $(document).on("click",".single-product .recordModal > div div.record-section .recorded-audio-result > div .cancel",function(e) {
