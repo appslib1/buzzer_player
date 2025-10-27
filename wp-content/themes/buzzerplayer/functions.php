@@ -1035,3 +1035,14 @@ add_action('wp_enqueue_scripts', function() {
         wp_deregister_script('wc_stripe_express_checkout');
     }
 }, 20); // Priority 20 to run after WooCommerce enqueues its scripts
+
+
+add_action('template_redirect', function() {
+    if (is_product()) {
+        // En-têtes pour éviter la mise en cache
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+    }
+});
+

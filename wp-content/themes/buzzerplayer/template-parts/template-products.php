@@ -37,9 +37,13 @@ get_header();
                             if ( $products->have_posts() ) :
                                 while ( $products->have_posts() ) : $products->the_post();
                                 global $product;
+                                $link = get_the_permalink();
+                                if(get_the_ID() == "108"){
+                                    $link = $link . "?_=" . round(microtime(true) * 1000);
+                                }
                             ?>
                             <div class="col-md-3 col-6 mb-4">
-                                <a class="product-card" href="<?php the_permalink(); ?>">
+                                <a class="product-card" href="<?= $link ?>">
                                     <div class="image-container">
                                         <?php if ( has_post_thumbnail() ) : ?>
                                             <?php the_post_thumbnail('medium', ['class' => 'product-image', 'alt' => get_the_title()]); ?>
