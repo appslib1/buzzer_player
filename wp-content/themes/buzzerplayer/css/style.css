@@ -470,6 +470,11 @@ body:not(.wp-admin) input[type=checkbox] {
 .buzzer-default-btn:hover {
   background-color: #8c1e14;
 }
+.add_to_cart_button:focus-visible,
+.wpcf7-submit:focus-visible,
+.buzzer-default-btn:focus-visible {
+  outline: none;
+}
 
 .wpcf7-submit {
   border: none;

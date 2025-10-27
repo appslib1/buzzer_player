@@ -136,6 +136,9 @@ body:not(.wp-admin){
     &:hover{
         background-color: #8c1e14;
     }
+    &:focus-visible{
+        outline: none;
+    }
 }
 .wpcf7-submit{
     border: none;
