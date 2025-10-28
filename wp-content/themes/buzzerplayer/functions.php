@@ -1097,15 +1097,3 @@ add_action('template_redirect', function() {
         exit; // always exit after redirect
     }
 });
-
-
-// Add this in your theme's functions.php
-add_action('template_redirect', function() {
-    if (is_singular('product')) { // only on single products
-        if (!session_id()) {
-            session_start();
-        }
-        // send no-cache headers safely
-        nocache_headers();
-    }
-});
