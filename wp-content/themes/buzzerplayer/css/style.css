@@ -1850,18 +1850,18 @@ body:not(.wp-admin) input[type=checkbox] {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.single-product .product-top-section .select-audio-files .add-other-song-wrapper {
+.single-product .product-top-section .add-other-song-wrapper {
   position: relative;
   display: block;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   width: fit-content;
 }
 @media (max-width: 768px) {
-  .single-product .product-top-section .select-audio-files .add-other-song-wrapper {
+  .single-product .product-top-section .add-other-song-wrapper {
     margin-bottom: 38px;
   }
 }
-.single-product .product-top-section .select-audio-files .add-other-song-wrapper button {
+.single-product .product-top-section .add-other-song-wrapper button {
   width: 24px;
   height: 24px;
   background-image: url(../assets/icons/help.svg);
@@ -1876,24 +1876,24 @@ body:not(.wp-admin) input[type=checkbox] {
   background-repeat: no-repeat;
   background-color: #fff;
 }
-.single-product .product-top-section .select-audio-files .add-other-song-wrapper button:hover {
+.single-product .product-top-section .add-other-song-wrapper button:hover {
   background-image: url(../assets/icons/help-red.svg);
 }
-.single-product .product-top-section .select-audio-files .add-another-audio {
+.single-product .product-top-section .add-another-audio {
   font-size: 18px;
   font-weight: 400;
   text-transform: unset;
-  position: relative;
-  display: inline-block;
+  position: relative !important;
+  display: inline-block !important;
   padding-left: 44px;
-  width: fit-content;
+  width: fit-content !important;
   background: #fff;
-  border: 2px solid #C92E26;
+  border: 2px solid #C92E26 !important;
   color: #1E1E1E;
   transition: 0.2s all;
-  margin-top: 0;
+  margin-top: 0 !important;
 }
-.single-product .product-top-section .select-audio-files .add-another-audio:before {
+.single-product .product-top-section .add-another-audio:before {
   content: "";
   position: absolute;
   left: 15px;
@@ -1907,11 +1907,11 @@ body:not(.wp-admin) input[type=checkbox] {
   background-size: contain;
   transition: 0.2s all;
 }
-.single-product .product-top-section .select-audio-files .add-another-audio:hover {
+.single-product .product-top-section .add-another-audio:hover {
   background-color: #C92E26;
   color: #fff;
 }
-.single-product .product-top-section .select-audio-files .add-another-audio:hover:before {
+.single-product .product-top-section .add-another-audio:hover:before {
   background-image: url("../assets/icons/add-white.svg");
 }
 .single-product .product-top-section .show-more-audios {

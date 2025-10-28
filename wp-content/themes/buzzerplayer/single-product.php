@@ -152,12 +152,15 @@ if (!empty($audios)) {
                                 <button class="cancel remove-audio-session"></button>
                             </div>
                         <?php } ?>
-                        <span class="add-other-song-wrapper">
-                            <a href="" class="buzzer-default-btn add-another-audio add-song">
-                                Add another audio
-                            </a>
-                            <button class="help"></button>
-                        </span>
+                    </div>
+                    <span class="add-other-song-wrapper">
+                        <a href="" class="buzzer-default-btn add-another-audio add-song">
+                            Add another audio
+                        </a>
+                        <button class="help"></button>
+                    </span>
+                <?php } else { ?>
+                    <div class="select-audio-files">
                     </div>
                 <?php } ?>
 
@@ -598,8 +601,21 @@ jQuery(document).ready(function($){
                 },
                 success: function (response) {
                     if (response.success) {
-                            var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                            window.location.href = currentUrl;
+                        $('.modal').removeClass('show');
+                        $('.addSongModal .btns').removeClass('loading');
+                        var audio = response.data;
+
+                        var html = `
+                            <div>
+                                <div class="loading-animation"></div>
+                                <button class="play-recorded-audio" data-audio="${audio.url}"></button>
+                                <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                                <span>${audio.name}</span>
+                                <button class="cancel remove-audio-session"></button>
+                            </div>
+                        `;
+
+                        $('.select-audio-files').append(html);
                     } else {
                         alert("Failed to save audio: " + response.data);
                     }
@@ -726,8 +742,20 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if(response.success){
-                    var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl;
+                    $('.modal').removeClass('show');
+                    $('.addSongModal .btns').removeClass('loading');
+                    response.data.forEach(function(audio) {
+                        var html = `
+                            <div>
+                                <div class="loading-animation"></div>
+                                <button class="play-recorded-audio" data-audio="${audio.url}"></button>
+                                <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                                <span>${audio.name}</span>
+                                <button class="cancel remove-audio-session"></button>
+                            </div>
+                        `;
+                        $('.select-audio-files').append(html);
+                    });
                 }
             }
         });
@@ -772,9 +800,14 @@ jQuery(document).ready(function($){
 
 
 
-    $(document).on("click",".product-top-section .select-audio-files .remove-audio-session",function(e) {
-        var audioUrl = $(this).parent().find('button').attr('data-audio');
-        $(this).parent().addClass("loading");
+    $(document).on("click", ".product-top-section .select-audio-files .remove-audio-session", function(e) {
+        e.preventDefault();
+
+        var $audioDiv = $(this).closest('div'); // le bloc parent à supprimer
+        var audioUrl = $audioDiv.find('.play-recorded-audio').attr('data-audio');
+
+        $audioDiv.addClass("loading");
+
         $.ajax({
             url: '<?php echo admin_url("admin-ajax.php"); ?>',
             type: 'POST',
@@ -784,14 +817,22 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if (response.success) {
-                    var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl;
+                    // Supprimer le bloc HTML directement sans reload
+                    $audioDiv.fadeOut(300, function() {
+                        $(this).remove();
+                    });
                 } else {
                     alert(response.data);
+                    $audioDiv.removeClass("loading");
                 }
+            },
+            error: function() {
+                alert('Erreur lors de la suppression.');
+                $audioDiv.removeClass("loading");
             }
         });
     });
+
 
     $(document).on('click', function(e) {
         if (!$(e.target).closest('.modal > div,a.add-another-audio, .add-song').length) {
@@ -824,8 +865,21 @@ jQuery(document).ready(function($){
             success: function(response) {
                 $('.loading-effect').removeClass('loading');
                 if (response.success) {
-                    var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl;
+                    console.log(response.data);
+                    var audio = response.data; // last uploaded audio
+
+                    var html = `
+                        <div>
+                            <div class="loading-animation"></div>
+                            <button class="play-recorded-audio" data-audio="${audio.url}"></button>
+                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                            <span>${audio.name}</span>
+                            <button class="cancel remove-audio-session"></button>
+                        </div>
+                    `;
+
+                    $('.select-audio-files').append(html);
+                    $('#uploadAudioInput').val(''); // reset input
                 } else {
                     alert('Upload failed: ' + response.data);
                 }

@@ -560,13 +560,11 @@ function save_audios_session() {
     if (isset($_POST['audios']) && is_array($_POST['audios'])) {
         if (!session_id()) session_start();
 
-        // Existing audios
         $existing = $_SESSION['selected_audios'] ?? [];
+        $new_audios = [];
 
-        // Each item in $_POST['audios'] should be ['name' => ..., 'url' => ...]
         foreach ($_POST['audios'] as $audio) {
             if (isset($audio['url']) && isset($audio['name'])) {
-                // Check if this URL already exists
                 $exists = false;
                 foreach ($existing as $e) {
                     if ($e['url'] === $audio['url']) {
@@ -575,20 +573,21 @@ function save_audios_session() {
                     }
                 }
 
-                // Add only if not exists
                 if (!$exists) {
                     $existing[] = $audio;
+                    $new_audios[] = $audio; // garder seulement les nouveaux
                 }
             }
         }
 
         $_SESSION['selected_audios'] = $existing;
 
-        wp_send_json_success($_SESSION['selected_audios']);
+        wp_send_json_success($new_audios); // renvoyer uniquement les nouveaux audios
     } else {
         wp_send_json_error('No audios received');
     }
 }
+
 
 add_action('wp_ajax_delete_audio_session', 'delete_audio_session');
 add_action('wp_ajax_nopriv_delete_audio_session', 'delete_audio_session');
@@ -605,15 +604,15 @@ function delete_audio_session() {
                     unset($_SESSION['selected_audios'][$key]);
                 }
             }
-            // Reindex array
             $_SESSION['selected_audios'] = array_values($_SESSION['selected_audios']);
         }
 
-        wp_send_json_success($_SESSION['selected_audios']);
+        wp_send_json_success(['deleted_url' => $url]);
     } else {
         wp_send_json_error('No audio URL received');
     }
 }
+
 
 function save_recorded_audio() {
     if (!session_id()) session_start();
@@ -642,20 +641,15 @@ function save_recorded_audio() {
     $base_path = $upload_dir['basedir'] . '/recordedAudios/';
     $base_url  = $upload_dir['baseurl'] . '/recordedAudios/';
 
-    // Create the folder if it doesn't exist
     if (!file_exists($base_path)) {
         wp_mkdir_p($base_path);
     }
 
-    // Generate a unique filename
-    $unique_suffix = time();
-    $filename = $name . '-' . $unique_suffix . '.mp3';
+    $filename = $name . '-' . time() . '.mp3';
     $filepath = $base_path . $filename;
 
-    // Save the file
     file_put_contents($filepath, $audio_data);
 
-    // Public URL
     $file_url = $base_url . $filename;
 
     // Save in session
@@ -663,13 +657,16 @@ function save_recorded_audio() {
         $_SESSION['selected_audios'] = [];
     }
 
-    $_SESSION['selected_audios'][] = [
+    $new_audio = [
         'name' => "Recorded audio",
         'url'  => $file_url,
     ];
 
-    wp_send_json_success($_SESSION['selected_audios']);
+    $_SESSION['selected_audios'][] = $new_audio;
+
+    wp_send_json_success($new_audio); // <- renvoie seulement le dernier audio
 }
+
 
 add_action('wp_ajax_save_recorded_audio', 'save_recorded_audio');
 add_action('wp_ajax_nopriv_save_recorded_audio', 'save_recorded_audio');
@@ -690,7 +687,6 @@ function save_uploaded_audio() {
     $name = sanitize_file_name($_POST['name']);
     $name = preg_replace('/\.[^.]+$/', '', $name);
 
-    // Vérifier le type de fichier
     $allowed_types = [
         'audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/ogg',
         'audio/mp4', 'audio/x-m4a', 'audio/aac', 'audio/3gpp',
@@ -701,7 +697,6 @@ function save_uploaded_audio() {
         wp_send_json_error('Invalid audio format');
     }
 
-    // Préparer le dossier personnalisé
     $upload_dir = wp_upload_dir();
     $custom_dir_path = $upload_dir['basedir'] . '/uploadedAudios/';
     $custom_dir_url  = $upload_dir['baseurl'] . '/uploadedAudios/';
@@ -710,11 +705,9 @@ function save_uploaded_audio() {
         wp_mkdir_p($custom_dir_path);
     }
 
-    // Nom de fichier unique avec time()
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $filename = $name . '-' . time() . '.' . $extension;
 
-    // Déplacer le fichier vers le dossier personnalisé
     $target_file = $custom_dir_path . $filename;
     if (move_uploaded_file($file['tmp_name'], $target_file)) {
         $audio_url = $custom_dir_url . $filename;
@@ -723,16 +716,19 @@ function save_uploaded_audio() {
             $_SESSION['selected_audios'] = [];
         }
 
-        $_SESSION['selected_audios'][] = [
+        $new_audio = [
             'name' => $name,
             'url'  => $audio_url
         ];
 
-        wp_send_json_success($_SESSION['selected_audios']);
+        $_SESSION['selected_audios'][] = $new_audio;
+
+        wp_send_json_success($new_audio); // send only the last uploaded audio
     } else {
         wp_send_json_error('Error moving uploaded file');
     }
 }
+
 
 
 

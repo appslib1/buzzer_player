@@ -465,10 +465,11 @@
                     text-overflow: ellipsis;
                 }
             }
-            .add-other-song-wrapper{
+        }
+        .add-other-song-wrapper{
                 position: relative;
                 display: block;
-                margin-bottom: 60px;
+                margin-bottom: 50px;
                 width: fit-content;
                 @media (max-width: 768px){
                     margin-bottom: 38px;
@@ -496,16 +497,16 @@
                 font-size: 18px;
                 font-weight: 400;
                 text-transform: unset;
-                position: relative;
-                display: inline-block;
+                position: relative !important;
+                display: inline-block !important;
                 padding-left: 44px;
-                width: fit-content;
+                width: fit-content !important;
                 background: #fff;
-                border: 2px solid variables.$rouge;
-                color: variables.$noir-eben;
-                transition: .2s all;
-                margin-top: 0;
-                
+                border: 2px solid #C92E26 !important;
+                color: #1E1E1E;
+                transition: 0.2s all;
+                margin-top: 0 !important;
+                            
                 &:before{
                     content: "";
                     position: absolute;
@@ -529,7 +530,6 @@
                     
                 }
             }
-        }
         .show-more-audios{
                 font-size: 18px;
                 font-weight: 400;
