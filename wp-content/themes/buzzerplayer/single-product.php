@@ -841,9 +841,6 @@ jQuery(document).ready(function($){
             success: function(response) {
                 if (response.success) {
                     // Supprimer le bloc HTML directement sans reload
-                    $audioDiv.fadeOut(300, function() {
-                        $(this).remove();
-                    });
                     $.ajax({
                         url: '<?php echo admin_url("admin-ajax.php"); ?>',
                         type: 'POST',
@@ -853,6 +850,7 @@ jQuery(document).ready(function($){
                         },
                         success: function(res) {
                             if (res.success) {
+                                $audioDiv.remove();
                                 if($('.select-audio-files > div').length == 0){
                                     $('.add-other-song-wrapper').addClass('d-none');
                                 }
