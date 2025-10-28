@@ -165,8 +165,8 @@ if (!empty($audios)) {
 
                 <div id="audio-action-container">
                     <?php if ( ! empty( $saved_audios )  || (!empty($product_audios)) ) { ?>
-
-                       <?php if(!empty($product_audios)) { ?>
+                       
+                        <?php if(empty($product_audios)) { ?>
                         <label class="agree-checkbox-wrapper">
                             <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
                             <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
