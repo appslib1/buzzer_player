@@ -2273,6 +2273,9 @@ body:not(.wp-admin) input[type=checkbox] {
   background-position: center;
   cursor: pointer;
 }
+.single-product .listAudiosModal {
+  overflow: hidden;
+}
 .single-product .listAudiosModal > div {
   padding-left: 0;
   padding-right: 0;

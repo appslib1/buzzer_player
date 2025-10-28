@@ -751,35 +751,44 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if(response.success){
-                    response.data.forEach(function(audio) {
-                        var html = `
-                            <div>
-                                <div class="loading-animation"></div>
-                                <button class="play-recorded-audio" data-audio="${audio.url}"></button>
-                                <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
-                                <span>${audio.name}</span>
-                                <button class="cancel remove-audio-session"></button>
-                            </div>
-                        `;
-                        $('.select-audio-files').append(html);
-                        $.ajax({
-                            url: '<?php echo admin_url("admin-ajax.php"); ?>',
-                            type: 'POST',
-                            data: {
-                                action: 'refresh_audio_action',
-                                product_id: '<?= $productID ?>'
-                            },
-                            success: function(res) {
-                                if (res.success) {
-                                    $('.listAudiosModal ul li button').removeClass('active');
-                                    $('.add-other-song-wrapper').removeClass('d-none');
-                                    $('.modal').removeClass('show');
-                                    $('.addSongModal .btns').removeClass('loading');
-                                    $('#audio-action-container').html(res.data.html);
+                    console.log(response.data);
+                    if (response.data && response.data.length > 0) {
+                        response.data.forEach(function(audio) {
+                            var html = `
+                                <div>
+                                    <div class="loading-animation"></div>
+                                    <button class="play-recorded-audio" data-audio="${audio.url}"></button>
+                                    <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/song-file.svg') ?>" alt="Song file">
+                                    <span>${audio.name}</span>
+                                    <button class="cancel remove-audio-session"></button>
+                                </div>
+                            `;
+                            $('.select-audio-files').append(html);
+                            $.ajax({
+                                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                                type: 'POST',
+                                data: {
+                                    action: 'refresh_audio_action',
+                                    product_id: '<?= $productID ?>'
+                                },
+                                success: function(res) {
+                                    if (res.success) {
+                                        $('.listAudiosModal ul li button').removeClass('active');
+                                        $('.add-other-song-wrapper').removeClass('d-none');
+                                        $('.modal').removeClass('show');
+                                        $('.addSongModal .btns').removeClass('loading');
+                                        $('#audio-action-container').html(res.data.html);
+                                    }
                                 }
-                            }
+                            });
                         });
-                    });
+                    }
+                    else{
+                        $('.listAudiosModal ul li button').removeClass('active');
+                        $('.add-other-song-wrapper').removeClass('d-none');
+                        $('.modal').removeClass('show');
+                        $('.addSongModal .btns').removeClass('loading');
+                    }
                 }
             }
         });
