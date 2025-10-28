@@ -825,7 +825,7 @@ jQuery(document).ready(function($){
                 $('.loading-effect').removeClass('loading');
                 if (response.success) {
                     var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl + '?_=' + new Date().getTime();
+                    window.location.href = currentUrl;
                 } else {
                     alert('Upload failed: ' + response.data);
                 }
