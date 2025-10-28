@@ -900,7 +900,6 @@ jQuery(document).ready(function($){
             processData: false,
             contentType: false,
             success: function(response) {
-                $('.loading-effect').removeClass('loading');
                 if (response.success) {
                     console.log(response.data);
                     var audio = response.data; // last uploaded audio
@@ -926,6 +925,7 @@ jQuery(document).ready(function($){
                         },
                         success: function(res) {
                             if (res.success) {
+                                $('.loading-effect').removeClass('loading');
                                 $('.add-other-song-wrapper').removeClass('d-none');
                                 $('.modal').removeClass('show');
                                 $('.addSongModal .btns').removeClass('loading');
