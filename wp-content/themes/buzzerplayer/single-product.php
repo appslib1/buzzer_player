@@ -853,7 +853,7 @@ jQuery(document).ready(function($){
                         },
                         success: function(res) {
                             if (res.success) {
-                                if($('.select-audio-files > div').length == 1){
+                                if($('.select-audio-files > div').length == 0){
                                     $('.add-other-song-wrapper').addClass('d-none');
                                 }
                                 $('#audio-action-container').html(res.data.html);
