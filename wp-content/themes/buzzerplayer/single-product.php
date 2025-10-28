@@ -750,10 +750,6 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if(response.success){
-                    $('.listAudiosModal ul li button').removeClass('active');
-                    $('.add-other-song-wrapper').removeClass('d-none');
-                    $('.modal').removeClass('show');
-                    $('.addSongModal .btns').removeClass('loading');
                     response.data.forEach(function(audio) {
                         var html = `
                             <div>
@@ -774,6 +770,10 @@ jQuery(document).ready(function($){
                             },
                             success: function(res) {
                                 if (res.success) {
+                                    $('.listAudiosModal ul li button').removeClass('active');
+                                    $('.add-other-song-wrapper').removeClass('d-none');
+                                    $('.modal').removeClass('show');
+                                    $('.addSongModal .btns').removeClass('loading');
                                     $('#audio-action-container').html(res.data.html);
                                 }
                             }
