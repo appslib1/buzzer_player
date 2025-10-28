@@ -588,6 +588,64 @@ function save_audios_session() {
     }
 }
 
+add_action('wp_ajax_refresh_audio_action', 'refresh_audio_action');
+add_action('wp_ajax_nopriv_refresh_audio_action', 'refresh_audio_action');
+
+function refresh_audio_action() {
+    if (!session_id()) session_start();
+
+    global $woocommerce;
+    $product_id = get_the_ID();
+
+    // If called via AJAX, ensure product ID is passed (because get_the_ID() may return null)
+    if (isset($_POST['product_id'])) {
+        $product_id = intval($_POST['product_id']);
+    }
+
+    $product = $product_id ? new WC_Product($product_id) : null;
+    $saved_audios = $_SESSION['selected_audios'] ?? [];
+    $product_audios = []; // Optional: load your product-specific audios if needed
+
+    ob_start();
+    ?>
+    <div id="audio-action-container">
+        <?php if (!empty($saved_audios) || !empty($product_audios)) { ?>
+
+            <?php if (!isset($audio) && !isset($audio['url'])) { ?>
+                <label class="agree-checkbox-wrapper">
+                    <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
+                    <span>I confirm I have the rights to this audio and accept the 
+                        <a href="#">Terms</a>.
+                    </span>
+                </label>
+            <?php } ?>
+
+            <?php if ($product) {
+                $add_to_cart_url = wc_get_cart_url();
+                $add_to_cart_text = "Add to cart";
+                ?>
+                <a id="add-to-cart-btn"
+                    href="<?php echo esc_url(add_query_arg('add-to-cart', $product->get_id(), $add_to_cart_url)); ?>"
+                    class="btn btn-primary add_to_cart_button btn-lg mt-3"
+                    rel="nofollow">
+                    <i class="bi bi-cart-fill"></i> <?php echo esc_html($add_to_cart_text); ?>
+                </a>
+            <?php } ?>
+
+        <?php } else { ?>
+            <a href="#" class="buzzer-default-btn add-song" id="openModal">
+                <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">
+                <span>Add a song</span>
+            </a>
+        <?php } ?>
+    </div>
+    <?php
+    $html = ob_get_clean();
+
+    wp_send_json_success(['html' => $html]);
+}
+
+
 
 add_action('wp_ajax_delete_audio_session', 'delete_audio_session');
 add_action('wp_ajax_nopriv_delete_audio_session', 'delete_audio_session');

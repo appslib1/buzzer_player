@@ -5,6 +5,7 @@ if ( ! session_id() ) {
 get_header();
 global $woocommerce;
 $product = new WC_Product(get_the_ID()); 
+$productID = get_the_ID();
 $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
 $attachment_ids = $product->get_gallery_image_ids();
@@ -140,7 +141,7 @@ if (!empty($audios)) {
                 ?> 
                         <a href="" class="show-more-audios buzzer-default-btn mb-4">Show more</a>
                 <?php } } 
-                    elseif ( ! empty( $saved_audios ) ) { 
+                    else { 
                 ?>
                     <div class="select-audio-files">
                         <?php foreach ( $saved_audios as $audio ) { ?>
@@ -153,45 +154,45 @@ if (!empty($audios)) {
                             </div>
                         <?php } ?>
                     </div>
-                    <span class="add-other-song-wrapper">
+                    <span class="add-other-song-wrapper <?= empty($saved_audios) ? 'd-none' : '' ?>">
                         <a href="" class="buzzer-default-btn add-another-audio add-song">
                             Add another audio
                         </a>
                         <button class="help"></button>
                     </span>
-                <?php } else { ?>
-                    <div class="select-audio-files">
-                    </div>
                 <?php } ?>
 
 
-                <?php if ( ! empty( $saved_audios )  || (!empty($product_audios)) ) { ?>
+                <div id="audio-action-container">
+                    <?php if ( ! empty( $saved_audios )  || (!empty($product_audios)) ) { ?>
 
-                    <?php if(!isset($audio) && !isset($audio['url'])) { ?>
-                    <label class="agree-checkbox-wrapper">
-                        <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
-                        <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
-                    </label>
-                    <?php } ?>
-                    <!-- Add to Cart Button -->
-                    <?php if ( $product ) {
-                        $add_to_cart_url = wc_get_cart_url(); // WooCommerce cart page URL
-                        $add_to_cart_text = "Add to cart";
-                        ?>
-                        <a id="add-to-cart-btn" 
-                        href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
-                        class="btn btn-primary add_to_cart_button btn-lg mt-3"
-                        rel="nofollow">
-                            <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                       
+                        <label class="agree-checkbox-wrapper">
+                            <input id="agree-checkbox" type="checkbox" name="agree" value="yes">
+                            <span>I confirm I have the rights to this audio and accept the <a href="">Terms</a>.</span>
+                        </label>
+                
+
+                        <?php if ( $product ) {
+                            $add_to_cart_url = wc_get_cart_url(); 
+                            $add_to_cart_text = "Add to cart";
+                            ?>
+                            <a id="add-to-cart-btn" 
+                                href="<?php echo esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $add_to_cart_url ) ); ?>" 
+                                class="btn btn-primary add_to_cart_button btn-lg mt-3"
+                                rel="nofollow">
+                                <i class="bi bi-cart-fill"></i> <?php echo esc_html( $add_to_cart_text ); ?>
+                            </a>
+                        <?php } ?>
+
+                    <?php } else { ?>
+                        <a href="" class="buzzer-default-btn add-song" id="openModal"> 
+                            <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">
+                            <span>Add a song</span>
                         </a>
                     <?php } ?>
+                </div>
 
-                <?php } else { ?>
-                    <a href="" class="buzzer-default-btn add-song" id="openModal"> 
-                    <img src="<?= home_url('wp-content/themes/buzzerplayer/assets/icons/track.svg') ?>" alt="Track">
-                    <span>Add a song</span>
-                    </a>
-                <?php } ?>
             </div>
 
         </div>
@@ -354,16 +355,7 @@ jQuery(document).ready(function($){
     let currentAudio = null;
     let currentRecordedAudio = null;
 
-    /*$(document).on("click", function(e) {
-        console.log('doc click');
-        // if the click is NOT inside #myDiv
-        if ( !$(e.target).closest(".modal>div").length && !$(e.target).closest("#openModal").length) {
-            $('.modal').removeClass('show');
-        // your code here
-        }
-    });*/
-
-    $('#add-to-cart-btn').on('click', function(e) {
+    $(document).on("click","#add-to-cart-btn",function(e) {
         if($('.agree-checkbox-wrapper').length){
             if (!$('#agree-checkbox').is(':checked')) {
                 e.preventDefault(); // Stop the default add to cart
@@ -601,8 +593,6 @@ jQuery(document).ready(function($){
                 },
                 success: function (response) {
                     if (response.success) {
-                        $('.modal').removeClass('show');
-                        $('.addSongModal .btns').removeClass('loading');
                         var audio = response.data;
 
                         var html = `
@@ -616,6 +606,24 @@ jQuery(document).ready(function($){
                         `;
 
                         $('.select-audio-files').append(html);
+
+                        $.ajax({
+                            url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                            type: 'POST',
+                            data: {
+                                action: 'refresh_audio_action',
+                                product_id: '<?= $productID ?>'
+                            },
+                            success: function(res) {
+                                if (res.success) {
+                                    $('.add-other-song-wrapper').removeClass('d-none');
+                                    $('.modal').removeClass('show');
+                                    $('.addSongModal .btns').removeClass('loading');
+                                    $('#audio-action-container').html(res.data.html);
+                                }
+                            }
+                        });
+
                     } else {
                         alert("Failed to save audio: " + response.data);
                     }
@@ -742,6 +750,8 @@ jQuery(document).ready(function($){
             },
             success: function(response) {
                 if(response.success){
+                    $('.listAudiosModal ul li button').removeClass('active');
+                    $('.add-other-song-wrapper').removeClass('d-none');
                     $('.modal').removeClass('show');
                     $('.addSongModal .btns').removeClass('loading');
                     response.data.forEach(function(audio) {
@@ -755,6 +765,19 @@ jQuery(document).ready(function($){
                             </div>
                         `;
                         $('.select-audio-files').append(html);
+                        $.ajax({
+                            url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                            type: 'POST',
+                            data: {
+                                action: 'refresh_audio_action',
+                                product_id: '<?= $productID ?>'
+                            },
+                            success: function(res) {
+                                if (res.success) {
+                                    $('#audio-action-container').html(res.data.html);
+                                }
+                            }
+                        });
                     });
                 }
             }
@@ -821,6 +844,22 @@ jQuery(document).ready(function($){
                     $audioDiv.fadeOut(300, function() {
                         $(this).remove();
                     });
+                    $.ajax({
+                        url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                        type: 'POST',
+                        data: {
+                            action: 'refresh_audio_action',
+                            product_id: '<?= $productID ?>'
+                        },
+                        success: function(res) {
+                            if (res.success) {
+                                if($('.select-audio-files > div').length == 1){
+                                    $('.add-other-song-wrapper').addClass('d-none');
+                                }
+                                $('#audio-action-container').html(res.data.html);
+                            }
+                        }
+                    });
                 } else {
                     alert(response.data);
                     $audioDiv.removeClass("loading");
@@ -880,6 +919,22 @@ jQuery(document).ready(function($){
 
                     $('.select-audio-files').append(html);
                     $('#uploadAudioInput').val(''); // reset input
+                    $.ajax({
+                        url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                        type: 'POST',
+                        data: {
+                            action: 'refresh_audio_action',
+                            product_id: '<?= $productID ?>'
+                        },
+                        success: function(res) {
+                            if (res.success) {
+                                $('.add-other-song-wrapper').removeClass('d-none');
+                                $('.modal').removeClass('show');
+                                $('.addSongModal .btns').removeClass('loading');
+                                $('#audio-action-container').html(res.data.html);
+                            }
+                        }
+                    });
                 } else {
                     alert('Upload failed: ' + response.data);
                 }

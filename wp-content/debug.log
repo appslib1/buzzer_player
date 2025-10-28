@@ -1,0 +1,18 @@
+[28-Oct-2025 18:56:52 UTC] PHP Fatal error:  Uncaught Exception: Invalid product. in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/includes/data-stores/class-wc-product-data-store-cpt.php:275
+Stack trace:
+#0 /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/includes/class-wc-data-store.php(159): WC_Product_Data_Store_CPT->read(Object(WC_Product))
+#1 /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-product.php(146): WC_Data_Store->read(Object(WC_Product))
+#2 /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/functions.php(605): WC_Product->__construct(329)
+#3 /Users/mac/Sites/BuzzerPlayer/wp-includes/class-wp-hook.php(324): refresh_audio_action('')
+#4 /Users/mac/Sites/BuzzerPlayer/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#5 /Users/mac/Sites/BuzzerPlayer/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#6 /Users/mac/Sites/BuzzerPlayer/wp-admin/admin-ajax.php(207): do_action('wp_ajax_nopriv_...')
+#7 {main}
+  thrown in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/includes/data-stores/class-wc-product-data-store-cpt.php on line 275
+[28-Oct-2025 19:05:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_empty() in /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/single-product.php:157
+Stack trace:
+#0 /Users/mac/Sites/BuzzerPlayer/wp-includes/template-loader.php(106): include()
+#1 /Users/mac/Sites/BuzzerPlayer/wp-blog-header.php(19): require_once('/Users/mac/Site...')
+#2 /Users/mac/Sites/BuzzerPlayer/index.php(17): require('/Users/mac/Site...')
+#3 {main}
+  thrown in /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/single-product.php on line 157
