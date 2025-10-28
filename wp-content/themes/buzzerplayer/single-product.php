@@ -599,7 +599,7 @@ jQuery(document).ready(function($){
                 success: function (response) {
                     if (response.success) {
                             var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                            window.location.href = currentUrl + '?_=' + new Date().getTime();
+                            window.location.href = currentUrl;
                     } else {
                         alert("Failed to save audio: " + response.data);
                     }
@@ -727,7 +727,7 @@ jQuery(document).ready(function($){
             success: function(response) {
                 if(response.success){
                     var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl + '?_=' + new Date().getTime();
+                    window.location.href = currentUrl;
                 }
             }
         });
@@ -785,7 +785,7 @@ jQuery(document).ready(function($){
             success: function(response) {
                 if (response.success) {
                     var currentUrl = window.location.href.split('?')[0]; // remove existing query
-                    window.location.href = currentUrl + '?_=' + new Date().getTime();
+                    window.location.href = currentUrl;
                 } else {
                     alert(response.data);
                 }
