@@ -1038,11 +1038,20 @@ add_action('wp_enqueue_scripts', function() {
 
 
 add_action('template_redirect', function() {
-    if (is_product()) {
-        // En-têtes pour éviter la mise en cache
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-        header("Pragma: no-cache");
-        header("Expires: 0");
+    if (is_tax('product_cat')) {
+        wp_redirect(home_url()); // redirect to homepage
+        exit; // always exit after redirect
     }
 });
 
+
+// Add this in your theme's functions.php
+add_action('template_redirect', function() {
+    if (is_singular('product')) { // only on single products
+        if (!session_id()) {
+            session_start();
+        }
+        // send no-cache headers safely
+        nocache_headers();
+    }
+});

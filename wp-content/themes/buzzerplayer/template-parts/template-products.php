@@ -38,9 +38,6 @@ get_header();
                                 while ( $products->have_posts() ) : $products->the_post();
                                 global $product;
                                 $link = get_the_permalink();
-                                if(get_the_ID() == "108"){
-                                    $link = $link . "?_=" . round(microtime(true) * 1000);
-                                }
                             ?>
                             <div class="col-md-3 col-6 mb-4">
                                 <a class="product-card" href="<?= $link ?>">
