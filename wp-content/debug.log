@@ -16,3 +16,4 @@ Stack trace:
 #2 /Users/mac/Sites/BuzzerPlayer/index.php(17): require('/Users/mac/Site...')
 #3 {main}
   thrown in /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/single-product.php on line 157
+[30-Oct-2025 21:36:20 UTC] PHP Deprecated:  Stripe\StripeTaxForWooCommerce\WooCommerce\StripeTax::throw_duplicate_country_exception(): Implicitly marking parameter $region as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/stripe-tax-for-woocommerce/WooCommerce/class-stripetax.php on line 469

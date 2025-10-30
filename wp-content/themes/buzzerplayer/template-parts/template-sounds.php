@@ -100,7 +100,7 @@ $pageId = get_the_ID();
                         }
                     ?>
                     <div class="paginate text-center <?= $showPagination ? '' : 'd-none' ?>">
-                        <a href="#" class="show-more btn btn-primary buzzer-default-btn" data-page="1">Display more sounds</a>
+                        <a href="#" class="show-more btn buzzer-default-btn" data-page="1">Display more sounds</a>
                     </div>
                     
                 </div>

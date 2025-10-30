@@ -530,7 +530,7 @@ function load_more_audios() {
                      alt="<?php echo esc_attr($title); ?>" 
                      class="sound-button">
                 <div class="position-relative">
-                    <div class="button-label"><?php echo esc_html($title); ?></div>
+                    <div class="button-label title"><?php echo esc_html($title); ?></div>
                     <div class="button-label button-label-2 text-center">
                         <a href="#" class="use-it-button btn btn-danger">USE IT</a>
                     </div>
