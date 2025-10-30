@@ -554,6 +554,7 @@ body:not(.wp-admin){
                 ins{
                     text-decoration: none;
                 }
+                span,
                 bdi{
                     font-weight: 700;
                     text-decoration: none;
@@ -565,6 +566,7 @@ body:not(.wp-admin){
                     text-decoration: none;
                 }
                 del {
+                    span,
                     bdi{
                         font-family: variables.$work-sans;
                         font-weight: 500;
