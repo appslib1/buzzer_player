@@ -123,6 +123,7 @@ jQuery(document).ready(function($){
         $('.page-template-template-sounds .filters ul a').removeClass('active');
         $(this).addClass('active');
         $('.audios-wrapper .loading-items').addClass('show');
+        $('.show-more').attr('data-page', 1); // update button page
 
         let category = $(this).attr('data-slug');
 
@@ -172,9 +173,13 @@ jQuery(document).ready(function($){
                 button.text('Loading...');
             },
             success: function(response) {
+                button.text('Display more sounds');
 
                 $('#audio-list').append(response.data.html); 
+                console.log(response.data.max_pages);
+                console.log(response.data.current_page);
                 if (response.data.max_pages > response.data.current_page) {
+                    button.attr('data-page', response.data.current_page); // update button page
                     $('.paginate').removeClass('d-none');
                 } else {
                     $('.paginate').addClass('d-none');

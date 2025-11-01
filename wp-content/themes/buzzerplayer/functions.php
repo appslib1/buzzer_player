@@ -494,7 +494,7 @@ add_action('wp_ajax_nopriv_load_more_audios', 'load_more_audios');
 
 function load_more_audios() {
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $filter = $_POST['filter'];
+    $filter = $_POST['filter'] ?? '';
 
     $args = array(
         'post_type'      => 'audio',
@@ -502,7 +502,7 @@ function load_more_audios() {
         'paged'          => $paged
     );
 
-    if (!empty($filter) && $filter != "") {
+    if (!empty($filter)) {
         $args['tax_query'] = [
             [
                 'taxonomy' => 'category', // replace if needed
@@ -517,7 +517,6 @@ function load_more_audios() {
     if ($loop->have_posts()) :
         ob_start();
         while ($loop->have_posts()) : $loop->the_post();
-            global $post;
             $bruitage_id = get_the_ID();
             if (!$bruitage_id) continue;
 
@@ -525,7 +524,7 @@ function load_more_audios() {
             $icon  = get_the_post_thumbnail_url($bruitage_id, 'thumbnail') ?: get_template_directory_uri() . '/assets/icons/buzzBtn.png';
             ?>
             <div class="sound-button-group position-relative text-center">
-                <img data-audio="<?= get_field('upload_mp3',$bruitage_id)['url'] ?>" 
+                <img data-audio="<?= esc_url(get_field('upload_mp3',$bruitage_id)['url'] ?? '') ?>" 
                      src="<?php echo esc_url($icon); ?>" 
                      alt="<?php echo esc_attr($title); ?>" 
                      class="sound-button">
@@ -542,16 +541,17 @@ function load_more_audios() {
 
     wp_reset_postdata();
 
-        $html = ob_get_clean();
+    $html = ob_get_clean();
 
-        wp_send_json_success([
-            'html' => $html,
-            'max_pages' => $query->max_num_pages,
-            'current_page' => $paged,
-        ]);
+    wp_send_json_success([
+        'html' => $html,
+        'max_pages' => $loop->max_num_pages,
+        'current_page' => $paged,
+    ]);
 
-    wp_die(); // important
+    wp_die();
 }
+
 
 add_action('wp_ajax_save_audios_session', 'save_audios_session');
 add_action('wp_ajax_nopriv_save_audios_session', 'save_audios_session');
