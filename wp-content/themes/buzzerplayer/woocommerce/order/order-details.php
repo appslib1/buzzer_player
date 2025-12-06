@@ -73,7 +73,7 @@ if ( $show_downloads ) {
                 // Assuming you have the $order object
                 $shipping_address = $order->get_formatted_shipping_address();
                 $billing_address  = $order->get_formatted_billing_address();
-                $customer_email = $order->get_billing_email();
+	            $customer_email = $order->get_billing_email();
 
                 ?>
                 <div class="order-card">
