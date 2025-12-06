@@ -680,7 +680,10 @@ jQuery(document).ready(function($){
           try{
             stream = await navigator.mediaDevices.getUserMedia({ audio: true });
           
-          mediaRecorder = new MediaRecorder(stream);
+          //mediaRecorder = new MediaRecorder(stream);
+          mediaRecorder = new MediaRecorder(stream, {
+            mimeType: 'audio/mp4; codecs=mp4a.40.2'
+          });
 
           mediaRecorder.ondataavailable = e => {
             audioChunks.push(e.data);
@@ -688,7 +691,8 @@ jQuery(document).ready(function($){
 
           mediaRecorder.onstop = () => {
               stream.getTracks().forEach(track => track.stop());
-              audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+              //audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+              audioBlob = new Blob(audioChunks, { type: 'audio/mp4' });
               const audioUrl = URL.createObjectURL(audioBlob);
               recordedAudio = audioUrl;
               console.log(recordedAudio);

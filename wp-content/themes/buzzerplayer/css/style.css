@@ -2168,6 +2168,7 @@ body:not(.wp-admin) input[type=checkbox] {
   position: relative;
   text-align: left;
   padding-left: 77px;
+  color: #1E1E1E;
 }
 .single-product .recordModal > div .btns button::after,
 .single-product .listAudiosModal > div .btns button::after,
@@ -2219,7 +2220,7 @@ body:not(.wp-admin) input[type=checkbox] {
 .single-product .listAudiosModal > div input,
 .single-product .addSongModal > div input {
   font-size: 16px;
-  border: 2px solid #1E1E1E;
+  border: 2px solid #1E1E1E !important;
   width: 100%;
   height: 48px;
   margin-bottom: 21px;
@@ -3163,6 +3164,7 @@ body:not(.wp-admin) input[type=checkbox] {
 .page-template-template-checkout main .mobile-order-infos button > span,
 .page-template-template-cart main .mobile-order-infos button > span {
   position: relative;
+  color: #1E1E1E;
 }
 .page-template-template-checkout main .mobile-order-infos button > span:first-child,
 .page-template-template-cart main .mobile-order-infos button > span:first-child {
@@ -3254,6 +3256,7 @@ body:not(.wp-admin) input[type=checkbox] {
   padding: 6px 8.43px;
   font-size: 16px;
   font-weight: normal;
+  color: #1E1E1E;
 }
 
 .page-template-template-checkout .woocommerce-SavedPaymentMethods-saveNew {

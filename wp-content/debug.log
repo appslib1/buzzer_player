@@ -19,3 +19,12 @@ Stack trace:
 [30-Oct-2025 21:36:20 UTC] PHP Deprecated:  Stripe\StripeTaxForWooCommerce\WooCommerce\StripeTax::throw_duplicate_country_exception(): Implicitly marking parameter $region as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/stripe-tax-for-woocommerce/WooCommerce/class-stripetax.php on line 469
 [01-Nov-2025 21:15:52 UTC] PHP Warning:  Undefined variable $query in /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/functions.php on line 549
 [01-Nov-2025 21:15:52 UTC] PHP Warning:  Attempt to read property "max_num_pages" on null in /Users/mac/Sites/BuzzerPlayer/wp-content/themes/buzzerplayer/functions.php on line 549
+[08-Nov-2025 17:45:44 UTC] Automatic updates starting...
+[08-Nov-2025 17:45:45 UTC]   Automatic plugin updates starting...
+[08-Nov-2025 17:45:45 UTC]   Automatic plugin updates complete.
+[08-Nov-2025 17:45:45 UTC] Automatic updates complete.
+[08-Nov-2025 17:46:10 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /Users/mac/Sites/BuzzerPlayer/wp-includes/Requests/src/Transport/Curl.php on line 204
+[08-Nov-2025 17:51:59 UTC] PHP Deprecated:  Stripe\StripeTaxForWooCommerce\WooCommerce\StripeTax::throw_duplicate_country_exception(): Implicitly marking parameter $region as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/stripe-tax-for-woocommerce/WooCommerce/class-stripetax.php on line 469
+[08-Nov-2025 17:52:46 UTC] PHP Deprecated:  Sabberworm\CSS\Parser::__construct(): Implicitly marking parameter $oParserSettings as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/vendor/sabberworm/php-css-parser/src/Parser.php on line 24
+[08-Nov-2025 17:52:46 UTC] PHP Deprecated:  Sabberworm\CSS\CSSList\Document::render(): Implicitly marking parameter $oOutputFormat as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/vendor/sabberworm/php-css-parser/src/CSSList/Document.php on line 158
+[08-Nov-2025 17:52:46 UTC] PHP Deprecated:  Sabberworm\CSS\RuleSet\RuleSet::addRule(): Implicitly marking parameter $oSibling as nullable is deprecated, the explicit nullable type must be used instead in /Users/mac/Sites/BuzzerPlayer/wp-content/plugins/woocommerce/vendor/sabberworm/php-css-parser/src/RuleSet/RuleSet.php on line 105
