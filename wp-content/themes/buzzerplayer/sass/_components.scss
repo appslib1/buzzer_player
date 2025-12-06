@@ -39,13 +39,11 @@ body:not(.wp-admin){
     input[type=email],
     input[type=tel]
     {
+        position: relative;
         padding: 10.25px 22px !important;
-        //border: 2px solid #1E1E1E !important;
-        border: unset !important;
+        border: 2px solid #1E1E1E;
         font-size: 17px;
         border-radius: 5px !important;
-        box-shadow: 0 0 0 2px #1E1E1E !important;
-        border-bottom: 2px solid transparent !important;
          &::placeholder{
             color: #BDBDBD !important;
         }
@@ -54,8 +52,7 @@ body:not(.wp-admin){
             //border: 2px solid variables.$noir-eben;
         }
         &:focus{
-            //border-bottom-width: 3px !important;
-            border-bottom: 2px solid #1E1E1E !important;
+            box-shadow: inset 0 -2px 0 0 #1E1E1E;
         }
         &:hover{
             background-color: variables.$beige-color;
@@ -410,9 +407,10 @@ body:not(.wp-admin){
     &>p{
         &.woocommerce-invalid-required-field{
             input{
-                box-shadow: 0 0 0 2px variables.$rouge !important;
+                border-color: variables.$rouge !important;
                 &:focus{
                     border-color: variables.$rouge !important;
+                    box-shadow: inset 0 -2px 0 0 variables.$rouge;
                 }
             }
             label{

@@ -357,12 +357,11 @@ body:not(.wp-admin) textarea,
 body:not(.wp-admin) input[type=text],
 body:not(.wp-admin) input[type=email],
 body:not(.wp-admin) input[type=tel] {
+  position: relative;
   padding: 10.25px 22px !important;
-  border: unset !important;
+  border: 2px solid #1E1E1E;
   font-size: 17px;
   border-radius: 5px !important;
-  box-shadow: 0 0 0 2px #1E1E1E !important;
-  border-bottom: 2px solid transparent !important;
 }
 body:not(.wp-admin) select::placeholder,
 body:not(.wp-admin) textarea::placeholder,
@@ -387,7 +386,7 @@ body:not(.wp-admin) textarea:focus,
 body:not(.wp-admin) input[type=text]:focus,
 body:not(.wp-admin) input[type=email]:focus,
 body:not(.wp-admin) input[type=tel]:focus {
-  border-bottom: 2px solid #1E1E1E !important;
+  box-shadow: inset 0 -2px 0 0 #1E1E1E;
 }
 body:not(.wp-admin) select:hover,
 body:not(.wp-admin) textarea:hover,
@@ -717,10 +716,11 @@ body:not(.wp-admin) input[type=checkbox] {
 }
 
 .woocommerce-billing-fields__field-wrapper > p.woocommerce-invalid-required-field input {
-  box-shadow: 0 0 0 2px #C92E26 !important;
+  border-color: #C92E26 !important;
 }
 .woocommerce-billing-fields__field-wrapper > p.woocommerce-invalid-required-field input:focus {
   border-color: #C92E26 !important;
+  box-shadow: inset 0 -2px 0 0 #C92E26;
 }
 .woocommerce-billing-fields__field-wrapper > p.woocommerce-invalid-required-field label {
   color: #C92E26;
