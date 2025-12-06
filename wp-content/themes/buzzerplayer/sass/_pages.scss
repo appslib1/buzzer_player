@@ -448,7 +448,7 @@
                     margin-right: 23px;
                     background-color: variables.$rouge;
                     background-repeat: no-repeat;
-                    background-position: 13px;
+                    background-position: 15px;
                     border: none;
                     border-radius: 50%;
                     &.pause{
@@ -1326,12 +1326,20 @@
                             }
                             button{
                                 width: 22px;
-                                height: 22px;
+                                aspect-ratio: 1 / 1;
                                 background-color: #fff;
                                 border-radius: 50%;
                                 border: none;
+                                padding: 0; /* Important for iPhone */
+                                -webkit-appearance: none; /* iPhone fix */
+                                appearance: none; /* universal */
+
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+
                                 position: relative;
-                                box-shadow: 0px 0px 20px 0px #29292933;
+                                box-shadow: 0px 0px 20px rgba(41, 41, 41, 0.2);
                                 &:after{
                                     position: absolute;
                                     content: "";
