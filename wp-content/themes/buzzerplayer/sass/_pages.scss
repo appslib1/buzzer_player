@@ -764,6 +764,7 @@
                     position: relative;
                     text-align: left;
                     padding-left: 77px;
+                    color: variables.$noir-eben;
                     &::after{
                         content: "";
                         right: 29px;
@@ -808,7 +809,7 @@
             }
             input{
                 font-size: 16px;
-                border: 2px solid variables.$noir-eben;
+                border: 2px solid variables.$noir-eben !important;
                 width: 100%;
                 height: 48px;
                 margin-bottom: 21px;
@@ -1703,6 +1704,7 @@
                 }
                 &>span{
                     position: relative;
+                    color: variables.$noir-eben;
                     &:first-child{
                         padding-right: 20px;
                         &:after{
@@ -1785,6 +1787,7 @@
                         padding: 6px 8.43px;
                         font-size: 16px;
                         font-weight: normal;
+                        color: variables.$noir-eben;
                     }
                 }
             }
