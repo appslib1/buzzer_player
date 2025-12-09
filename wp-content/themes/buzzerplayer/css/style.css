@@ -1840,6 +1840,7 @@ body:not(.wp-admin) input[type=checkbox] {
   background-position: 15px;
   border: none;
   border-radius: 50%;
+  background-position: center;
 }
 .single-product .product-top-section .select-audio-files > div .play-recorded-audio.pause {
   background-image: url("../assets/icons/pause-white.svg");
