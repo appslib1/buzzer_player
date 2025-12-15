@@ -118,7 +118,7 @@
                 },
 				breakpoints: {
                     768: {
-                        slidesPerView: 4,
+						slidesPerView: $('.ideas-slider .swiper-slide').length,
                     }
                 },
             });
